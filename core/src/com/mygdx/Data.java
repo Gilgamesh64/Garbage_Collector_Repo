@@ -13,4 +13,6 @@ public class Data {
     public static int TILE = 32;
 
     public static Skin skin = new Skin(Gdx.files.internal("uiskin.json"));
+
+    public static boolean debug = false;
 }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.AnimationManager;
+import com.mygdx.Data;
 import com.mygdx.GCStage;
 import com.mygdx.entities.helpers.GameActor;
 import com.mygdx.hitboxes.Hitbox;
@@ -37,7 +38,7 @@ public class Building extends GameActor {
             fade = 1;
         });
         hitbox.register();
-        this.debug();
+        if(Data.debug) debug();
     }
 
     public Building(Vector2 coords, TextureEnum textures) {
@@ -59,7 +60,7 @@ public class Building extends GameActor {
             fade = 1;
         });
         hitbox.register();
-        this.debug();
+        if(Data.debug) debug();
     }
 
     @Override

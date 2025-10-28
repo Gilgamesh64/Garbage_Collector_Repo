@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.AnimationManager;
+import com.mygdx.Data;
 import com.mygdx.dialogues.Dialogue;
 import com.mygdx.entities.helpers.ScriptableActor;
 import com.mygdx.hitboxes.Hitbox;
@@ -65,7 +66,7 @@ public class NPC extends ScriptableActor {
         if (npcBuilder.autoStartedScript != null)
             doScript(npcBuilder.autoStartedScript);
 
-        debug();
+        if(Data.debug) debug();
     }
 
     @Override
