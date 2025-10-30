@@ -2,6 +2,7 @@ package com.mygdx;
 
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.ai.msg.Telegraph;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.entities.Player;
@@ -55,5 +56,11 @@ public class GCStage extends Stage {
     }
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    public void addAll(Actor... actors) {
+        for (Actor actor : actors) {
+            addActor(actor);
+        }
     }
 }

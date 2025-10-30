@@ -110,15 +110,11 @@ public class ResourceManager {
     }
 
     public void stopAllAudio() {
-        getAllAudio()
+        Stream.of(ResourceEnum.values())
+                .filter(e -> e.type.equals(TypeEnum.AUDIO))
+                .map(this::getAudio)
                 .filter(Music::isPlaying)
                 .forEach(Music::stop);
-    }
-
-    public Stream<Music> getAllAudio() {
-        return Stream.of(ResourceEnum.values())
-                .filter(e -> e.type.equals(TypeEnum.AUDIO))
-                .map(this::getAudio);
     }
 
     // helper for dialogue loading
