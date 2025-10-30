@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.mygdx.Data;
 import com.mygdx.GCStage;
 import com.mygdx.entities.helpers.GameActor;
 import com.mygdx.hitboxes.Hitbox;
@@ -39,7 +40,7 @@ public class Scope extends GameActor{
         });
         hitbox.register();
 
-        this.debug();
+        if(Data.debug) debug();
         setCoords(coords);
     }
 

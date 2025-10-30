@@ -12,6 +12,7 @@ import com.mygdx.hitboxes.Tags;
 import com.mygdx.messages.MSG;
 import com.mygdx.movement.PlayerMovement;
 import com.mygdx.AnimationManager;
+import com.mygdx.Data;
 import com.mygdx.GCStage;
 import com.mygdx.camera.CameraController;
 import com.mygdx.entities.helpers.ScriptableActor;
@@ -52,7 +53,7 @@ public class Player extends ScriptableActor{
 
         animationManager = new AnimationManager(ResourceEnum.PLAYER, TextureEnum.PLAYER);
             
-        this.debug();
+        if(Data.debug) debug();
 
         movement = new PlayerMovement();
     }
