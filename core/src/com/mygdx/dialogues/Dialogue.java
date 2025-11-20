@@ -19,6 +19,7 @@ import com.bladecoder.ink.runtime.Story;
 import com.mygdx.Data;
 import com.mygdx.entities.helpers.ScriptableActor;
 import com.mygdx.hud.Hud;
+import com.mygdx.resources.RM;
 
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class Dialogue extends Actor {
         tableColor.dispose();
         TextureRegionDrawable bg = new TextureRegionDrawable(new TextureRegion(tableTexture));
 
-        Label dialogueLabel = new Label("", Data.skin.get("dialogue", Label.LabelStyle.class));
+        Label dialogueLabel = new Label("", RM.get().skin().get("dialogue", Label.LabelStyle.class));
         dialogueLabel.setWrap(true);
 
         typer = new TypewriterEffect(dialogueLabel);
@@ -140,7 +141,7 @@ public class Dialogue extends Actor {
             final int index = i;
             Choice choice = choicesList.get(i);
 
-            Label choiceLabel = new Label(choice.getText(), Data.skin.get("dialogue", Label.LabelStyle.class));
+            Label choiceLabel = new Label(choice.getText(), RM.get().skin().get("dialogue", Label.LabelStyle.class));
             choiceLabel.setWrap(true);
             choiceLabel.setTouchable(Touchable.enabled);
             choiceLabel.setAlignment(Align.center);

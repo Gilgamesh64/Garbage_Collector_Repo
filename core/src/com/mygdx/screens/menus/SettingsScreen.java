@@ -27,19 +27,19 @@ public class SettingsScreen extends GuiScreen {
         table.columnDefaults(1).width(150);
         
 
-        var langLabel = new Label("Language", Data.skin.get("default", Label.LabelStyle.class));
+        var langLabel = new Label("Language", RM.get().skin().get("default", Label.LabelStyle.class));
         table.add(langLabel).right().pad(20);
 
-        var lang = new SelectBox<String>(Data.skin.get("default", SelectBox.SelectBoxStyle.class));
+        var lang = new SelectBox<String>(RM.get().skin().get("default", SelectBox.SelectBoxStyle.class));
         lang.setItems("ITA", "ENG");
         table.add(lang).left().pad(20);
         
         table.row();
 
-        var fullScreenLabel = new Label("Fullscreen",  Data.skin.get("default", Label.LabelStyle.class));
+        var fullScreenLabel = new Label("Fullscreen",  RM.get().skin().get("default", Label.LabelStyle.class));
         table.add(fullScreenLabel).right().pad(20);
 
-        var fullScreenButton = new TextButton(Gdx.graphics.isFullscreen() ? "ON" : "OFF", Data.skin.get("default", TextButton.TextButtonStyle.class));
+        var fullScreenButton = new TextButton(Gdx.graphics.isFullscreen() ? "ON" : "OFF", RM.get().skin().get("default", TextButton.TextButtonStyle.class));
         table.add(fullScreenButton).left().pad(20);
         fullScreenButton.addListener(new InputListener() {
             @Override
@@ -58,7 +58,7 @@ public class SettingsScreen extends GuiScreen {
         table.row();
         
 
-        var back = new TextButton("BACK", Data.skin);
+        var back = new TextButton("BACK", RM.get().skin());
                 
         table.add(back).center().bottom().pad(20).colspan(2);
         

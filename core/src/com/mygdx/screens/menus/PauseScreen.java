@@ -25,7 +25,7 @@ public class PauseScreen extends GuiScreen {
         var bg = new Image(RM.get().getTexture(ResourceEnum.BACKGROUND_2));
         stage.getActors().insert(0, bg);
 
-        var pauseLabel = new Label("PAUSED", Data.skin);
+        var pauseLabel = new Label("PAUSED", RM.get().skin());
         table.add(pauseLabel).top().row();
 
         var playButton = new ImageButton(

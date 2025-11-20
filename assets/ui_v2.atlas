@@ -1,0 +1,22 @@
+
+ui_v2.png
+size: 1024, 512
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+bossDialogueBox
+  rotate: false
+  xy: 1, 383
+  size: 512, 128
+  split: 10, 10, 3, 4
+  orig: 512, 128
+  offset: 0, 0
+  index: -1
+choice
+  rotate: false
+  xy: 1, 253
+  size: 256, 128
+  split: 3, 3, 3, 3
+  orig: 256, 128
+  offset: 0, 0
+  index: -1

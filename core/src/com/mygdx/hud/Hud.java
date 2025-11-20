@@ -17,6 +17,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.mygdx.Data;
 import com.mygdx.Money;
 import com.mygdx.hud.actors.HealthBar;
+import com.mygdx.resources.RM;
 
 public class Hud implements Disposable {
     private static Hud instance;
@@ -49,7 +50,7 @@ public class Hud implements Disposable {
         table.defaults().expand();
         stage.addActor(table);
 
-        fps = new Label("", Data.skin);
+        fps = new Label("", RM.get().skin());
         table.add(fps).top().left();
 
         initMoneyLabel();
@@ -60,7 +61,7 @@ public class Hud implements Disposable {
         HealthBar healthBar = new HealthBar();
         table.add(healthBar).bottom().left();
 
-        debugData = new Label("Debug: ", Data.skin);
+        debugData = new Label("Debug: ", RM.get().skin());
         table.add(debugData).bottom().right();
 
     }
@@ -117,7 +118,7 @@ public class Hud implements Disposable {
 
         NinePatchDrawable drawable = new NinePatchDrawable(new NinePatch(borderTexture, 1, 1, 1, 1));
 
-        Label.LabelStyle baseStyle = Data.skin.get("default", Label.LabelStyle.class);
+        Label.LabelStyle baseStyle = RM.get().skin().get("default", Label.LabelStyle.class);
         Label.LabelStyle moneyStyle = new Label.LabelStyle(baseStyle);
         moneyStyle.fontColor = new Color(0f, 1f, 0f, 1f);
         moneyStyle.background = drawable;

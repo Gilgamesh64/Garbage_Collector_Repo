@@ -27,7 +27,7 @@ public class MenuScreen extends GuiScreen {
         var bg = new Image(RM.get().getTexture(ResourceEnum.BACKGROUND_2));
         stage.getActors().insert(0, bg);
 
-        var titleLabel = new Label("Garbage Collection", Data.skin);
+        var titleLabel = new Label("Garbage Collection", RM.get().skin());
         table.add(titleLabel).top().row();
 
 

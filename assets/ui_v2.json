@@ -1,0 +1,62 @@
+{
+"com.badlogic.gdx.graphics.Color": {
+	"neon_green": {
+		"r": 0,
+		"g": 0.68235296,
+		"b": 0.05490196,
+		"a": 1
+	},
+	"test": {
+		"r": 1,
+		"g": 0.8,
+		"b": 0.8,
+		"a": 1
+	},
+	"white": {
+		"r": 1,
+		"g": 1,
+		"b": 1,
+		"a": 1
+	}
+},
+"com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator$FreeTypeFontParameter": {
+    "ui": {
+        "font": "fonts/Cynax_V1.ttf",
+        "size": 16,
+        "color": "white",
+        "characters": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    }
+},
+"com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+	"default": {
+		"font": "ui",
+		"fontColor": "white",
+		"background": "choice"
+	},
+	"choice": {
+		"font": "ui",
+		"fontColor": "white",
+		"background": "choice"
+	},
+	"dialogue": {
+		"font": "ui",
+		"fontColor": "white",
+		"background": "bossDialogueBox"
+	},
+	"money": {
+		"font": "ui",
+		"fontColor": "neon_green",
+		"background": "bossDialogueBox"
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
+	"default": {
+		"font": "ui"
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle": {
+	"default": {
+		"label": "default"
+	}
+}
+}
