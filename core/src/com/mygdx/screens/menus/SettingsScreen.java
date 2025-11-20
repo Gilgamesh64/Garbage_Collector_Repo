@@ -3,6 +3,7 @@ package com.mygdx.screens.menus;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
@@ -56,7 +57,6 @@ public class SettingsScreen extends GuiScreen {
         });
 
         table.row();
-        
 
         var back = new TextButton("BACK", RM.get().skin());
                 
