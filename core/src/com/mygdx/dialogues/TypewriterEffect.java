@@ -21,6 +21,7 @@ public class TypewriterEffect {
         start(text, charInterval, null);
     }
 
+    @SuppressWarnings("deprecation")
     public void start(String text, float interval, Runnable onFinished) {
         this.fullText = text;
         this.charInterval = interval;

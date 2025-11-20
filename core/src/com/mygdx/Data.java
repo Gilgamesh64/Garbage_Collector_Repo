@@ -1,8 +1,5 @@
 package com.mygdx;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-
 public class Data {
 
     public static final int RATIO_X = 16;

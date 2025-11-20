@@ -4,6 +4,23 @@ size: 1024, 1024
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
+default-rect
+  rotate: false
+  xy: 259, 412
+  size: 3, 3
+  split: 1, 1, 1, 1
+  pad: 0, 0, 0, 0
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+default-select-selection
+  rotate: false
+  xy: 1, 282
+  size: 3, 3
+  split: 1, 1, 1, 1
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
 choice
   rotate: false
   xy: 1, 287

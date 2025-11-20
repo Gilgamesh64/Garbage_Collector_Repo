@@ -141,7 +141,6 @@ public class Dialogue extends Actor {
             Choice choice = choicesList.get(i);
 
             Label choiceLabel = new Label(choice.getText(), RM.get().skin().get("choice", Label.LabelStyle.class));
-            choiceLabel.setWrap(true);
             choiceLabel.setTouchable(Touchable.enabled);
             choiceLabel.setAlignment(Align.center);
 

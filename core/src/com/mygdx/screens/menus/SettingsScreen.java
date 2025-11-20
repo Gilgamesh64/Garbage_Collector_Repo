@@ -30,7 +30,7 @@ public class SettingsScreen extends GuiScreen {
         var langLabel = new Label("Language", RM.get().skin().get("default", Label.LabelStyle.class));
         table.add(langLabel).right().pad(20);
 
-        var lang = new SelectBox<String>(RM.get().skin().get("default", SelectBox.SelectBoxStyle.class));
+        var lang = new SelectBox<String>(RM.get().skin());
         lang.setItems("ITA", "ENG");
         table.add(lang).left().pad(20);
         
@@ -39,7 +39,7 @@ public class SettingsScreen extends GuiScreen {
         var fullScreenLabel = new Label("Fullscreen",  RM.get().skin().get("default", Label.LabelStyle.class));
         table.add(fullScreenLabel).right().pad(20);
 
-        var fullScreenButton = new TextButton(Gdx.graphics.isFullscreen() ? "ON" : "OFF", RM.get().skin().get("default", TextButton.TextButtonStyle.class));
+        var fullScreenButton = new TextButton(Gdx.graphics.isFullscreen() ? "ON" : "OFF", RM.get().skin());
         table.add(fullScreenButton).left().pad(20);
         fullScreenButton.addListener(new InputListener() {
             @Override
