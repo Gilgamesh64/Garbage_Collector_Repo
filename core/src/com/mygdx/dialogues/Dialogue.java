@@ -16,7 +16,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.bladecoder.ink.runtime.Choice;
 import com.bladecoder.ink.runtime.Story;
-import com.mygdx.Data;
 import com.mygdx.entities.helpers.ScriptableActor;
 import com.mygdx.hud.Hud;
 import com.mygdx.resources.RM;
@@ -53,13 +52,13 @@ public class Dialogue extends Actor {
 
         Label dialogueLabel = new Label("", RM.get().skin().get("dialogue", Label.LabelStyle.class));
         dialogueLabel.setWrap(true);
+        dialogueLabel.setAlignment(Align.center);
 
         typer = new TypewriterEffect(dialogueLabel);
 
         table = new Table();
         table.setFillParent(true);
         table.defaults().expand().fillX();
-        table.debug();
 
         table.setBackground(bg);
 
@@ -141,7 +140,7 @@ public class Dialogue extends Actor {
             final int index = i;
             Choice choice = choicesList.get(i);
 
-            Label choiceLabel = new Label(choice.getText(), RM.get().skin().get("dialogue", Label.LabelStyle.class));
+            Label choiceLabel = new Label(choice.getText(), RM.get().skin().get("choice", Label.LabelStyle.class));
             choiceLabel.setWrap(true);
             choiceLabel.setTouchable(Touchable.enabled);
             choiceLabel.setAlignment(Align.center);

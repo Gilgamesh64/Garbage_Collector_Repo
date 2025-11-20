@@ -136,8 +136,7 @@ public enum ResourceEnum {
 
 
 //DIALOGUE TEXTURES
-    COMPLEX_DIALOGUE("assets/dialogues/images/bossDialogueBox.png", TypeEnum.TEXTURE),
-    SIMPLE_DIALOGUE("assets/dialogues/images/dialogueBox.jpg", TypeEnum.TEXTURE),
+    COMPLEX_DIALOGUE("assets/dialogues/images/dialogue.png", TypeEnum.TEXTURE),
     CHOICE("assets/dialogues/images/choice.png", TypeEnum.TEXTURE),
 
 

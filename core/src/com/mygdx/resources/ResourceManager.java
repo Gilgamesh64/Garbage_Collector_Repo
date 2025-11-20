@@ -1,21 +1,15 @@
 package com.mygdx.resources;
 
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.assets.loaders.FileHandleResolver;
-import com.badlogic.gdx.assets.loaders.SkinLoader;
-import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader;
-import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mygdx.dialogues.GameStory;
+import com.ray3k.stripe.FreeTypeSkinLoader;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -39,12 +33,7 @@ public class ResourceManager {
     }
 
     private void loadManager() {
-        FileHandleResolver resolver = new InternalFileHandleResolver();
-
-        manager.setLoader(Skin.class, new SkinLoader(resolver));
-        manager.setLoader(FreeTypeFontGenerator.class, new FreeTypeFontGeneratorLoader(resolver));
-        manager.setLoader(BitmapFont.class, ".ttf", new FreetypeFontLoader(resolver));
-
+        manager.setLoader(Skin.class, new FreeTypeSkinLoader(manager.getFileHandleResolver()));
         manager.load(ResourceEnum.SKIN.label, Skin.class);
         Stream.of(ResourceEnum.values()).forEach(e -> {
             switch (e.type) {
@@ -89,7 +78,7 @@ public class ResourceManager {
         return manager.get(e.label);
     }
 
-    public Skin skin(){
+    public Skin skin() {
         manager.finishLoadingAsset(ResourceEnum.SKIN.label);
         return manager.get(ResourceEnum.SKIN.label);
     }

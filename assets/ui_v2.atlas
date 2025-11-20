@@ -1,22 +1,30 @@
 
 ui_v2.png
-size: 1024, 512
+size: 1024, 1024
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-bossDialogueBox
+choice
   rotate: false
-  xy: 1, 383
+  xy: 1, 287
+  size: 256, 128
+  split: 3, 3, 3, 3
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+dialogue
+  rotate: false
+  xy: 1, 417
   size: 512, 128
   split: 10, 10, 3, 4
   orig: 512, 128
   offset: 0, 0
   index: -1
-choice
+blank
   rotate: false
-  xy: 1, 253
-  size: 256, 128
-  split: 3, 3, 3, 3
-  orig: 256, 128
+  xy: 515, 513
+  size: 32, 32
+  split: 0, 0, 0, 0
+  orig: 32, 32
   offset: 0, 0
   index: -1
