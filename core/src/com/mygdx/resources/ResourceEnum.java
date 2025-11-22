@@ -126,7 +126,6 @@ public enum ResourceEnum {
 //HUD
     HEALTH_BAR("assets/hud/health.png", TypeEnum.TEXTURE),
 
-
 //TILED MAPS
     SLUMS("assets/map/slums/slums.tmx", TypeEnum.MAP),
     RICH_DISTRICT("assets/map/rich_disctirct/rich_district.tmx", TypeEnum.MAP),
