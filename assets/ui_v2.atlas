@@ -65,7 +65,7 @@ inventory
   rotate: false
   xy: 1, 710
   size: 1024, 576
-  split: 48, 48, 48, 48
+  split: 470, 470, 33, 99
   orig: 1024, 576
   offset: 0, 0
   index: -1
