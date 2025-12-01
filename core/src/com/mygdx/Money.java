@@ -5,7 +5,7 @@ import com.mygdx.hud.Hud;
 public class Money {
     private static int money;
 
-    public static int getMoney() {
+    public static int get() {
         return money;
     }
     public static void set(int amount) {

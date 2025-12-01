@@ -103,17 +103,4 @@ public class NPC extends ScriptableActor {
     public void drawDebug(ShapeRenderer shapeRenderer) {
         shapeRenderer.polygon(hitbox.getTransformedVertices());
     }
-
-    public static class NPCBuilder extends AbstractNPCBuilder<NPCBuilder> {
-
-        public NPC build() {
-            return new NPC(this);
-        }
-
-        @Override
-        public NPCBuilder getThis() {
-            return this;
-        }
-    }
-
 }

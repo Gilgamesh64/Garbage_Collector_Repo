@@ -20,14 +20,14 @@ blackmarketeer_idle_left
   index: -1
 blackmarketeer_idle_right
   rotate: false
-  xy: 51, 5
+  xy: 101, 35
   size: 48, 28
   orig: 48, 28
   offset: 0, 0
   index: -1
 blackmarketeer_idle_up
   rotate: false
-  xy: 351, 5
+  xy: 301, 5
   size: 16, 28
   orig: 16, 28
   offset: 0, 0
@@ -41,85 +41,92 @@ blackmarketeer_sleeping
   index: -1
 blackmarketeer_walk_down
   rotate: false
-  xy: 101, 35
+  xy: 85, 5
   size: 48, 28
   orig: 48, 28
   offset: 0, 0
   index: -1
 blackmarketeer_walk_left
   rotate: false
-  xy: 101, 5
+  xy: 151, 35
   size: 48, 28
   orig: 48, 28
   offset: 0, 0
   index: -1
 blackmarketeer_walk_right
   rotate: false
-  xy: 151, 35
+  xy: 201, 35
   size: 48, 28
   orig: 48, 28
   offset: 0, 0
   index: -1
 blackmarketeer_walk_up
   rotate: false
-  xy: 151, 5
+  xy: 251, 35
   size: 48, 28
   orig: 48, 28
   offset: 0, 0
   index: -1
 jerkins_idle_down
   rotate: false
-  xy: 201, 35
+  xy: 301, 35
   size: 48, 28
   orig: 48, 28
   offset: 0, 0
   index: -1
 jerkins_idle_left
   rotate: false
-  xy: 201, 5
+  xy: 351, 35
   size: 48, 28
   orig: 48, 28
   offset: 0, 0
   index: -1
 jerkins_idle_right
   rotate: false
-  xy: 251, 35
+  xy: 401, 35
   size: 48, 28
   orig: 48, 28
   offset: 0, 0
   index: -1
 jerkins_idle_up
   rotate: false
-  xy: 401, 35
+  xy: 319, 5
   size: 16, 28
   orig: 16, 28
   offset: 0, 0
   index: -1
 jerkins_walk_down
   rotate: false
-  xy: 251, 5
+  xy: 451, 35
   size: 48, 28
   orig: 48, 28
   offset: 0, 0
   index: -1
 jerkins_walk_left
   rotate: false
-  xy: 301, 35
+  xy: 151, 5
   size: 48, 28
   orig: 48, 28
   offset: 0, 0
   index: -1
 jerkins_walk_right
   rotate: false
-  xy: 301, 5
+  xy: 201, 5
   size: 48, 28
   orig: 48, 28
   offset: 0, 0
   index: -1
 jerkins_walk_up
   rotate: false
-  xy: 351, 35
+  xy: 251, 5
   size: 48, 28
   orig: 48, 28
+  offset: 0, 0
+  index: -1
+test
+  rotate: false
+  xy: 51, 1
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
   index: -1

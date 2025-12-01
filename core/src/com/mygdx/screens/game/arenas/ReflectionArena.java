@@ -2,6 +2,7 @@ package com.mygdx.screens.game.arenas;
 
 import com.mygdx.Data;
 import com.mygdx.GCStage;
+import com.mygdx.entities.npcs.NPCBuilder;
 import com.mygdx.entities.npcs.Reflection;
 import com.mygdx.map.TileMapCollisionsManager;
 import com.mygdx.messages.MSG;
@@ -14,8 +15,8 @@ public class ReflectionArena extends PlayableScreen {
 
     public ReflectionArena() {
         super(ResourceEnum.REFLECTION_ARENA);
-        addAll(new Reflection.ReflectionBuilder().coordinates(Data.TILE * 10, Data.TILE * 10)
-                .texture(TextureEnum.BLACKMARKETEER).build());
+        addAll(new Reflection(new NPCBuilder().coordinates(Data.TILE * 10, Data.TILE * 10)
+                .texture(TextureEnum.BLACKMARKETEER)));
     }
 
     @Override

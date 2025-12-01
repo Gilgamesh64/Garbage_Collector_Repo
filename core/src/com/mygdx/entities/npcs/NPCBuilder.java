@@ -6,7 +6,7 @@ import com.mygdx.resources.RM;
 import com.mygdx.resources.ResourceEnum;
 import com.mygdx.resources.TextureEnum;
 
-public abstract class AbstractNPCBuilder<T extends AbstractNPCBuilder<T>> {
+public class NPCBuilder {
     protected Vector2 coordinates, size = new Vector2(16, 32);
     protected TextureEnum textureEnum;
     protected boolean atlas = true;
@@ -14,50 +14,51 @@ public abstract class AbstractNPCBuilder<T extends AbstractNPCBuilder<T>> {
     protected ResourceEnum autoStartedScript;
     protected ResourceEnum startingAnimation;
 
-    public abstract T getThis();
-
-    public T coordinates(Vector2 coordinates) {
+    public NPCBuilder coordinates(Vector2 coordinates) {
         this.coordinates = coordinates;
-        return getThis();
+        return this;
     }
 
-    public T coordinates(float x, float y) {
+    public NPCBuilder coordinates(float x, float y) {
         this.coordinates = new Vector2(x, y);
-        return getThis();
+        return this;
     }
 
-    public T size(Vector2 size) {
+    public NPCBuilder size(Vector2 size) {
         this.size = size;
-        return getThis();
+        return this;
     }
 
-    public T size(float x, float y) {
+    public NPCBuilder size(float x, float y) {
         this.size = new Vector2(x, y);
-        return getThis();
+        return this;
     }
 
-    public T texture(TextureEnum texture) {
+    public NPCBuilder texture(TextureEnum texture) {
         this.textureEnum = texture;
-        return getThis();
+        return this;
     }
 
-    public T noAtlas(){
+    public NPCBuilder noAtlas(){
         this.atlas = false;
-        return getThis();
+        return this;
     }
 
-    public T story(ResourceEnum e) {
+    public NPCBuilder story(ResourceEnum e) {
         this.story = RM.get().getStory(e);
-        return getThis();
+        return this;
     }
 
-    public T autoStartedScript(ResourceEnum e){
+    public NPCBuilder autoStartedScript(ResourceEnum e){
         this.autoStartedScript = e;
-        return getThis();
+        return this;
     }
 
-    public T startingAnimation(ResourceEnum e){
+    public NPCBuilder startingAnimation(ResourceEnum e){
         this.startingAnimation = e;
-        return getThis();
+        return this;
+    }
+    public NPC build(){
+        return new NPC(this);
     }
 }

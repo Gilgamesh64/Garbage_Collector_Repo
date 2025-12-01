@@ -1,62 +1,62 @@
 
-player.png
-size: 512, 64
+player_old.png
+size: 512, 32
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
 player_idle_down
   rotate: false
-  xy: 197, 1
-  size: 32, 32
-  orig: 32, 32
+  xy: 1, 1
+  size: 48, 28
+  orig: 48, 28
   offset: 0, 0
   index: -1
 player_idle_left
   rotate: false
-  xy: 231, 1
-  size: 32, 32
-  orig: 32, 32
+  xy: 51, 1
+  size: 48, 28
+  orig: 48, 28
   offset: 0, 0
   index: -1
 player_idle_right
   rotate: false
-  xy: 265, 1
-  size: 32, 32
-  orig: 32, 32
+  xy: 101, 1
+  size: 48, 28
+  orig: 48, 28
   offset: 0, 0
   index: -1
 player_idle_up
   rotate: false
-  xy: 299, 1
-  size: 32, 32
-  orig: 32, 32
+  xy: 351, 1
+  size: 16, 28
+  orig: 16, 28
   offset: 0, 0
   index: -1
 player_walk_down
   rotate: false
-  xy: 1, 1
-  size: 96, 32
-  orig: 96, 32
+  xy: 151, 1
+  size: 48, 28
+  orig: 48, 28
   offset: 0, 0
   index: -1
 player_walk_left
   rotate: false
-  xy: 333, 1
-  size: 32, 32
-  orig: 32, 32
+  xy: 201, 1
+  size: 48, 28
+  orig: 48, 28
   offset: 0, 0
   index: -1
 player_walk_right
   rotate: false
-  xy: 367, 1
-  size: 32, 32
-  orig: 32, 32
+  xy: 251, 1
+  size: 48, 28
+  orig: 48, 28
   offset: 0, 0
   index: -1
 player_walk_up
   rotate: false
-  xy: 99, 1
-  size: 96, 32
-  orig: 96, 32
+  xy: 301, 1
+  size: 48, 28
+  orig: 48, 28
   offset: 0, 0
   index: -1

@@ -22,7 +22,7 @@ public class Savings implements com.badlogic.gdx.utils.Json.Serializable {
         fightging = GCStage.get().getPlayer().isFighting();
         flags = new boolean[] { true, true, false };
         selectedGuns = new boolean[] { true, true };
-        money = Money.getMoney();
+        money = Money.get();
     }
 
     @Override

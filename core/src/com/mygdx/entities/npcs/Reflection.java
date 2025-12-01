@@ -23,8 +23,8 @@ public class Reflection extends NPC {
 
     private StateController stateController;
 
-    public Reflection(ReflectionBuilder npcBuilder) {
-        super(npcBuilder);
+    public Reflection(NPCBuilder builder) {
+        super(builder);
         stateController = new StateController();
         stateController.setMovementState(StateController.MovementState.FOLLOW_PLAYER);
         GCStage.get().subscribe(this, MSG.SHOT);
@@ -142,17 +142,5 @@ public class Reflection extends NPC {
             System.out.println("HEY");
         }
         return true;
-    }
-
-    public static class ReflectionBuilder extends NPCBuilder {
-
-        public Reflection build() {
-            return new Reflection(this);
-        }
-
-        @Override
-        public ReflectionBuilder getThis() {
-            return this;
-        }
     }
 }

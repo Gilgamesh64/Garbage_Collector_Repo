@@ -1,20 +1,16 @@
 package com.mygdx.hud;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -22,7 +18,6 @@ import com.mygdx.Data;
 import com.mygdx.Money;
 import com.mygdx.hud.actors.HealthBar;
 import com.mygdx.resources.RM;
-import com.mygdx.resources.ResourceEnum;
 
 public class Hud implements Disposable {
     private static Hud instance;
@@ -45,11 +40,14 @@ public class Hud implements Disposable {
     private Label fps;
     private Label moneyPopup;
     private Label debugData;
-    private Table inventory;
+
+    private Inventory inventory;
 
     public Hud() {
         FitViewport viewport = new FitViewport(Data.VIEWPORT_X, Data.VIEWPORT_Y, new OrthographicCamera());
         stage = new Stage(viewport);
+
+        inventory = new Inventory(stage);
 
         table = new Table();
         table.setFillParent(true);
@@ -69,17 +67,6 @@ public class Hud implements Disposable {
 
         debugData = new Label("Debug: ", RM.get().skin());
         table.add(debugData).bottom().right();
-
-        inventory = new Table(RM.get().skin());
-        inventory.setBackground(RM.get().skin().getDrawable("inventory"));
-        inventory.setFillParent(true);
-
-        inventory.setVisible(false);
-        inventory.setTouchable(Touchable.disabled);
-        inventory.setY(stage.getHeight());
-
-        stage.addActor(inventory);
-
     }
 
     public void draw() {
@@ -87,10 +74,9 @@ public class Hud implements Disposable {
     }
 
     public void update() {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.I)) {
-            toggleInventory();
-        }
         stage.act(Gdx.graphics.getDeltaTime());
+        inventory.update();
+        
         fps.setText("Current FPS: " + Gdx.graphics.getFramesPerSecond());
     }
 
@@ -101,23 +87,6 @@ public class Hud implements Disposable {
 
     public void setDebugSting(String debugSting) {
         debugData.setText(debugSting);
-    }
-
-    private void toggleInventory() {
-        if (!inventory.isVisible()) {
-            inventory.setVisible(true);
-            inventory.setTouchable(Touchable.enabled);
-            inventory.setY(stage.getHeight());
-            inventory.addAction(Actions.moveTo(0, 0, 0.25f));
-        } else {
-            inventory.addAction(
-                    Actions.sequence(
-                            Actions.moveTo(0, stage.getHeight(), 0.25f),
-                            Actions.run(() -> {
-                                inventory.setVisible(false);
-                                inventory.setTouchable(Touchable.disabled);
-                            })));
-        }
     }
 
     private void showMoneyPopup() {
@@ -170,8 +139,7 @@ public class Hud implements Disposable {
      * @param gained
      */
     public void setMoney(int money, boolean gained) {
-        String newText = gained ? "+" + money : "-" + money;
-        moneyPopup.setText(Money.getMoney() + newText);
+        moneyPopup.setText(Money.get());
         showMoneyPopup();
     }
 

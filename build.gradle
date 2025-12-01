@@ -72,6 +72,7 @@ project(":core") {
         implementation "com.bladecoder.ink:blade-ink:1.2.0"
         api "com.badlogicgames.gdx:gdx-ai:1.8.1"
         implementation 'com.github.raeleus.stripe:freetype:2.0.0'
+        implementation 'com.github.raeleus.stripe:stripe:2.0.0'
 
         
     }
