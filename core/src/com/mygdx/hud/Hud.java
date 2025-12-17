@@ -1,6 +1,7 @@
 package com.mygdx.hud;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -43,9 +44,11 @@ public class Hud implements Disposable {
 
     private Inventory inventory;
 
-    public Hud() {
+    public Hud(InputMultiplexer mux) {
         FitViewport viewport = new FitViewport(Data.VIEWPORT_X, Data.VIEWPORT_Y, new OrthographicCamera());
         stage = new Stage(viewport);
+        mux.addProcessor(0, stage);
+
 
         inventory = new Inventory(stage);
 

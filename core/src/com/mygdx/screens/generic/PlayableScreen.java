@@ -57,7 +57,7 @@ public abstract class PlayableScreen extends GenericScreen {
         stage.addActor(player);
         stage.setKeyboardFocus(player);
 
-        hud = new Hud();
+        hud = new Hud(mux);
         Hud.set(hud);
         this.name = map;
     }
