@@ -1,9 +1,11 @@
 package com.mygdx.camera;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.mygdx.Data;
 import com.mygdx.GCStage;
 
 public class CameraController {
@@ -23,17 +25,47 @@ public class CameraController {
     }
 
     public static void updateCamera() {
-        Vector3 cameraPosition = GCStage.get().getCamera().position;
+
+        if (Gdx.input.isKeyJustPressed(Keys.SHIFT_RIGHT)) {
+            Data.stopCamera = !Data.stopCamera;
+        }
+
+        OrthographicCamera camera = (OrthographicCamera) GCStage.get().getCamera();
+        Vector3 cameraPosition = camera.position;
+        if (Data.stopCamera) {
+            if (Gdx.input.isKeyPressed(Keys.UP)) {
+                cameraPosition.add(0f, 1f, 0f);
+            }
+            if (Gdx.input.isKeyPressed(Keys.DOWN)) {
+                cameraPosition.add(0f, -1f, 0f);
+            }
+            if (Gdx.input.isKeyPressed(Keys.LEFT)) {
+                cameraPosition.add(-1f, 0f, 0f);
+            }
+            if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
+                cameraPosition.add(1f, 0f, 0f);
+            }
+
+            if (Gdx.input.isKeyPressed(Keys.NUMPAD_8)) {
+                camera.zoom -= 0.005;
+            }
+            if (Gdx.input.isKeyPressed(Keys.NUMPAD_2)) {
+                camera.zoom += 0.005;
+            }
+            return;
+        }
 
         cameraShaker.origPosition = cameraPosition.cpy();
         cameraShaker.update(Gdx.graphics.getDeltaTime());
 
-        cameraPosition.x += (GCStage.get().getPlayer().getX() - cameraPosition.x) * lerpFactor * Gdx.graphics.getDeltaTime();
-        cameraPosition.y += (GCStage.get().getPlayer().getY() - cameraPosition.y) * lerpFactor * Gdx.graphics.getDeltaTime();
+        cameraPosition.x += (GCStage.get().getPlayer().center.x - cameraPosition.x) * lerpFactor
+                * Gdx.graphics.getDeltaTime();
+        cameraPosition.y += (GCStage.get().getPlayer().center.y - cameraPosition.y) * lerpFactor
+                * Gdx.graphics.getDeltaTime();
 
         // Apply the changes
-        GCStage.get().getCamera().position.set(cameraPosition);
-        GCStage.get().getCamera().update();
+        camera.position.set(cameraPosition);
+        camera.update();
     }
 
     public static void applyShakeEffect() {
@@ -56,7 +88,7 @@ public class CameraController {
         xAngle = dir.angleDeg();
     }
 
-    public static float getAngle(Vector2 position1, Vector2 position2){
+    public static float getAngle(Vector2 position1, Vector2 position2) {
         calculateThowardsPos(position1, position2);
         return getXAngle();
     }

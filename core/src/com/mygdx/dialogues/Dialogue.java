@@ -16,7 +16,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.bladecoder.ink.runtime.Choice;
 import com.bladecoder.ink.runtime.Story;
-import com.mygdx.entities.helpers.ScriptableActor;
+import com.mygdx.Data;
+import com.mygdx.entities.helpers.GameActor;
 import com.mygdx.hud.Hud;
 import com.mygdx.resources.RM;
 
@@ -33,7 +34,7 @@ public class Dialogue extends Actor {
      * @param gs
      * @param actor
      */
-    public Dialogue(GameStory gs, ScriptableActor actor) {
+    public Dialogue(GameStory gs, GameActor actor) {
         this.story = gs.getStory();
         gs.setActor(actor);
 
@@ -70,9 +71,9 @@ public class Dialogue extends Actor {
 
         Hud.stage().addActor(table);
 
-        Gdx.input.setInputProcessor(Hud.stage());
-
         Gdx.app.postRunnable(this::continueStory); //Does this the next frame
+
+        Data.dialogueActive = true;
     }
 
     @Override
@@ -169,6 +170,7 @@ public class Dialogue extends Actor {
     }
 
     private void removeDialogue() {
+        Data.dialogueActive = false;
         running = false;
         table.remove();
         remove();

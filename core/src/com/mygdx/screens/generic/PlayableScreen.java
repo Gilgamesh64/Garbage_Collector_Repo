@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.hud.Hud;
+import com.mygdx.Data;
 import com.mygdx.GCStage;
 import com.mygdx.Money;
 import com.mygdx.camera.CameraController;
@@ -40,6 +41,8 @@ public abstract class PlayableScreen extends GenericScreen {
 
     protected PlayableScreen(ResourceEnum map) {
         super();
+
+        camera.zoom = 0.7f;
 
         hitboxHandler = new HitboxHandler();
         HitboxHandler.set(hitboxHandler);
@@ -104,16 +107,13 @@ public abstract class PlayableScreen extends GenericScreen {
         if (Gdx.input.isKeyJustPressed(Keys.L)) {
             Money.gain(50);
         }
-        if (Gdx.input.isKeyJustPressed(Keys.R)) {
-            GCStage.get().send(MSG.DIALOGUE_TRIGGERED);
-        }
         if(Gdx.input.isKeyJustPressed(Keys.H)){
             GCStage.get().send(MSG.BLOCK_WALLS);
         }
         if(Gdx.input.isKeyJustPressed(Keys.J)){
             GCStage.get().send(MSG.SWAP_FIGHT_STATE);
         }
-
+        
         stage.getActors().sort((a, b) -> Float.compare(b.getY(), a.getY())); //solves z index problem
 
         if (!StateManager.getBoolState(StateEnum.PAUSE))

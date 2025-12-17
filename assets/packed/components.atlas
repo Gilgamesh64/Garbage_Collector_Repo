@@ -60,6 +60,13 @@ rubbish
   orig: 96, 32
   offset: 0, 0
   index: -1
+saving_tree
+  rotate: false
+  xy: 1417, 1
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 side_walk
   rotate: false
   xy: 2297, 67
@@ -69,7 +76,7 @@ side_walk
   index: -1
 traffic_light
   rotate: false
-  xy: 1417, 1
+  xy: 1483, 1
   size: 32, 64
   orig: 32, 64
   offset: 0, 0

@@ -2,12 +2,13 @@ package com.mygdx.dialogues;
 
 import com.bladecoder.ink.runtime.Story;
 import com.mygdx.Money;
+import com.mygdx.entities.helpers.GameActor;
 import com.mygdx.entities.helpers.ScriptableActor;
 import com.mygdx.resources.ResourceEnum;
 
 public class GameStory {
     private Story story;
-    private ScriptableActor currentActor;
+    private GameActor currentActor;
 
     /**
      * Initializes the story, binding the external functions
@@ -19,8 +20,11 @@ public class GameStory {
             story.bindExternalFunction("DO", (Object[] args) -> {
                 if (currentActor == null)
                     return null;
-                String name = String.valueOf(args[0]);
-                currentActor.doScript(ResourceEnum.valueOf(name));
+                if(currentActor instanceof ScriptableActor s){
+                    String name = String.valueOf(args[0]);
+                    s.doScript(ResourceEnum.valueOf(name));
+                }
+                
                 return null;
             });
             story.bindExternalFunction("GAIN", (Object[] args) -> {
@@ -36,11 +40,11 @@ public class GameStory {
      * assigns the story
      * @param actor
      */
-    public void setActor(ScriptableActor actor) {
+    public void setActor(GameActor actor) {
         currentActor = actor;
     }
 
-    public ScriptableActor getCurrentActor() {
+    public GameActor getCurrentActor() {
         return currentActor;
     }
 

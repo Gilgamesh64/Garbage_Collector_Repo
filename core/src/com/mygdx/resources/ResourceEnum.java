@@ -108,6 +108,7 @@ public enum ResourceEnum {
     SIDE_WALK(1),
     RUBBISH(3),
     GLASS_DOOR1_OPENING(32, 0.02f, 5),
+    SAVING_TREE,
 
     //EFFECTS
     EXPLOSION(8, 0.05f, 0),
@@ -146,6 +147,7 @@ public enum ResourceEnum {
     ADEPTUS_2("adeptus2_JSON.json", TypeEnum.DIALOGUE),
     ADEPTUS_3("adeptus3_JSON.json", TypeEnum.DIALOGUE),
     ADEPTUS_4("adeptus4_JSON.json", TypeEnum.DIALOGUE),
+    SAVE("save.json", TypeEnum.DIALOGUE),
     
 //MUSIC
     REFLECTION_1("assets/audio/reflection_1.mp3", TypeEnum.AUDIO),
