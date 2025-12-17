@@ -5,6 +5,7 @@ import com.mygdx.Money;
 import com.mygdx.entities.helpers.GameActor;
 import com.mygdx.entities.helpers.ScriptableActor;
 import com.mygdx.resources.ResourceEnum;
+import com.mygdx.savings.SavingsManager;
 
 public class GameStory {
     private Story story;
@@ -29,6 +30,10 @@ public class GameStory {
             });
             story.bindExternalFunction("GAIN", (Object[] args) -> {
                 Money.gain(((int)args[0]));
+                return null;
+            });
+            story.bindExternalFunction("SAVE", (Object[] args) -> {
+                SavingsManager.save();
                 return null;
             });
         } catch (Exception e) {

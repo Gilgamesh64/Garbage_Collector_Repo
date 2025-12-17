@@ -147,7 +147,7 @@ public enum ResourceEnum {
     ADEPTUS_2("adeptus2_JSON.json", TypeEnum.DIALOGUE),
     ADEPTUS_3("adeptus3_JSON.json", TypeEnum.DIALOGUE),
     ADEPTUS_4("adeptus4_JSON.json", TypeEnum.DIALOGUE),
-    SAVE("save.json", TypeEnum.DIALOGUE),
+    SAVE("save_JSON.json", TypeEnum.DIALOGUE),
     
 //MUSIC
     REFLECTION_1("assets/audio/reflection_1.mp3", TypeEnum.AUDIO),

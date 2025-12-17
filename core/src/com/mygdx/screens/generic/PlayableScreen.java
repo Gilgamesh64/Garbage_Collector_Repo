@@ -5,7 +5,6 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.hud.Hud;
-import com.mygdx.Data;
 import com.mygdx.GCStage;
 import com.mygdx.Money;
 import com.mygdx.camera.CameraController;

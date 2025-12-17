@@ -69,6 +69,7 @@ public class Inventory {
         moneyLabel.setText(Money.get());
     }
 
+    @SuppressWarnings("unused")
     private void printTableData(Table printableTable) {
         Map<String, Float> data = Map.ofEntries(
                 Map.entry("width", printableTable.getWidth()),

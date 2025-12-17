@@ -1,7 +1,5 @@
 package com.mygdx.hud;
 
-import java.util.stream.Stream;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Color;
@@ -19,7 +17,6 @@ import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.mygdx.Data;
 import com.mygdx.Money;
-import com.mygdx.dialogues.Dialogue;
 import com.mygdx.hud.actors.HealthBar;
 import com.mygdx.resources.RM;
 
