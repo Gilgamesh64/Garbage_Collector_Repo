@@ -17,19 +17,18 @@ IMPORTANT: if you call MOV or MOVREL the animation will be interrupted in order 
 WAIT [AMOUNT]
 Just waits, nothing else, when the time expires the script can proceed
 
-
 SND [MSG]
 Sends a MSG to the current stage MSG dispatcher.
-
 
 LISTEN [MSG]
 Blocks the script waiting to receive the given msg, once received, the script can proceed.
 Try to use SND and LISTEN in combo togeather to link different actor's scripts togeather
 
 TELL [STORY]
+Triggers a dialogue with the player 
 
 SAY [STRING]
-
+Makes the actor say something as a small dialogue over its head
 
 DO [SCRIPT]
 Immediately plays another script, the parameter is the ResourceEnum of the script to play

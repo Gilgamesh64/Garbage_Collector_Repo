@@ -1,7 +1,6 @@
 package com.mygdx.scripts;
 
 import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.Data;
 import com.mygdx.entities.helpers.ScriptableActor;
 import com.mygdx.resources.ResourceEnum;
