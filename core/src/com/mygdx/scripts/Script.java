@@ -19,7 +19,7 @@ public class Script {
                 String func = line.substring(0, firstSpaceIndex);
                 String[] args = line.length() != firstSpaceIndex ? line.substring(firstSpaceIndex+1, line.length()).replaceAll(" ", "").split(",") : new String[]{};
 
-                String stringified = line.length() != firstSpaceIndex ? line.substring(firstSpaceIndex+1, line.length()) : "";
+                String stringified = line.length() != firstSpaceIndex ? line.substring(firstSpaceIndex+1, line.length()).replaceAll("\"", "") : "";
                 actions.add(
                     switch (func){
                         case "MOV" -> new MovAction(Float.parseFloat(args[0]), Float.parseFloat(args[1]), false);
