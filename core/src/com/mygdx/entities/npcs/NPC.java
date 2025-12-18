@@ -11,7 +11,6 @@ import com.mygdx.dialogues.Dialogue;
 import com.mygdx.entities.helpers.ScriptableActor;
 import com.mygdx.hitboxes.Hitbox;
 import com.mygdx.hitboxes.Tags;
-import com.mygdx.hud.Hud;
 import com.mygdx.resources.ResourceEnum;
 import com.mygdx.scripts.Script;
 
@@ -54,9 +53,8 @@ public class NPC extends ScriptableActor {
 
             boolean leftPressed = Gdx.input.isButtonJustPressed(Input.Buttons.LEFT);
 
-            if (leftPressed && currentDialogue == null && npcBuilder.story != null) {
-                currentDialogue = new Dialogue(npcBuilder.story, this);
-                Hud.stage().addActor(currentDialogue);
+            if (leftPressed && npcBuilder.story != null && !Data.dialogueActive) {
+                tell(npcBuilder.story);
                 return;
             }
         });
@@ -78,10 +76,6 @@ public class NPC extends ScriptableActor {
     @Override
     public void act(float delta) {
         super.act(delta);
-
-        if (currentDialogue != null)
-            if (!currentDialogue.isRunning())
-                currentDialogue = null;
 
         if (currentDialogue == null) {
             autoMovementManager.update();

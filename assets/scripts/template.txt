@@ -1,8 +1,5 @@
 HERE IS THE TEMPLATE FOR Garbage Collection Scrips
 There are several commands you can give to an actor and each one of them will be executed in sequence
-It's important to write commands exactly as said in docs
-NO SPACES EXCEPT THE ONE BETWEEN THE COMMAND AND THE PARAMETERS!!!!!
-
 
 MOV [x],[y]
 The first command is MOV, it moves the actor to given absolute coordinates, pretty simple
@@ -28,6 +25,10 @@ Sends a MSG to the current stage MSG dispatcher.
 LISTEN [MSG]
 Blocks the script waiting to receive the given msg, once received, the script can proceed.
 Try to use SND and LISTEN in combo togeather to link different actor's scripts togeather
+
+TELL [STORY]
+
+SAY [STRING]
 
 
 DO [SCRIPT]

@@ -115,8 +115,7 @@ public abstract class PlayableScreen extends GenericScreen {
         
         stage.getActors().sort((a, b) -> Float.compare(b.getY(), a.getY())); //solves z index problem
 
-        if (!StateManager.getBoolState(StateEnum.PAUSE))
-            stage.act(Gdx.graphics.getDeltaTime());
+        stage.act(Gdx.graphics.getDeltaTime());
 
         CameraController.updateCamera();
         hitboxHandler.checkRegistered();

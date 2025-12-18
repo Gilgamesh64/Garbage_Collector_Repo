@@ -55,10 +55,4 @@ public abstract class GenericScreen extends ScreenAdapter {
     public void resize(int width, int height) {
         stage.getViewport().update(width, height, false);
     }
-
-    public void addAll(Actor... actors) {
-        for (Actor actor : actors) {
-            stage.addActor(actor);
-        }
-    }
 }

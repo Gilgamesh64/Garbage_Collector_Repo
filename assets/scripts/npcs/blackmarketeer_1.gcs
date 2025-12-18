@@ -1,0 +1,3 @@
+MOVREL 15,10
+SAY ciao belli
+TELL ADEPTUS_2

@@ -159,11 +159,7 @@ public enum ResourceEnum {
 
 
 //SCRIPTS
-    TEST_SCRIPT("assets/scripts/npcs/reflection/test.gcs", TypeEnum.SCRIPT),
-    TEST_2("assets/scripts/npcs/reflection/test2.gcs", TypeEnum.SCRIPT),
-    TEST_3("assets/scripts/npcs/reflection/test3.gcs", TypeEnum.SCRIPT),
-    MEET_1("assets/scripts/npcs/reflection/meet1.gcs", TypeEnum.SCRIPT),
-    MEET_2("assets/scripts/npcs/reflection/meet2.gcs", TypeEnum.SCRIPT),
+    BLACKMARKETEER_1("assets/scripts/npcs/blackmarketeer_1.gcs", TypeEnum.SCRIPT),
 
 //SKIN
     SKIN("assets/ui_v2.json", TypeEnum.ATLAS_REGION);

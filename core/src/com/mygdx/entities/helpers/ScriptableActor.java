@@ -4,7 +4,10 @@ package com.mygdx.entities.helpers;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.GCStage;
+import com.mygdx.dialogues.Dialogue;
+import com.mygdx.hud.Hud;
 import com.mygdx.messages.MSG;
+import com.mygdx.resources.RM;
 import com.mygdx.resources.ResourceEnum;
 import com.mygdx.scripts.Script;
 
@@ -56,5 +59,13 @@ public class ScriptableActor extends GameActor{
     
     public boolean hasScript(){
         return script != null;
+    }
+
+    public void tell(ResourceEnum story){
+        Hud.stage().addActor(new Dialogue(RM.get().getStory(story), this));
+    }
+
+    public void say(String text){
+        System.out.println(text);
     }
 }

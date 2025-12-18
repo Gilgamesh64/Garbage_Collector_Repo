@@ -1,8 +1,6 @@
 package com.mygdx.entities.npcs;
 
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.dialogues.GameStory;
-import com.mygdx.resources.RM;
 import com.mygdx.resources.ResourceEnum;
 import com.mygdx.resources.TextureEnum;
 
@@ -10,7 +8,7 @@ public class NPCBuilder {
     protected Vector2 coordinates, size = new Vector2(16, 32);
     protected TextureEnum textureEnum;
     protected boolean atlas = true;
-    protected GameStory story;
+    protected ResourceEnum story;
     protected ResourceEnum autoStartedScript;
     protected ResourceEnum startingAnimation;
 
@@ -45,7 +43,7 @@ public class NPCBuilder {
     }
 
     public NPCBuilder story(ResourceEnum e) {
-        this.story = RM.get().getStory(e);
+        this.story = e;
         return this;
     }
 

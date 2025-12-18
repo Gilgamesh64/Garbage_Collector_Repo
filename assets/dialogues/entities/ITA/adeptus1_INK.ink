@@ -5,7 +5,7 @@ EXTERNAL GAIN(int)
 Lode al Sistema!
 Aderite oggi al progetto del Grande Sistema Operativo!
     *no
-        ~DO("TEST_2")
+        ~DO("BLACKMARKETEER_1")
     *forse
         ~GAIN(10)
     *ok

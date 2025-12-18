@@ -36,7 +36,6 @@ public class GarbageCollection extends Game {
 		StateManager.updateBoolState(StateEnum.IS_ENTERING, false);
 		StateManager.updateBoolState(StateEnum.IS_EXITING, false);
 		StateManager.updateStringState(StateEnum.DESTINATION, "");
-		StateManager.updateBoolState(StateEnum.PAUSE, false);
 		Logger.init();
 		
 		setScreen(ScreensManager.getScreen(Screens.MENU_SCREEN));
