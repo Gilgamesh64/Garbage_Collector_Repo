@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="left-down" width="120" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="42">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="left-down" width="120" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="44">
  <tileset firstgid="1" source="../tilesets/city_tileset.tsx"/>
  <layer id="1" name="background" width="120" height="100">
   <data encoding="base64">
@@ -7,8 +7,10 @@
   </data>
  </layer>
  <objectgroup id="3" name="doors">
-  <object id="25" name="GLASS_DOOR1_OPENING" x="2352" y="2112">
-   <point/>
+  <object id="42" name="RICH_DISTRICT-REFLECTION_ARENA" x="2240" y="2880" width="96" height="32">
+   <properties>
+    <property name="dir" value="d"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="5" name="buildings">

@@ -8,5 +8,6 @@ public enum Tags {
     BUILDING,
     NPC,
     ENEMY,
-    SCOPE
+    SCOPE,  
+    DOOR
 }

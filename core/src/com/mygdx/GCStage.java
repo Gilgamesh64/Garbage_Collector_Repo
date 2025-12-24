@@ -1,24 +1,28 @@
 package com.mygdx;
 
+import java.util.stream.Stream;
+
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.entities.Player;
+import com.mygdx.entities.map.InvisibleDoor;
 import com.mygdx.messages.MSG;
 
 public class GCStage extends Stage {
     private MessageDispatcher stageMsg;
-    
+
     private Player player;
 
     private static GCStage instance;
-    public static GCStage get(){
+
+    public static GCStage get() {
         return instance;
     }
 
-    public static void set(GCStage stage){
+    public static void set(GCStage stage) {
         instance = stage;
     }
 
@@ -54,6 +58,7 @@ public class GCStage extends Stage {
     public Player getPlayer() {
         return player;
     }
+
     public void setPlayer(Player player) {
         this.player = player;
     }
@@ -62,5 +67,17 @@ public class GCStage extends Stage {
         for (Actor actor : actors) {
             addActor(actor);
         }
+    }
+
+    public InvisibleDoor getInvisibleDoor(String doorName) {
+        var door = Stream.of(getActors().items)
+                .filter(InvisibleDoor.class::isInstance)
+                .map(InvisibleDoor.class::cast)
+                .toList();
+
+        door.forEach(System.out::println);
+
+        return door.get(0);
+
     }
 }

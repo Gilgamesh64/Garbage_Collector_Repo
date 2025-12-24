@@ -5,11 +5,13 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.hud.Hud;
+import com.mygdx.Data;
 import com.mygdx.GCStage;
 import com.mygdx.Money;
 import com.mygdx.camera.CameraController;
 import com.mygdx.effects.Effect;
 import com.mygdx.entities.Player;
+import com.mygdx.entities.map.InvisibleDoor;
 import com.mygdx.hitboxes.HitboxHandler;
 import com.mygdx.map.TileMapCollisionsManager;
 import com.mygdx.map.TileSetManager;
@@ -18,8 +20,6 @@ import com.mygdx.resources.ResourceEnum;
 import com.mygdx.savings.SavingsManager;
 import com.mygdx.screens.Screens;
 import com.mygdx.screens.ScreensManager;
-import com.mygdx.states.StateEnum;
-import com.mygdx.states.StateManager;
 
 /**
  * generic abstract class for every playable screen
@@ -49,12 +49,7 @@ public abstract class PlayableScreen extends GenericScreen {
         tileSetManager = new TileSetManager(map);
         TileMapCollisionsManager.layer = ((TiledMapTileLayer) tileSetManager.getMap().getLayers().get("background"));
 
-
-        if (StateManager.getBoolState(StateEnum.IS_EXITING)) {
-            player = new Player(tileSetManager.getCoord().cpy().add(8, 8));
-            player.moveTo(tileSetManager.getExitPoint().cpy().add(8, 8));
-        } else
-            player = new Player(SavingsManager.getSavings().getPlayerCoordinates());
+        player = new Player(SavingsManager.getSavings().getPlayerCoordinates());
 
         stage.addActor(player);
         stage.setKeyboardFocus(player);
@@ -77,11 +72,6 @@ public abstract class PlayableScreen extends GenericScreen {
         GCStage.get().subscribe(tileSetManager, MSG.BLOCK_WALLS, MSG.SWAP_FIGHT_STATE);
         GCStage.get().subscribe(player, MSG.SWAP_FIGHT_STATE);
         if(SavingsManager.getSavings().isFightging()) GCStage.get().send(MSG.SWAP_FIGHT_STATE, MSG.BLOCK_WALLS); //turns on combat mode
-
-        if (StateManager.getBoolState(StateEnum.IS_EXITING) && !player.isAutoWalking()) {
-            player.setCoords(tileSetManager.getCoord().cpy().add(8, 8));
-            player.moveTo(tileSetManager.getExitPoint().cpy().add(8, 8));
-        }
 
         GCStage.get().setPlayer(player);
         
@@ -149,5 +139,11 @@ public abstract class PlayableScreen extends GenericScreen {
         super.resize(width, height);
         Hud.get().resize(width, height);
 
+    }
+
+    public void exitFrom(String doorName){
+        InvisibleDoor door = GCStage.get().getInvisibleDoor(doorName);
+        player.setCoords(door.getInsideCoords());
+        player.moveTo(door.getOutsideCoords(), () -> Data.exiting = false);
     }
 }

@@ -12,4 +12,5 @@ public class Data {
     public static boolean debug = true;
     public static boolean stopCamera = false;
     public static boolean dialogueActive = false;
+    public static boolean exiting = false;
 }

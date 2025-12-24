@@ -2,7 +2,7 @@ package com.mygdx.screens.game.overworld;
 
 import com.mygdx.Data;
 import com.mygdx.GCStage;
-import com.mygdx.entities.map.MapConstructor;
+import com.mygdx.entities.map.Component;
 import com.mygdx.entities.npcs.NPCBuilder;
 import com.mygdx.resources.ResourceEnum;
 import com.mygdx.resources.TextureEnum;
@@ -14,7 +14,7 @@ public class Park extends PlayableScreen {
         super(ResourceEnum.PARK);
 
         GCStage.get().addAll(
-                MapConstructor.getComponent(Data.TILE * 70, Data.TILE * 20, ResourceEnum.ABANDONED_TURNED_ON, ResourceEnum.ABANDONED_TURNED_OFF),
+                new Component(Data.TILE * 70, Data.TILE * 20, ResourceEnum.ABANDONED_TURNED_ON, ResourceEnum.ABANDONED_TURNED_OFF),
 
                 new NPCBuilder()
                         .coordinates(Data.TILE * 40, Data.TILE * 20)

@@ -70,4 +70,12 @@ public class ScreensManager {
         RM.get().stopAllAudio();
         GarbageCollection.getInstance().setScreen(ScreensManager.getScreen(s));
     }
+
+    public static void setScreen(Screens s, String doorName){
+        RM.get().stopAllAudio();
+        GarbageCollection.getInstance().setScreen(ScreensManager.getScreen(s));
+        if(GarbageCollection.getInstance().getScreen() instanceof PlayableScreen ps){
+            ps.exitFrom(doorName);
+        }
+    }
 }

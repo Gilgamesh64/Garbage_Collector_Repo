@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.AnimationManager;
 import com.mygdx.Data;
-import com.mygdx.GCStage;
 import com.mygdx.entities.helpers.GameActor;
 import com.mygdx.hitboxes.Hitbox;
 import com.mygdx.hitboxes.Tags;
@@ -40,6 +39,9 @@ public class Building extends GameActor {
         hitbox.register();
         if(Data.debug) debug();
     }
+    public Building(float x, float y, ResourceEnum... textures){
+        this(new Vector2(x, y), textures);
+    }
 
     public Building(Vector2 coords, TextureEnum textures) {
         super();
@@ -61,6 +63,10 @@ public class Building extends GameActor {
         });
         hitbox.register();
         if(Data.debug) debug();
+    }
+
+    public Building(float x, float y, TextureEnum textures){
+        this(new Vector2(x, y), textures);
     }
 
     @Override
@@ -89,7 +95,6 @@ public class Building extends GameActor {
     }
 
     public void door(float x, float y, ResourceEnum door) {
-        Component tmp = MapConstructor.getComponent(getX() + x, getY() + y, door);
-        GCStage.get().addActor(tmp);
+        System.out.println("TODO");
     }
 }

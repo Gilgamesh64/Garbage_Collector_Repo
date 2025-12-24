@@ -36,7 +36,7 @@ public class Player extends ScriptableActor{
 
         collider = new Collider(center, getWidth(), getHeight());
         collider.setTags(Tags.PLAYER);
-        collider.setSearchTags(Tags.NPC, Tags.BUILDING, Tags.PROJECTILE, Tags.SCOPE);
+        collider.setSearchTags(Tags.NPC, Tags.BUILDING, Tags.PROJECTILE, Tags.SCOPE, Tags.DOOR);
         collider.register();
 
         hitbox = new Hitbox(center, getWidth(), getHeight(), 0, true);

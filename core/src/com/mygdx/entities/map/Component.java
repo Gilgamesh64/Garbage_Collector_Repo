@@ -18,6 +18,9 @@ public class Component extends GameActor {
 
         animationManager = new AnimationManager(ResourceEnum.COMPONENTS, 0.2f, 0, false, textures);
     }
+    public Component(float x, float y, ResourceEnum... textures){
+        this(new Vector2(x, y), textures);
+    }
 
     public Component(Vector2 coords, TextureEnum textures) {
         super();
@@ -25,6 +28,9 @@ public class Component extends GameActor {
         setY(coords.y);
 
         animationManager = new AnimationManager(ResourceEnum.COMPONENTS,textures);
+    }
+    public Component(float x, float y, TextureEnum textures){
+        this(new Vector2(x, y), textures);
     }
 
     @Override

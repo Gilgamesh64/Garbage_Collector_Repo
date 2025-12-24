@@ -7,8 +7,6 @@ import com.mygdx.resources.ResourceManager;
 import com.mygdx.savings.SavingsManager;
 import com.mygdx.screens.Screens;
 import com.mygdx.screens.ScreensManager;
-import com.mygdx.states.StateEnum;
-import com.mygdx.states.StateManager;
 
 public class GarbageCollection extends Game {
 
@@ -33,9 +31,6 @@ public class GarbageCollection extends Game {
 
 		SavingsManager.loadDefaultIfNeeded();
 		SavingsManager.load();
-		StateManager.updateBoolState(StateEnum.IS_ENTERING, false);
-		StateManager.updateBoolState(StateEnum.IS_EXITING, false);
-		StateManager.updateStringState(StateEnum.DESTINATION, "");
 		Logger.init();
 		
 		setScreen(ScreensManager.getScreen(Screens.MENU_SCREEN));

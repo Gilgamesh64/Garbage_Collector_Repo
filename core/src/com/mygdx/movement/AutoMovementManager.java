@@ -13,6 +13,7 @@ public class AutoMovementManager {
     private Vector2 destination;
     private String orientation = "-";
     private boolean finished = false;
+    private Runnable onEnd;
 
     public AutoMovementManager(GameActor a) {
         this.actor = a;
@@ -50,8 +51,12 @@ public class AutoMovementManager {
         return animationInProgress;
     }
 
-    public void goTo(Vector2 coordinates) {
+    public void goTo(Vector2 coordinates, Runnable onEnd){
+        this.onEnd = onEnd;
+        goTo(coordinates);
+    }
 
+    public void goTo(Vector2 coordinates) {
         finished = false;
             
         animationInProgress = true;
@@ -86,6 +91,10 @@ public class AutoMovementManager {
         if(actor instanceof ScriptableActor sc){
             if(sc.hasScript())
                 sc.proceed();
+        }
+        if(onEnd != null){
+            onEnd.run();
+            onEnd = null;
         }
     }
 
