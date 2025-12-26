@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="left-down" width="120" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="44">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="left-down" width="120" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="47">
  <tileset firstgid="1" source="../tilesets/city_tileset.tsx"/>
  <layer id="1" name="background" width="120" height="100">
   <data encoding="base64">
@@ -11,6 +11,18 @@
    <properties>
     <property name="dir" value="d"/>
    </properties>
+  </object>
+  <object id="45" name="RICH_DISTRICT-PARK" x="576" y="928" width="32" height="96">
+   <properties>
+    <property name="dir" value="l"/>
+   </properties>
+  </object>
+  <object id="46" name="RICH_DISTRICT-INSIDE" x="2352" y="2112">
+   <properties>
+    <property name="dir" value="u"/>
+    <property name="texture" value="GLASS_DOOR"/>
+   </properties>
+   <point/>
   </object>
  </objectgroup>
  <objectgroup id="5" name="buildings">

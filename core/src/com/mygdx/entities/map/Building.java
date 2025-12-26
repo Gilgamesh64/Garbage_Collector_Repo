@@ -93,8 +93,4 @@ public class Building extends GameActor {
         super.positionChanged();
         hitbox.setPosition(getX(), getY());
     }
-
-    public void door(float x, float y, ResourceEnum door) {
-        System.out.println("TODO");
-    }
 }

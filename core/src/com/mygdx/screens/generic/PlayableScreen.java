@@ -11,7 +11,7 @@ import com.mygdx.Money;
 import com.mygdx.camera.CameraController;
 import com.mygdx.effects.Effect;
 import com.mygdx.entities.Player;
-import com.mygdx.entities.map.InvisibleDoor;
+import com.mygdx.entities.map.doors.Door;
 import com.mygdx.hitboxes.HitboxHandler;
 import com.mygdx.map.TileMapCollisionsManager;
 import com.mygdx.map.TileSetManager;
@@ -75,7 +75,6 @@ public abstract class PlayableScreen extends GenericScreen {
 
         GCStage.get().setPlayer(player);
         
-
         stage.getCamera().position.set(getPlayerCoordinates(), 0);
 
     }
@@ -142,8 +141,9 @@ public abstract class PlayableScreen extends GenericScreen {
     }
 
     public void exitFrom(String doorName){
-        InvisibleDoor door = GCStage.get().getInvisibleDoor(doorName);
+        Door door = GCStage.get().getDoor(doorName);
         player.setCoords(door.getInsideCoords());
+        stage.getCamera().position.set(getPlayerCoordinates(), 0);
         player.moveTo(door.getOutsideCoords(), () -> Data.exiting = false);
     }
 }

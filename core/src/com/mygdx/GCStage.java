@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.entities.Player;
-import com.mygdx.entities.map.InvisibleDoor;
+import com.mygdx.entities.map.doors.Door;
 import com.mygdx.messages.MSG;
 
 public class GCStage extends Stage {
@@ -69,15 +69,13 @@ public class GCStage extends Stage {
         }
     }
 
-    public InvisibleDoor getInvisibleDoor(String doorName) {
+    public Door getDoor(String doorName) {
         var door = Stream.of(getActors().items)
-                .filter(InvisibleDoor.class::isInstance)
-                .map(InvisibleDoor.class::cast)
+                .filter(Door.class::isInstance)
+                .map(Door.class::cast)
+                .filter(d -> d.getName().equals(doorName))
                 .toList();
 
-        door.forEach(System.out::println);
-
         return door.get(0);
-
     }
 }

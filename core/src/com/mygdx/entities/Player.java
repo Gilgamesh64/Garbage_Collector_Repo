@@ -31,7 +31,7 @@ public class Player extends ScriptableActor{
         GCStage.get().setPlayer(this);
         setTouchable(Touchable.enabled);
 
-        setSize(32, 32);
+        setSize(30, 32);
         setOrigin(getWidth() / 2, getHeight() / 2);
 
         collider = new Collider(center, getWidth(), getHeight());

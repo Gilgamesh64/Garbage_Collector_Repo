@@ -23,6 +23,9 @@ public class AnimationManager {
     private boolean playOnce = false;
     private boolean finishedOnce = false;
 
+    private boolean shouldNotDoFirstPlay = false;
+    private boolean updatedOnce = false;
+
     private boolean paused = false;
     private boolean alreadyPausedOnce = false;
     private GameActor pauser = new GameActor();
@@ -118,7 +121,7 @@ public class AnimationManager {
     public void updateAnimation(float delta) {
         pauser.act(delta);
 
-        if (paused || finishedOnce)
+        if (paused || finishedOnce || (shouldNotDoFirstPlay && !updatedOnce))
             return;
 
         stateTime += delta; // Advances the animation
@@ -153,8 +156,8 @@ public class AnimationManager {
     }
 
     public void setCurrentAnimation(ResourceEnum ani) {
-        if (currentAnimation == ani)
-            return;
+
+        
         currentAnimation = ani;
         currentDelay = ani.delay != -1 ? ani.delay : defaultDelay;
         pauser.clearActions();
@@ -162,9 +165,14 @@ public class AnimationManager {
         paused = false;
         alreadyPausedOnce = false;
         finishedOnce = false;
+        updatedOnce = true;
 
         Animation<TextureRegion> animation = animationMap.get(currentAnimation);
         animation.setPlayMode(playOnce ? PlayMode.NORMAL : PlayMode.LOOP);
+    }
+
+    public void shouldNotDoFirstPlay(){
+        shouldNotDoFirstPlay = true;
     }
 
     /**

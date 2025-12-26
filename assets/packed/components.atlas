@@ -18,14 +18,14 @@ glass_door
   orig: 144, 32
   offset: 0, 0
   index: -1
-glass_door1_closing
+glass_door_closing
   rotate: false
   xy: 1, 1
   size: 1024, 32
   orig: 1024, 32
   offset: 0, 0
   index: -1
-glass_door1_opening
+glass_door_opening
   rotate: false
   xy: 1027, 67
   size: 1024, 32

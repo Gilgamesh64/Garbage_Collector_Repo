@@ -1,18 +1,32 @@
 package com.mygdx.entities.map;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.AnimationManager;
 import com.mygdx.Data;
 import com.mygdx.GCStage;
 import com.mygdx.entities.map.doors.Door;
 import com.mygdx.hitboxes.Hitbox;
 import com.mygdx.hitboxes.Tags;
+import com.mygdx.resources.RM;
+import com.mygdx.resources.ResourceEnum;
 import com.mygdx.screens.Screens;
 import com.mygdx.screens.ScreensManager;
 
-public class InvisibleDoor extends Door {
+public class TextureDoor extends Door {
 
-    public InvisibleDoor(String name, String dst, String dir, float x, float y, float width,float height) {
+    public TextureDoor(String name, String dst, String dir, float x, float y, String textureBaseName) {
         super(name, dst, dir, x, y);
+        String opening = textureBaseName + "_OPENING";
+        String closing = textureBaseName + "_CLOSING";
+        ResourceEnum openingEnum = ResourceEnum.valueOf(opening);
+        ResourceEnum closingEnum = ResourceEnum.valueOf(closing);
+
+        var texture = RM.get().getAtlas(ResourceEnum.COMPONENTS).findRegion(opening.toLowerCase());
+        float width = texture.getRegionWidth() / openingEnum.frameCount;
+        float height = texture.getRegionHeight();
+        animationManager = new AnimationManager(ResourceEnum.COMPONENTS, 0.1f, 0f, true, openingEnum, closingEnum);
+        animationManager.shouldNotDoFirstPlay();
 
         setSize(width, height);
         setOrigin(getWidth() / 2, getHeight() / 2);
@@ -28,16 +42,20 @@ public class InvisibleDoor extends Door {
             default -> center.cpy();
         };
         outsideCoords.sub(16, 8);
-        
+
+
         hitbox = new Hitbox(new Vector2(x + width / 2, y + height / 2), width, height, true);
         hitbox.setTags(Tags.DOOR);
         hitbox.setOnHit((collider) -> {
-            if (Data.exiting)
+            if (Data.exiting){
+                animationManager.setCurrentAnimation(closingEnum);
                 return;
-
+            }
+            animationManager.setCurrentAnimation(openingEnum);
             GCStage.get().getPlayer().moveTo(insideCoords, () -> {
                 Data.exiting = true;
                 ScreensManager.setScreen(Screens.valueOf(dst.split("-")[0]), dst);
+                
             });
         });
         hitbox.register();
@@ -47,9 +65,22 @@ public class InvisibleDoor extends Door {
             debug();
     }
 
+
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        super.draw(batch, parentAlpha);
+        batch.draw(animationManager.getCurrentFrame(), getX(), getY());
+    }
+
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+        animationManager.updateAnimation(delta);
+    }
+
     @Override
     public String toString() {
-        return "InvisibleDoor{" + '\n' +
+        return "TexureDoor{" + '\n' +
                 "\tname=" + name + '\n' +
                 "\tdst=" + dst + '\n' +
                 "\tdir=" + dir + '\n' +

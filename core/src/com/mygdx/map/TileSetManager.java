@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.objects.PointMapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
@@ -19,13 +20,13 @@ import com.mygdx.GCStage;
 import com.mygdx.entities.map.Building;
 import com.mygdx.entities.map.Component;
 import com.mygdx.entities.map.InvisibleDoor;
+import com.mygdx.entities.map.TextureDoor;
 import com.mygdx.resources.RM;
 import com.mygdx.resources.ResourceEnum;
 
 public class TileSetManager implements Telegraph {
     private final TiledMapRenderer tiledMapRenderer;
     private final TiledMap map;
-
 
     private ArrayList<TileReplacementManager> tileReplace = new ArrayList<>();
 
@@ -56,7 +57,7 @@ public class TileSetManager implements Telegraph {
             // Check if atlas exists
             String layerName = layer.getName();
 
-            if(layerName.equals("doors")){
+            if (layerName.equals("doors")) {
                 loadDoors(layer);
                 continue;
             }
@@ -80,7 +81,7 @@ public class TileSetManager implements Telegraph {
                     if (atlas.equals(ResourceEnum.BUILDINGS)) {
                         GCStage.get().addActor(
                                 new Building(rect.getX(), rect.getY(), texture));
-                    } else if(atlas.equals(ResourceEnum.COMPONENTS)){
+                    } else if (atlas.equals(ResourceEnum.COMPONENTS)) {
                         GCStage.get().addActor(
                                 new Component(rect.getX(), rect.getY(), texture));
                     }
@@ -89,34 +90,26 @@ public class TileSetManager implements Telegraph {
         }
     }
 
-    private void loadDoors(MapLayer layer){
+    private void loadDoors(MapLayer layer) {
         for (MapObject obj : layer.getObjects()) {
-                if (obj instanceof RectangleMapObject rectObj) {
-                    Rectangle rect = rectObj.getRectangle();
-                    String name = obj.getName();
-                    String dst = name.split("-")[1] + "-" + name.split("-")[0];
-                    String dir = obj.getProperties().get("dir").toString();
-                    float x = rect.getX(), y = rect.getY();
-                    float width = rect.getWidth(), height = rect.getHeight();
-                    GCStage.get().addActor(new InvisibleDoor(name, dst, dir, x, y, width, height));
+            if (obj instanceof RectangleMapObject rectObj) {
+                Rectangle rect = rectObj.getRectangle();
+                String name = obj.getName();
+                String dst = name.split("-")[1] + "-" + name.split("-")[0];
+                String dir = obj.getProperties().get("dir").toString();
+                float x = rect.getX(), y = rect.getY();
+                float width = rect.getWidth(), height = rect.getHeight();
+                GCStage.get().addActor(new InvisibleDoor(name, dst, dir, x, y, width, height));
 
-                    /*ResourceEnum texture = ResourceEnum.valueOf(obj.getName());
-
-                    TextureRegion region = RM.get().getAtlas(atlas).findRegion(texture.label);
-                    if (region == null) {
-                        throw new RuntimeException("\nERROR\n\nResourceEnum: " + texture +
-                                " not found in region, \nthe .png file should be in the folder: assets/raw/" + atlas
-                                + " \ncheck your spelling and pack all the assets");
-                    }
-                    if (atlas.equals(ResourceEnum.BUILDINGS)) {
-                        GCStage.get().addActor(
-                                MapConstructor.getBuilding(rect.getX(), rect.getY(), texture));
-                    } else if(atlas.equals(ResourceEnum.COMPONENTS)){
-                        GCStage.get().addActor(
-                                MapConstructor.getComponent(rect.getX(), rect.getY(), texture));
-                    }
-                */}
+            } else if (obj instanceof PointMapObject pointObj) {
+                String name = obj.getName();
+                String dst = name.split("-")[1] + "-" + name.split("-")[0];
+                String dir = obj.getProperties().get("dir").toString();
+                float x = pointObj.getPoint().x- 16, y = pointObj.getPoint().y;
+                String texture = obj.getProperties().get("texture").toString();
+                GCStage.get().addActor(new TextureDoor(name, dst, dir, x, y, texture));
             }
+        }
     }
 
     public void loadReplacers() {

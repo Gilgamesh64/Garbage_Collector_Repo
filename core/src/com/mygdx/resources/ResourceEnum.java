@@ -107,7 +107,8 @@ public enum ResourceEnum {
     MARCO_LAMP(4),
     SIDE_WALK(1),
     RUBBISH(3),
-    GLASS_DOOR1_OPENING(32, 0.02f, 5),
+    GLASS_DOOR_OPENING(32, 0.01f, 0f),
+    GLASS_DOOR_CLOSING(32, 0.01f, 0),
     SAVING_TREE,
 
     //EFFECTS
