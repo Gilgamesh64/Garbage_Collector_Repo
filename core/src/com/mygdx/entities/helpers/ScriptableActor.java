@@ -1,8 +1,10 @@
 package com.mygdx.entities.helpers;
 
-
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.GCStage;
 import com.mygdx.dialogues.Dialogue;
 import com.mygdx.hud.Hud;
@@ -11,31 +13,41 @@ import com.mygdx.resources.RM;
 import com.mygdx.resources.ResourceEnum;
 import com.mygdx.scripts.Script;
 
-public class ScriptableActor extends GameActor{
+public class ScriptableActor extends GameActor {
     protected Script script;
+    private Table dialTable;
+    private Label dial = new Label("", RM.get().skin().get("small_dial", Label.LabelStyle.class));
     public MSG listeningMSG;
 
-    public void doScript(ResourceEnum s){
+    public ScriptableActor() {
+        super();
+        dialTable = new Table();
+        dialTable.add(dial);
+    }
+
+    public void doScript(ResourceEnum s) {
         this.clearActions();
         script = new Script(s);
         script.proceed(this);
     }
 
-    public void move(float x, float y, boolean relative){
-        if(relative) moveTo(getCoords().add(new Vector2(x, y)));
-        else moveTo(x, y);
+    public void move(float x, float y, boolean relative) {
+        if (relative)
+            moveTo(getCoords().add(new Vector2(x, y)));
+        else
+            moveTo(x, y);
     }
 
-    public void proceed(){
+    public void proceed() {
         script.proceed(this);
     }
 
-    public void changeAnimation(ResourceEnum e, float time){
+    public void changeAnimation(ResourceEnum e, float time) {
         animationManager.setCurrentAnimation(e);
         script.proceed(this);
     }
 
-    public void listen(MSG msg){
+    public void listen(MSG msg) {
         GCStage.get().subscribe(this, msg);
         this.listeningMSG = msg;
     }
@@ -43,29 +55,37 @@ public class ScriptableActor extends GameActor{
     @Override
     public boolean handleMessage(Telegram msg) {
         super.handleMessage(msg);
-        if(listeningMSG != null)
-            if(listeningMSG.code == msg.message){
+        if (listeningMSG != null)
+            if (listeningMSG.code == msg.message) {
                 resetListen();
-            } 
-        
+            }
+
         return true;
     }
 
-    public void resetListen(){
+    @Override
+    protected void positionChanged() {
+        super.positionChanged();
+        dialTable.setPosition(center.x, getY() + 50);
+    }
+
+    public void resetListen() {
         GCStage.get().unSubscribe(this, listeningMSG);
         listeningMSG = null;
         proceed();
     }
-    
-    public boolean hasScript(){
+
+    public boolean hasScript() {
         return script != null;
     }
 
-    public void tell(ResourceEnum story){
+    public void tell(ResourceEnum story) {
         Hud.stage().addActor(new Dialogue(RM.get().getStory(story), this));
     }
 
-    public void say(String text){
-        System.out.println(text);
+    public void say(String text) {
+        dial.setText(text);
+        GCStage.get().addActor(dialTable);
+        addAction(Actions.sequence(Actions.delay(5), Actions.run(() -> dialTable.remove())));
     }
 }

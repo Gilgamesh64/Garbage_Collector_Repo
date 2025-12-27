@@ -14,12 +14,12 @@ public class RichDistrict extends PlayableScreen {
                         .coordinates(Data.TILE * 55, Data.TILE * 25)
                         .texture(TextureEnum.BLACKMARKETEER)
                         .story(ResourceEnum.ADEPTUS_1)
+                        .autoStartedScript(ResourceEnum.BLACKMARKETEER_1)
                         .build();
 
         public RichDistrict() {
                 super(ResourceEnum.RICH_DISTRICT);
                 GCStage.get().addAll(particularNPC2);
-                
         }
 
         @Override

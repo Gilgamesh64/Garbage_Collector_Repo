@@ -70,12 +70,10 @@ public class GCStage extends Stage {
     }
 
     public Door getDoor(String doorName) {
-        var door = Stream.of(getActors().items)
+        return Stream.of(getActors().items)
                 .filter(Door.class::isInstance)
                 .map(Door.class::cast)
                 .filter(d -> d.getName().equals(doorName))
-                .toList();
-
-        return door.get(0);
+                .findAny().get();
     }
 }

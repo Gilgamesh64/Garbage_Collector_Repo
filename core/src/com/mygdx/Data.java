@@ -9,7 +9,7 @@ public class Data {
 
     public static int TILE = 32;
 
-    public static boolean debug = true;
+    public static boolean debug = false;
     public static boolean stopCamera = false;
     public static boolean dialogueActive = false;
     public static boolean exiting = false;
