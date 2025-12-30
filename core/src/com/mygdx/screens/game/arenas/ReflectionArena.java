@@ -7,25 +7,26 @@ import com.mygdx.entities.npcs.Reflection;
 import com.mygdx.map.TileMapCollisionsManager;
 import com.mygdx.messages.MSG;
 import com.mygdx.resources.RM;
-import com.mygdx.resources.ResourceEnum;
-import com.mygdx.resources.TextureEnum;
+import com.mygdx.resources.enums.AnimationEnum;
+import com.mygdx.resources.enums.MapEnum;
+import com.mygdx.resources.enums.SoundEnum;
 import com.mygdx.screens.generic.PlayableScreen;
 
 public class ReflectionArena extends PlayableScreen {
 
     public ReflectionArena() {
-        super(ResourceEnum.REFLECTION_ARENA);
+        super(MapEnum.REFLECTION_ARENA);
         GCStage.get().addAll(new Reflection(new NPCBuilder().coordinates(Data.TILE * 10, Data.TILE * 10)
-                .texture(TextureEnum.BLACKMARKETEER)));
+                .texture(AnimationEnum.BLACKMARKETEER)));
     }
 
     @Override
     public void show() {
         super.show();
         if (Math.random() < 0.5f)
-            RM.get().playAudio(ResourceEnum.REFLECTION_1);
+            RM.get().playAudio(SoundEnum.REFLECTION_1);
         else
-            RM.get().playAudio(ResourceEnum.REFLECTION_3);
+            RM.get().playAudio(SoundEnum.REFLECTION_3);
     }
 
     @Override

@@ -4,7 +4,7 @@ import com.bladecoder.ink.runtime.Story;
 import com.mygdx.Money;
 import com.mygdx.entities.helpers.GameActor;
 import com.mygdx.entities.helpers.ScriptableActor;
-import com.mygdx.resources.ResourceEnum;
+import com.mygdx.resources.enums.ScriptEnum;
 import com.mygdx.savings.SavingsManager;
 
 public class GameStory {
@@ -23,7 +23,7 @@ public class GameStory {
                     return null;
                 if(currentActor instanceof ScriptableActor s){
                     String name = String.valueOf(args[0]);
-                    s.doScript(ResourceEnum.valueOf(name));
+                    s.doScript(ScriptEnum.valueOf(name));
                 }
                 
                 return null;

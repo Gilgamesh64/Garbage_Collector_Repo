@@ -9,7 +9,8 @@ import com.mygdx.entities.map.doors.Door;
 import com.mygdx.hitboxes.Hitbox;
 import com.mygdx.hitboxes.Tags;
 import com.mygdx.resources.RM;
-import com.mygdx.resources.ResourceEnum;
+import com.mygdx.resources.enums.AtlasEnum;
+import com.mygdx.resources.enums.TextureEnum;
 import com.mygdx.screens.Screens;
 import com.mygdx.screens.ScreensManager;
 
@@ -19,13 +20,13 @@ public class TextureDoor extends Door {
         super(name, dst, dir, x, y);
         String opening = textureBaseName + "_OPENING";
         String closing = textureBaseName + "_CLOSING";
-        ResourceEnum openingEnum = ResourceEnum.valueOf(opening);
-        ResourceEnum closingEnum = ResourceEnum.valueOf(closing);
+        TextureEnum openingEnum = TextureEnum.valueOf(opening);
+        TextureEnum closingEnum = TextureEnum.valueOf(closing);
 
-        var texture = RM.get().getAtlas(ResourceEnum.COMPONENTS).findRegion(opening.toLowerCase());
+        var texture = RM.get().getAtlas(AtlasEnum.COMPONENTS).findRegion(opening.toLowerCase());
         float width = texture.getRegionWidth() / openingEnum.frameCount;
         float height = texture.getRegionHeight();
-        animationManager = new AnimationManager(ResourceEnum.COMPONENTS, 0.1f, 0f, true, openingEnum, closingEnum);
+        animationManager = new AnimationManager(AtlasEnum.COMPONENTS, 0.1f, 0f, true, openingEnum, closingEnum);
         animationManager.shouldNotDoFirstPlay();
 
         setSize(width, height);

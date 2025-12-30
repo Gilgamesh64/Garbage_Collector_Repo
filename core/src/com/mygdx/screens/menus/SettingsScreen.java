@@ -8,9 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.Data;
-import com.mygdx.resources.Lang;
 import com.mygdx.resources.RM;
-import com.mygdx.resources.ResourceEnum;
+import com.mygdx.resources.enums.LangEnum;
 import com.mygdx.screens.Screens;
 import com.mygdx.screens.ScreensManager;
 import com.mygdx.screens.generic.GuiScreen;
@@ -20,7 +19,7 @@ public class SettingsScreen extends GuiScreen {
     public SettingsScreen() {
         super();
 
-        var bg = new Image(RM.get().getTexture(ResourceEnum.BACKGROUND_2));
+        var bg = new Image(RM.get().skin(), "background_2");
         stage.getActors().insert(0, bg);
 
         table.columnDefaults(1).width(150);
@@ -63,7 +62,7 @@ public class SettingsScreen extends GuiScreen {
         back.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                Lang.setCurrent(Lang.valueOf(lang.getSelected()));
+                LangEnum.setCurrent(LangEnum.valueOf(lang.getSelected()));
                 ScreensManager.setScreen(Screens.MENU_SCREEN);
                 
                 return true;

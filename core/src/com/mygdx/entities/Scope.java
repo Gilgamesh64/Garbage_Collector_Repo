@@ -11,7 +11,8 @@ import com.mygdx.entities.helpers.GameActor;
 import com.mygdx.hitboxes.Hitbox;
 import com.mygdx.hitboxes.Tags;
 import com.mygdx.resources.RM;
-import com.mygdx.resources.ResourceEnum;
+import com.mygdx.resources.enums.AtlasEnum;
+import com.mygdx.resources.enums.TextureEnum;
 
 public class Scope extends GameActor{
     private Sprite sprite;
@@ -21,7 +22,7 @@ public class Scope extends GameActor{
 
 
     public Scope(Vector2 coords){
-        this.sprite = RM.get().getFromAtlas(ResourceEnum.OTHERS, ResourceEnum.SCOPE);
+        this.sprite = RM.get().getSpriteFromAtlas(AtlasEnum.OTHERS, TextureEnum.SCOPE);
 
         setSize(sprite.getWidth(), sprite.getHeight());
         setOrigin(getWidth() / 2, getHeight() / 2);

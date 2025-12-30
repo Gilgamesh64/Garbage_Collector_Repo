@@ -1,14 +1,11 @@
 package com.mygdx.screens.menus;
 
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.resources.RM;
-import com.mygdx.resources.ResourceEnum;
 import com.mygdx.savings.SavingsManager;
 import com.mygdx.screens.Screens;
 import com.mygdx.screens.ScreensManager;
@@ -16,22 +13,18 @@ import com.mygdx.screens.generic.GuiScreen;
 
 public class PauseScreen extends GuiScreen {
 
-    
     public PauseScreen() {
         super();
 
-        var bg = new Image(RM.get().getTexture(ResourceEnum.BACKGROUND_2));
+        var bg = new Image(RM.get().skin(), "background_2");
         stage.getActors().insert(0, bg);
 
         var pauseLabel = new Label("PAUSED", RM.get().skin());
         table.add(pauseLabel).top().row();
 
-        var playButton = new ImageButton(
-                new TextureRegionDrawable(new TextureRegion(RM.get().getTexture(ResourceEnum.PLAY_BUTTON))));
-        var settingsButton = new ImageButton(
-                new TextureRegionDrawable(new TextureRegion(RM.get().getTexture(ResourceEnum.SETTINGS_BUTTON))));
-        var quitButton = new ImageButton(
-                new TextureRegionDrawable(new TextureRegion(RM.get().getTexture(ResourceEnum.QUIT_BUTTON))));
+        var playButton = new ImageButton(RM.get().skin().getDrawable("play"));
+        var settingsButton = new ImageButton(RM.get().skin().getDrawable("settings"));
+        var quitButton = new ImageButton(RM.get().skin().getDrawable("quit"));
 
         table.add(playButton).padBottom(20);
         table.row();

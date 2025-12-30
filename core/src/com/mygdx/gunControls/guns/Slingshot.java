@@ -4,12 +4,13 @@ import com.mygdx.GCStage;
 import com.mygdx.gunControls.GunController;
 import com.mygdx.gunControls.projectiles.Stone;
 import com.mygdx.resources.RM;
-import com.mygdx.resources.ResourceEnum;
+import com.mygdx.resources.enums.AtlasEnum;
+import com.mygdx.resources.enums.TextureEnum;
 
 public class Slingshot extends BaseGun {
 
     public Slingshot() {
-        super(RM.get().getFromAtlas(ResourceEnum.WEAPONS, ResourceEnum.DEFAULT), GCStage.get().getPlayer().center, 0);
+        super(RM.get().getSpriteFromAtlas(AtlasEnum.WEAPONS, TextureEnum.DEFAULT), GCStage.get().getPlayer().center, 0);
         flip(false, true);
     }
 

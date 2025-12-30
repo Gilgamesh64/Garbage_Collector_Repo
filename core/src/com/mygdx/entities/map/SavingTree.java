@@ -9,7 +9,8 @@ import com.mygdx.hitboxes.Hitbox;
 import com.mygdx.hitboxes.Tags;
 import com.mygdx.hud.Hud;
 import com.mygdx.resources.RM;
-import com.mygdx.resources.ResourceEnum;
+import com.mygdx.resources.enums.DialogueEnum;
+import com.mygdx.resources.enums.TextureEnum;
 
 public class SavingTree extends Component {
 
@@ -17,7 +18,7 @@ public class SavingTree extends Component {
     private Dialogue currentDialogue = null;
 
     public SavingTree(Vector2 coords) {
-        super(coords, ResourceEnum.SAVING_TREE);
+        super(coords, TextureEnum.SAVING_TREE);
 
         setTouchable(Touchable.enabled);
 
@@ -52,7 +53,7 @@ public class SavingTree extends Component {
                 return;
 
             if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) && currentDialogue == null) {
-                currentDialogue = new Dialogue(RM.get().getStory(ResourceEnum.SAVE), this);
+                currentDialogue = new Dialogue(RM.get().getStory(DialogueEnum.SAVE), this);
                 Hud.stage().addActor(currentDialogue);
             }
         });

@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
@@ -17,7 +18,6 @@ import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.mygdx.Data;
 import com.mygdx.Money;
-import com.mygdx.hud.actors.HealthBar;
 import com.mygdx.resources.RM;
 
 public class Hud implements Disposable {
@@ -41,6 +41,7 @@ public class Hud implements Disposable {
     private Label fps;
     private Label moneyPopup;
     private Label debugData;
+    private Image healthBar;
 
     private Inventory inventory;
 
@@ -65,7 +66,8 @@ public class Hud implements Disposable {
 
         table.row();
 
-        HealthBar healthBar = new HealthBar();
+        healthBar = new Image(RM.get().skin(), "health");
+
         table.add(healthBar).bottom().left();
 
         debugData = new Label("Debug: ", RM.get().skin());

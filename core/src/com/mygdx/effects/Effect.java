@@ -4,7 +4,8 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.AnimationManager;
 import com.mygdx.entities.helpers.GameActor;
-import com.mygdx.resources.ResourceEnum;
+import com.mygdx.resources.enums.AtlasEnum;
+import com.mygdx.resources.enums.TextureEnum;
 
 public class Effect extends GameActor {
 
@@ -17,11 +18,11 @@ public class Effect extends GameActor {
      * @param y
      * @param duration
      */
-    public Effect(ResourceEnum texture, float x, float y, float duration){
+    public Effect(TextureEnum texture, float x, float y, float duration){
         setCoords(x, y);
         float animationRate = texture.animationRate != -1 ? texture.animationRate : 0.2f;
         float delay = texture.delay != -1 ? texture.delay : 0f;
-        animationManager = new AnimationManager(ResourceEnum.EFFECTS, animationRate, delay, true, texture);
+        animationManager = new AnimationManager(AtlasEnum.EFFECTS, animationRate, delay, true, texture);
 
         this.addAction(Actions.sequence(
             Actions.delay(duration),
@@ -35,11 +36,11 @@ public class Effect extends GameActor {
      * @param x
      * @param y
      */
-    public Effect(ResourceEnum texture, float x, float y){
+    public Effect(TextureEnum texture, float x, float y){
         setCoords(x, y);
         float animationRate = texture.animationRate != -1 ? texture.animationRate : 0.2f;
         float delay = texture.delay != -1 ? texture.delay : 0f;
-        animationManager = new AnimationManager(ResourceEnum.EFFECTS, animationRate, delay, true, texture);
+        animationManager = new AnimationManager(AtlasEnum.EFFECTS, animationRate, delay, true, texture);
 
         shouldDoOnce = true;
     }

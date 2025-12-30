@@ -2,13 +2,13 @@ package com.mygdx.resources;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mygdx.dialogues.GameStory;
+import com.mygdx.resources.enums.*;
 import com.ray3k.stripe.FreeTypeSkinLoader;
 
 import java.io.BufferedReader;
@@ -22,42 +22,25 @@ import java.util.stream.Stream;
 public class ResourceManager {
 
     private final AssetManager manager;
-    private final EnumMap<ResourceEnum, GameStory> dialogueMap;
-    private final EnumMap<ResourceEnum, TiledMap> maps;
+    private final EnumMap<DialogueEnum, GameStory> dialogueMap;
+    private final EnumMap<MapEnum, TiledMap> maps;
 
     public ResourceManager() {
         manager = new AssetManager();
-        dialogueMap = new EnumMap<>(ResourceEnum.class);
-        maps = new EnumMap<>(ResourceEnum.class);
+        dialogueMap = new EnumMap<>(DialogueEnum.class);
+        maps = new EnumMap<>(MapEnum.class);
         loadManager();
     }
 
     private void loadManager() {
         manager.setLoader(Skin.class, new FreeTypeSkinLoader(manager.getFileHandleResolver()));
-        manager.load(ResourceEnum.SKIN.label, Skin.class);
-        Stream.of(ResourceEnum.values()).forEach(e -> {
-            switch (e.type) {
-                case TEXTURE -> {
-                    manager.load(e.label, Texture.class);
-                }
-                case AUDIO -> {
-                    manager.load(e.label, Music.class);
-                }
-                case DIALOGUE -> {
-                    loadDialogue(e);
-                }
-                case MAP -> {
-                    maps.put(e, new TmxMapLoader().load(e.label));
-                }
-                case ATLAS -> {
-                    manager.load(e.label, TextureAtlas.class);
-                }
-                case ATLAS_REGION -> {
-                }
-                default -> {
-                }
-            }
-        });
+        manager.load("assets/skin/ui_v2.json", Skin.class);
+        manager.finishLoadingAsset("assets/skin/ui_v2.json");
+
+        Stream.of(AtlasEnum.values()).forEach(atlas -> manager.load(atlas.path, TextureAtlas.class));
+        Stream.of(DialogueEnum.values()).forEach(this::loadDialogue);
+        Stream.of(MapEnum.values()).forEach(map -> maps.put(map, new TmxMapLoader().load(map.path)));
+        Stream.of(SoundEnum.values()).forEach(music -> manager.load(music.path, Music.class));
     }
 
     public void update() {
@@ -68,69 +51,58 @@ public class ResourceManager {
         manager.dispose();
     }
 
-    public Texture getTexture(ResourceEnum e) {
-        manager.finishLoadingAsset(e.label);
-        return manager.get(e.label);
-    }
-
-    public TextureAtlas getAtlas(ResourceEnum e) {
-        manager.finishLoadingAsset(e.label);
-        return manager.get(e.label);
+    public TextureAtlas getAtlas(AtlasEnum atlas) {
+        manager.finishLoadingAsset(atlas.path);
+        return manager.get(atlas.path);
     }
 
     public Skin skin() {
-        manager.finishLoadingAsset(ResourceEnum.SKIN.label);
-        return manager.get(ResourceEnum.SKIN.label);
+        return manager.get("assets/skin/ui_v2.json");
     }
 
-    public Sprite getFromAtlas(ResourceEnum atlas, ResourceEnum texture) {
-        return getAtlas(atlas).createSprite(texture.label);
+    public Sprite getSpriteFromAtlas(AtlasEnum atlas, TextureEnum texture) {
+        return getAtlas(atlas).createSprite(texture.path);
     }
 
-    public TiledMap getMap(ResourceEnum e) {
-        return maps.get(e);
+    public TiledMap getMap(MapEnum map) {
+        return maps.get(map);
     }
 
-    public GameStory getStory(ResourceEnum e) {
-        try {
-            return dialogueMap.get(e);
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }
-        return null;
+    public GameStory getStory(DialogueEnum dial) {
+        return dialogueMap.get(dial);
     }
 
-    public Music getAudio(ResourceEnum e) {
-        manager.finishLoadingAsset(e.label);
-        return manager.get(e.label);
+    public Music getAudio(SoundEnum sound) {
+        manager.finishLoadingAsset(sound.path);
+        return manager.get(sound.path);
     }
 
-    public void playAudio(ResourceEnum e) {
-        if (!getAudio(e).isPlaying()) {
-            getAudio(e).setVolume(0.05f);
-            getAudio(e).play();
-            getAudio(e).setLooping(true);
+    public void playAudio(SoundEnum sound) {
+        Music audio = getAudio(sound);
+        if (!audio.isPlaying()) {
+            audio.setVolume(0.05f);
+            audio.play();
+            audio.setLooping(true);
         }
     }
 
-    public void stopAudio(ResourceEnum e) {
-        if (getAudio(e).isPlaying())
-            getAudio(e).stop();
+    public void stopAudio(SoundEnum sound) {
+        if (getAudio(sound).isPlaying())
+            getAudio(sound).stop();
     }
 
     public void stopAllAudio() {
-        Stream.of(ResourceEnum.values())
-                .filter(e -> e.type.equals(TypeEnum.AUDIO))
+        Stream.of(SoundEnum.values())
                 .map(this::getAudio)
                 .filter(Music::isPlaying)
                 .forEach(Music::stop);
     }
 
     // helper for dialogue loading
-    public void loadDialogue(ResourceEnum dialogue) {
+    public void loadDialogue(DialogueEnum dialogue) {
 
         InputStream systemResourceAsStream = ClassLoader
-                .getSystemResourceAsStream("dialogues/entities/" + Lang.getCurrent() + "/" + dialogue.label);
+                .getSystemResourceAsStream("dialogues/" + LangEnum.getCurrent() + "/" + dialogue.path);
         StringBuilder sb = new StringBuilder();
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(Objects.requireNonNull(systemResourceAsStream), StandardCharsets.UTF_8))) {
@@ -151,8 +123,8 @@ public class ResourceManager {
 
     public void updateLang() {
         dialogueMap.clear();
-        Stream.of(ResourceEnum.values())
-                .filter(e -> e.type.equals(TypeEnum.DIALOGUE))
-                .forEach(this::loadDialogue);
+        for (DialogueEnum dial : DialogueEnum.values()) {
+            loadDialogue(dial);
+        }
     }
 }

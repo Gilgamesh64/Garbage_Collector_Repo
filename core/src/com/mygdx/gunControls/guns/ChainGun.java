@@ -7,7 +7,8 @@ import com.mygdx.gunControls.GunController;
 import com.mygdx.gunControls.projectiles.Projectile;
 import com.mygdx.delay.DelayManager;
 import com.mygdx.resources.RM;
-import com.mygdx.resources.ResourceEnum;
+import com.mygdx.resources.enums.AtlasEnum;
+import com.mygdx.resources.enums.TextureEnum;
 
 public class ChainGun extends BaseGun {
     private int bullets = 100, mag = 100, reloadAmount = 1;
@@ -18,7 +19,7 @@ public class ChainGun extends BaseGun {
      * ChainGun class
      */
     public ChainGun() {
-        super(RM.get().getFromAtlas(ResourceEnum.WEAPONS, ResourceEnum.DEFAULT), GCStage.get().getPlayer().center, 0);
+        super(RM.get().getSpriteFromAtlas(AtlasEnum.WEAPONS, TextureEnum.DEFAULT), GCStage.get().getPlayer().center, 0);
         setOffset(30, 0, 0);
         flip(true, false);
 

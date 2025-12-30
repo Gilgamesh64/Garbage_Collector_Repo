@@ -11,13 +11,14 @@ import com.mygdx.hitboxes.Hitbox;
 import com.mygdx.hitboxes.Tags;
 import com.mygdx.messages.MSG;
 import com.mygdx.movement.PlayerMovement;
+import com.mygdx.resources.enums.AnimationEnum;
+import com.mygdx.resources.enums.AtlasEnum;
+import com.mygdx.resources.enums.TextureEnum;
 import com.mygdx.AnimationManager;
 import com.mygdx.Data;
 import com.mygdx.GCStage;
 import com.mygdx.camera.CameraController;
 import com.mygdx.entities.helpers.ScriptableActor;
-import com.mygdx.resources.ResourceEnum;
-import com.mygdx.resources.TextureEnum;
 
 public class Player extends ScriptableActor{
 
@@ -51,7 +52,7 @@ public class Player extends ScriptableActor{
         GunController.get().loadGuns();
         CameraController.calculateMouseAngle(center);
 
-        animationManager = new AnimationManager(ResourceEnum.PLAYER, TextureEnum.PLAYER);
+        animationManager = new AnimationManager(AtlasEnum.PLAYER, AnimationEnum.PLAYER);
             
         if(Data.debug) debug();
 
@@ -76,8 +77,8 @@ public class Player extends ScriptableActor{
 
         animationManager.setCurrentAnimation(
                 autoMovementManager.update() ? 
-                    ResourceEnum.valueOf("PLAYER_" + autoMovementManager.getOrientation()) : 
-                    ResourceEnum.valueOf("PLAYER_" + movement.move()));
+                    TextureEnum.valueOf("PLAYER_" + autoMovementManager.getOrientation()) : 
+                    TextureEnum.valueOf("PLAYER_" + movement.move()));
 
         animationManager.updateAnimation(delta);
     }

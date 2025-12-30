@@ -28,12 +28,14 @@ public abstract class GenericScreen extends ScreenAdapter {
         
         mux = new InputMultiplexer();
         mux.addProcessor(stage);
-        Gdx.input.setInputProcessor(mux);
     }
 
     @Override
     public void show() {
         GCStage.set(stage);
+
+        Gdx.input.setInputProcessor(mux);
+
 
         CameraController.initCamera();
     }

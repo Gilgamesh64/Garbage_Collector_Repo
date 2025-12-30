@@ -6,7 +6,7 @@ filter: Linear, Linear
 repeat: none
 default-rect
   rotate: false
-  xy: 549, 734
+  xy: 1157, 929
   size: 3, 3
   split: 1, 1, 1, 1
   pad: 0, 0, 0, 0
@@ -15,7 +15,7 @@ default-rect
   index: -1
 default-round
   rotate: false
-  xy: 35, 587
+  xy: 131, 398
   size: 12, 20
   split: 5, 5, 5, 4
   pad: 4, 4, 1, 1
@@ -24,39 +24,15 @@ default-round
   index: -1
 default-select-selection
   rotate: false
-  xy: 515, 700
+  xy: 1027, 834
   size: 3, 3
   split: 1, 1, 1, 1
   orig: 3, 3
   offset: 0, 0
   index: -1
-choice
-  rotate: false
-  xy: 1027, 1187
-  size: 256, 128
-  split: 3, 3, 3, 3
-  orig: 256, 128
-  offset: 0, 0
-  index: -1
-dialogue
-  rotate: false
-  xy: 1, 609
-  size: 512, 128
-  split: 10, 10, 3, 4
-  orig: 512, 128
-  offset: 0, 0
-  index: -1
-blank
-  rotate: false
-  xy: 1, 575
-  size: 32, 32
-  split: 0, 0, 0, 0
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
 checkbox_checked
   rotate: false
-  xy: 515, 705
+  xy: 1285, 1030
   size: 32, 32
   split: 0, 0, 0, 0
   orig: 32, 32
@@ -64,15 +40,54 @@ checkbox_checked
   index: -1
 checkbox_empty
   rotate: false
-  xy: 1027, 1153
+  xy: 1534, 1787
   size: 32, 32
   split: 6, 6, 6, 6
   orig: 32, 32
   offset: 0, 0
   index: -1
+choice
+  rotate: false
+  xy: 1027, 934
+  size: 256, 128
+  split: 3, 3, 3, 3
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+dialogue
+  rotate: false
+  xy: 1534, 1916
+  size: 512, 128
+  split: 10, 10, 3, 4
+  orig: 512, 128
+  offset: 0, 0
+  index: -1
+small_dial
+  rotate: false
+  xy: 1, 299
+  size: 32, 24
+  split: 8, 7, 5, 4
+  orig: 32, 24
+  offset: 0, 0
+  index: -1
+blank
+  rotate: false
+  xy: 263, 452
+  size: 32, 32
+  split: 0, 0, 0, 0
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+health
+  rotate: false
+  xy: 1, 420
+  size: 260, 64
+  orig: 260, 64
+  offset: 0, 0
+  index: -1
 inventory
   rotate: false
-  xy: 1, 739
+  xy: 1, 486
   size: 1024, 576
   split: 470, 470, 33, 99
   orig: 1024, 576
@@ -80,16 +95,36 @@ inventory
   index: -1
 money
   rotate: false
-  xy: 1285, 1283
+  xy: 1664, 1882
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-small_dial
+background_2
   rotate: false
-  xy: 1, 549
-  size: 32, 24
-  split: 8, 7, 5, 4
-  orig: 32, 24
+  xy: 1, 1064
+  size: 1531, 980
+  orig: 1531, 980
+  offset: 0, 0
+  index: -1
+play
+  rotate: false
+  xy: 1534, 1821
+  size: 128, 93
+  orig: 128, 93
+  offset: 0, 0
+  index: -1
+quit
+  rotate: false
+  xy: 1027, 839
+  size: 128, 93
+  orig: 128, 93
+  offset: 0, 0
+  index: -1
+settings
+  rotate: false
+  xy: 1, 325
+  size: 128, 93
+  orig: 128, 93
   offset: 0, 0
   index: -1

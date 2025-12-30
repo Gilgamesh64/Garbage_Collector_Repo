@@ -1,16 +1,17 @@
 package com.mygdx.entities.npcs;
 
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.resources.ResourceEnum;
-import com.mygdx.resources.TextureEnum;
+import com.mygdx.resources.enums.AnimationEnum;
+import com.mygdx.resources.enums.DialogueEnum;
+import com.mygdx.resources.enums.ScriptEnum;
+import com.mygdx.resources.enums.TextureEnum;
 
 public class NPCBuilder {
     protected Vector2 coordinates, size = new Vector2(16, 32);
-    protected TextureEnum textureEnum;
-    protected boolean atlas = true;
-    protected ResourceEnum story;
-    protected ResourceEnum autoStartedScript;
-    protected ResourceEnum startingAnimation;
+    protected AnimationEnum anim;
+    protected DialogueEnum story;
+    protected ScriptEnum autoStartedScript;
+    protected TextureEnum startingAnimation;
 
     public NPCBuilder coordinates(Vector2 coordinates) {
         this.coordinates = coordinates;
@@ -32,27 +33,22 @@ public class NPCBuilder {
         return this;
     }
 
-    public NPCBuilder texture(TextureEnum texture) {
-        this.textureEnum = texture;
+    public NPCBuilder texture(AnimationEnum texture) {
+        this.anim = texture;
         return this;
     }
 
-    public NPCBuilder noAtlas(){
-        this.atlas = false;
-        return this;
-    }
-
-    public NPCBuilder story(ResourceEnum e) {
+    public NPCBuilder story(DialogueEnum e) {
         this.story = e;
         return this;
     }
 
-    public NPCBuilder autoStartedScript(ResourceEnum e){
+    public NPCBuilder autoStartedScript(ScriptEnum e){
         this.autoStartedScript = e;
         return this;
     }
 
-    public NPCBuilder startingAnimation(ResourceEnum e){
+    public NPCBuilder startingAnimation(TextureEnum e){
         this.startingAnimation = e;
         return this;
     }

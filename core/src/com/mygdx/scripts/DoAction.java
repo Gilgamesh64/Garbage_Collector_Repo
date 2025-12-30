@@ -1,12 +1,12 @@
 package com.mygdx.scripts;
 
 import com.mygdx.entities.helpers.ScriptableActor;
-import com.mygdx.resources.ResourceEnum;
+import com.mygdx.resources.enums.ScriptEnum;
 
 public class DoAction implements ScriptAction{
-    private ResourceEnum script;
+    private ScriptEnum script;
 
-    public DoAction(ResourceEnum script) {
+    public DoAction(ScriptEnum script) {
         this.script = script;
     }
 

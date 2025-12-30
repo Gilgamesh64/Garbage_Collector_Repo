@@ -16,7 +16,8 @@ import com.mygdx.hitboxes.HitboxHandler;
 import com.mygdx.map.TileMapCollisionsManager;
 import com.mygdx.map.TileSetManager;
 import com.mygdx.messages.MSG;
-import com.mygdx.resources.ResourceEnum;
+import com.mygdx.resources.enums.MapEnum;
+import com.mygdx.resources.enums.TextureEnum;
 import com.mygdx.savings.SavingsManager;
 import com.mygdx.screens.Screens;
 import com.mygdx.screens.ScreensManager;
@@ -36,9 +37,9 @@ public abstract class PlayableScreen extends GenericScreen {
 
     protected Player player;
 
-    private ResourceEnum name;
+    private MapEnum name;
 
-    protected PlayableScreen(ResourceEnum map) {
+    protected PlayableScreen(MapEnum map) {
         super();
 
         camera.zoom = 0.7f;
@@ -87,7 +88,7 @@ public abstract class PlayableScreen extends GenericScreen {
             return;
         }
         if(Gdx.input.isKeyJustPressed(Keys.U)){
-            GCStage.get().addActor(new Effect(ResourceEnum.EXPLOSION, player.getX() + 32, player.getY()));
+            GCStage.get().addActor(new Effect(TextureEnum.EXPLOSION, player.getX() + 32, player.getY()));
         }
         if (Gdx.input.isKeyJustPressed(Keys.M)) {
             SavingsManager.save();

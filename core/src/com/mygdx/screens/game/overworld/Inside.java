@@ -1,12 +1,12 @@
 package com.mygdx.screens.game.overworld;
 
-import com.mygdx.resources.ResourceEnum;
+import com.mygdx.resources.enums.MapEnum;
 import com.mygdx.screens.generic.PlayableScreen;
 
 public class Inside extends PlayableScreen {
 
     public Inside() {
-        super(ResourceEnum.INSIDE);
+        super(MapEnum.INSIDE);
 
     }
 

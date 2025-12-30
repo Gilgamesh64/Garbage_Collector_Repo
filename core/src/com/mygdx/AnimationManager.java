@@ -1,7 +1,6 @@
 package com.mygdx;
 
 import java.util.EnumMap;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -9,13 +8,14 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.entities.helpers.GameActor;
 import com.mygdx.resources.RM;
-import com.mygdx.resources.ResourceEnum;
-import com.mygdx.resources.TextureEnum;
+import com.mygdx.resources.enums.AnimationEnum;
+import com.mygdx.resources.enums.AtlasEnum;
+import com.mygdx.resources.enums.TextureEnum;
 
 public class AnimationManager {
-    private EnumMap<ResourceEnum, Animation<TextureRegion>> animationMap = new EnumMap<>(ResourceEnum.class);
+    private EnumMap<TextureEnum, Animation<TextureRegion>> animationMap = new EnumMap<>(TextureEnum.class);
 
-    private ResourceEnum currentAnimation;
+    private TextureEnum currentAnimation;
     private TextureRegion currentFrame;
 
     private float stateTime = 0f;
@@ -33,56 +33,16 @@ public class AnimationManager {
     private float defaultDelay;
     private float currentDelay;
 
-    /**
-     * Creates an AnimationManager.
-     * 
-     * @param width         width of each frame
-     * @param animationRate default frame duration
-     * @param delay         default delay before replaying animation
-     * @param playOnce      if true, the animation plays only once
-     * @param textures      resource list for the animation
-     */
-    public AnimationManager(float animationRate, float delay, boolean playOnce, ResourceEnum... textures) {
+    public AnimationManager(AtlasEnum atlas, AnimationEnum textures) {
+        this(atlas, textures.animationRate, textures.delay, false, textures.frameList);
+    }
+
+    public AnimationManager(AtlasEnum atlas, float animationRate, float delay, boolean playOnce, TextureEnum... textures) {
         this.playOnce = playOnce;
-        for (ResourceEnum e : textures) {
-            Texture texture = RM.get().getTexture(e);
-            int FRAME_COLS = texture.getWidth() / e.frameCount * 32;
-
-            TextureRegion[][] matrix = TextureRegion.split(
-                    texture,
-                    texture.getWidth() / FRAME_COLS,
-                    texture.getHeight());
-
-            Animation<TextureRegion> animation = new Animation<>(
-                    e.animationRate != -1 ? e.animationRate : 0.2f,
-                    matrix[0]);
-            animation.setPlayMode(playOnce ? PlayMode.NORMAL : PlayMode.LOOP);
-            animationMap.put(e, animation);
-        }
-
-        currentAnimation = textures[0];
-        currentFrame = animationMap.get(currentAnimation).getKeyFrame(stateTime);
-
-        defaultDelay = delay;
-        currentDelay = currentAnimation.delay != -1 ? currentAnimation.delay : defaultDelay;
-
-        GCStage.get().addActor(pauser);
-    }
-
-    public AnimationManager(TextureEnum textures) {
-        this(textures.getAnimationRate(), textures.getDelay(), false, textures.getResourceList());
-    }
-
-    public AnimationManager(ResourceEnum atlas, TextureEnum textures) {
-        this(atlas, textures.getAnimationRate(), textures.getDelay(), false, textures.getResourceList());
-    }
-
-    public AnimationManager(ResourceEnum atlas, float animationRate, float delay, boolean playOnce, ResourceEnum... textures) {
-        this.playOnce = playOnce;
-        for (ResourceEnum e : textures) {
-            TextureAtlas.AtlasRegion region = RM.get().getAtlas(atlas).findRegion(e.label);
+        for (TextureEnum e : textures) {
+            TextureAtlas.AtlasRegion region = RM.get().getAtlas(atlas).findRegion(e.path);
             if (region == null) {
-                throw new RuntimeException("Region not found: " + e.label);
+                throw new RuntimeException("Region not found: " + e.path);
             }
 
             int frameWidth = region.getRegionWidth() / e.frameCount;
@@ -155,7 +115,7 @@ public class AnimationManager {
         currentFrame = ani.getKeyFrame(stateTime, playOnce);
     }
 
-    public void setCurrentAnimation(ResourceEnum ani) {
+    public void setCurrentAnimation(TextureEnum ani) {
 
         
         currentAnimation = ani;

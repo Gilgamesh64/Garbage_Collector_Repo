@@ -13,7 +13,7 @@ import com.mygdx.gunControls.projectiles.Projectile;
 import com.mygdx.hitboxes.Tags;
 import com.mygdx.map.TileMapCollisionsManager;
 import com.mygdx.messages.MSG;
-import com.mygdx.resources.ResourceEnum;
+import com.mygdx.resources.enums.TextureEnum;
 import com.mygdx.states.StateController;
 
 import java.util.Random;
@@ -70,7 +70,7 @@ public class Reflection extends NPC {
             direction = "WALK_DOWN";
         else if (angler > 305 || angler <= 55)
             direction = "WALK_RIGHT";
-        animationManager.setCurrentAnimation(ResourceEnum.valueOf(name + "_" + direction));
+        animationManager.setCurrentAnimation(TextureEnum.valueOf(name + "_" + direction));
         animationManager.updateAnimation(delta);
 
         Vector2 playerPos = GCStage.get().getPlayer().getCoords();

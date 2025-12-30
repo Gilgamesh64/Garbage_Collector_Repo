@@ -22,7 +22,9 @@ import com.mygdx.entities.map.Component;
 import com.mygdx.entities.map.InvisibleDoor;
 import com.mygdx.entities.map.TextureDoor;
 import com.mygdx.resources.RM;
-import com.mygdx.resources.ResourceEnum;
+import com.mygdx.resources.enums.AtlasEnum;
+import com.mygdx.resources.enums.MapEnum;
+import com.mygdx.resources.enums.TextureEnum;
 
 public class TileSetManager implements Telegraph {
     private final TiledMapRenderer tiledMapRenderer;
@@ -30,7 +32,7 @@ public class TileSetManager implements Telegraph {
 
     private ArrayList<TileReplacementManager> tileReplace = new ArrayList<>();
 
-    public TileSetManager(ResourceEnum e) {
+    public TileSetManager(MapEnum e) {
         map = RM.get().getMap(e);
         tiledMapRenderer = new OrthogonalTiledMapRenderer(map);
         loadObjLayers();
@@ -61,7 +63,7 @@ public class TileSetManager implements Telegraph {
                 loadDoors(layer);
                 continue;
             }
-            ResourceEnum atlas = ResourceEnum.valueOf(layerName.toUpperCase());
+            AtlasEnum atlas = AtlasEnum.valueOf(layerName.toUpperCase());
             if (atlas == null) {
                 throw new RuntimeException("No atlas with: " + layerName + " found, check your spelling");
             }
@@ -70,18 +72,18 @@ public class TileSetManager implements Telegraph {
                 if (obj instanceof RectangleMapObject rectObj) {
                     Rectangle rect = rectObj.getRectangle();
 
-                    ResourceEnum texture = ResourceEnum.valueOf(obj.getName());
+                    TextureEnum texture = TextureEnum.valueOf(obj.getName());
 
-                    TextureRegion region = RM.get().getAtlas(atlas).findRegion(texture.label);
+                    TextureRegion region = RM.get().getAtlas(atlas).findRegion(texture.path);
                     if (region == null) {
                         throw new RuntimeException("\nERROR\n\nResourceEnum: " + texture +
                                 " not found in region, \nthe .png file should be in the folder: assets/raw/" + atlas
                                 + " \ncheck your spelling and pack all the assets");
                     }
-                    if (atlas.equals(ResourceEnum.BUILDINGS)) {
+                    if (atlas.equals(AtlasEnum.BUILDINGS)) {
                         GCStage.get().addActor(
                                 new Building(rect.getX(), rect.getY(), texture));
-                    } else if (atlas.equals(ResourceEnum.COMPONENTS)) {
+                    } else if (atlas.equals(AtlasEnum.COMPONENTS)) {
                         GCStage.get().addActor(
                                 new Component(rect.getX(), rect.getY(), texture));
                     }

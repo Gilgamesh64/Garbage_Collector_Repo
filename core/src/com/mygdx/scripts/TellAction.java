@@ -3,12 +3,12 @@ package com.mygdx.scripts;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.mygdx.Data;
 import com.mygdx.entities.helpers.ScriptableActor;
-import com.mygdx.resources.ResourceEnum;
+import com.mygdx.resources.enums.DialogueEnum;
 
 public class TellAction implements ScriptAction {
-    private ResourceEnum story;
+    private DialogueEnum story;
 
-    public TellAction(ResourceEnum story) {
+    public TellAction(DialogueEnum story) {
         this.story = story;
     }
 

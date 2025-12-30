@@ -8,8 +8,9 @@ import com.mygdx.Data;
 import com.mygdx.entities.helpers.GameActor;
 import com.mygdx.hitboxes.Hitbox;
 import com.mygdx.hitboxes.Tags;
-import com.mygdx.resources.ResourceEnum;
-import com.mygdx.resources.TextureEnum;
+import com.mygdx.resources.enums.AnimationEnum;
+import com.mygdx.resources.enums.AtlasEnum;
+import com.mygdx.resources.enums.TextureEnum;
 
 public class Building extends GameActor {
 
@@ -18,12 +19,12 @@ public class Building extends GameActor {
 
     private final AnimationManager animationManager;
 
-    public Building(Vector2 coords, ResourceEnum... textures) {
+    public Building(Vector2 coords, TextureEnum... textures) {
         super();
         setX(coords.x);
         setY(coords.y);
 
-        animationManager = new AnimationManager(ResourceEnum.BUILDINGS, 0.2f, 0, false, textures);
+        animationManager = new AnimationManager(AtlasEnum.BUILDINGS, 0.2f, 0, false, textures);
 
         hitbox = new Hitbox(
                 new Vector2(getX() + animationManager.getWidth() * 0.5f,
@@ -39,16 +40,16 @@ public class Building extends GameActor {
         hitbox.register();
         if(Data.debug) debug();
     }
-    public Building(float x, float y, ResourceEnum... textures){
+    public Building(float x, float y, TextureEnum... textures){
         this(new Vector2(x, y), textures);
     }
 
-    public Building(Vector2 coords, TextureEnum textures) {
+    public Building(Vector2 coords, AnimationEnum textures) {
         super();
         setX(coords.x);
         setY(coords.y);
 
-        animationManager = new AnimationManager(ResourceEnum.BUILDINGS, textures);
+        animationManager = new AnimationManager(AtlasEnum.BUILDINGS, textures);
 
         hitbox = new Hitbox(
                 new Vector2(getX() + animationManager.getWidth() * 0.5f,

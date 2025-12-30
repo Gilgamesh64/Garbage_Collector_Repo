@@ -11,7 +11,7 @@ import com.mygdx.effects.Effect;
 import com.mygdx.hitboxes.Collider;
 import com.mygdx.hitboxes.Tags;
 import com.mygdx.movement.BaseMovement;
-import com.mygdx.resources.ResourceEnum;
+import com.mygdx.resources.enums.TextureEnum;
 
 public class BaseBullet extends Actor {
     protected Sprite s;
@@ -40,7 +40,7 @@ public class BaseBullet extends Actor {
         collider.setSearchTags(ally ? Tags.ENEMY : Tags.PLAYER);
         collider.setOnHit(hitbox -> {
             Vector2 centerWorldCoords = movement.getCenterWorldCoords();
-            GCStage.get().addActor(new Effect(ResourceEnum.EXPLOSION, centerWorldCoords.x, centerWorldCoords.y));
+            GCStage.get().addActor(new Effect(TextureEnum.EXPLOSION, centerWorldCoords.x, centerWorldCoords.y));
             delete();
         });
         collider.register();

@@ -11,7 +11,8 @@ import com.mygdx.dialogues.Dialogue;
 import com.mygdx.entities.helpers.ScriptableActor;
 import com.mygdx.hitboxes.Hitbox;
 import com.mygdx.hitboxes.Tags;
-import com.mygdx.resources.ResourceEnum;
+import com.mygdx.resources.enums.AtlasEnum;
+import com.mygdx.resources.enums.TextureEnum;
 import com.mygdx.scripts.Script;
 
 public class NPC extends ScriptableActor {
@@ -30,18 +31,14 @@ public class NPC extends ScriptableActor {
         setSize(npcBuilder.size.x, npcBuilder.size.y);
         setOrigin(getWidth() / 2, getHeight() / 2);
 
-        if(npcBuilder.atlas){
-            animationManager = new AnimationManager(ResourceEnum.NPCS, npcBuilder.textureEnum);
-        }
-        else {
-            animationManager = new AnimationManager(npcBuilder.textureEnum);
-        }
+        animationManager = new AnimationManager(AtlasEnum.NPCS, npcBuilder.anim);
+        
 
         
         if (npcBuilder.startingAnimation != null)
             animationManager.setCurrentAnimation(npcBuilder.startingAnimation);
 
-        name = npcBuilder.textureEnum.toString();
+        name = npcBuilder.anim.toString();
 
         hitbox = new Hitbox(center, npcBuilder.size.x, npcBuilder.size.y, true);
         hitbox.setTags(Tags.NPC, Tags.ENEMY);
@@ -81,7 +78,7 @@ public class NPC extends ScriptableActor {
             autoMovementManager.update();
             if (!autoMovementManager.hasFinished())
                 animationManager
-                        .setCurrentAnimation(ResourceEnum.valueOf(name + "_" + autoMovementManager.getOrientation()));
+                        .setCurrentAnimation(TextureEnum.valueOf(name + "_" + autoMovementManager.getOrientation()));
 
         }
 

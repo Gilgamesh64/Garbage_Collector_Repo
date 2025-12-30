@@ -29,7 +29,6 @@
   <object id="24" name="MARMOT_PIZZA" x="2304" y="2032" width="96" height="80"/>
   <object id="28" name="ABANDONED_TURNED_ON" x="2136" y="2048" width="88" height="56"/>
   <object id="30" name="SYNTH_TURNED_ON" x="1920" y="2176" width="96" height="64"/>
-  <object id="38" name="SKYSCRAPER_PROTOTYPE" x="2560" y="2248" width="336" height="152"/>
  </objectgroup>
  <objectgroup id="6" name="components">
   <object id="32" name="MARCO_LAMP" x="1928" y="2592" width="40" height="72"/>
