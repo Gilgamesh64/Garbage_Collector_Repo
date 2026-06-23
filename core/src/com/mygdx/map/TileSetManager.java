@@ -1,21 +1,22 @@
 package com.mygdx.map;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.PointMapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
+import com.mygdx.Data;
 import com.mygdx.GCStage;
 import com.mygdx.entities.map.Building;
 import com.mygdx.entities.map.Component;
@@ -32,10 +33,38 @@ public class TileSetManager implements Telegraph {
 
     private ArrayList<TileReplacementManager> tileReplace = new ArrayList<>();
 
+    private HashMap<String, Vector2> markersMap = new HashMap<>();
+
     public TileSetManager(MapEnum e) {
         map = RM.get().getMap(e);
         tiledMapRenderer = new OrthogonalTiledMapRenderer(map);
-        loadObjLayers();
+
+        MapLayer doorLayer = map.getLayers().get("doors");
+        if (doorLayer == null && Data.debug)
+            System.out.println("Are you aware there is no door layer right?");
+
+        else loadDoors(doorLayer);
+
+        MapLayer buildingsLayer = map.getLayers().get("buildings");
+        if (buildingsLayer == null && Data.debug)
+            System.out.println("Are you aware there is no buildings layer right?");
+        
+        else loadBuildings(buildingsLayer);
+
+        MapLayer componentsLayer = map.getLayers().get("components");
+        if (componentsLayer == null && Data.debug)
+            System.out.println("Are you aware there is no components layer right?");
+        
+        else loadComponents(componentsLayer);
+
+        MapLayer markersLayer = map.getLayers().get("markers");
+        if (markersLayer == null && Data.debug)
+            System.out.println("Are you aware there is no markers layer right?");
+        
+        else loadMarkers(markersLayer);
+
+        System.out.println("loaded markers");
+
         loadReplacers();
     }
 
@@ -48,46 +77,42 @@ public class TileSetManager implements Telegraph {
         return map;
     }
 
-    public void loadObjLayers() {
-        for (MapLayer layer : map.getLayers()) {
-            if (layer instanceof TiledMapTileLayer)
-                continue;
-            MapObjects objects = layer.getObjects();
-            if (objects.getCount() == 0)
-                continue;
+    public void loadBuildings(MapLayer buildingsLayer) {
 
-            // Check if atlas exists
-            String layerName = layer.getName();
+        for (MapObject obj : buildingsLayer.getObjects()) {
+            if (obj instanceof RectangleMapObject rectObj) {
+                Rectangle rect = rectObj.getRectangle();
 
-            if (layerName.equals("doors")) {
-                loadDoors(layer);
-                continue;
-            }
-            AtlasEnum atlas = AtlasEnum.valueOf(layerName.toUpperCase());
-            if (atlas == null) {
-                throw new RuntimeException("No atlas with: " + layerName + " found, check your spelling");
-            }
+                TextureEnum texture = TextureEnum.valueOf(obj.getName());
 
-            for (MapObject obj : layer.getObjects()) {
-                if (obj instanceof RectangleMapObject rectObj) {
-                    Rectangle rect = rectObj.getRectangle();
-
-                    TextureEnum texture = TextureEnum.valueOf(obj.getName());
-
-                    TextureRegion region = RM.get().getAtlas(atlas).findRegion(texture.path);
-                    if (region == null) {
-                        throw new RuntimeException("\nERROR\n\nResourceEnum: " + texture +
-                                " not found in region, \nthe .png file should be in the folder: assets/raw/" + atlas
-                                + " \ncheck your spelling and pack all the assets");
-                    }
-                    if (atlas.equals(AtlasEnum.BUILDINGS)) {
-                        GCStage.get().addActor(
-                                new Building(rect.getX(), rect.getY(), texture));
-                    } else if (atlas.equals(AtlasEnum.COMPONENTS)) {
-                        GCStage.get().addActor(
-                                new Component(rect.getX(), rect.getY(), texture));
-                    }
+                TextureRegion region = RM.get().getAtlas(AtlasEnum.BUILDINGS).findRegion(texture.path);
+                if (region == null) {
+                    throw new RuntimeException("\nERROR\n\nResourceEnum: " + texture +
+                            " not found in region, \nthe .png file should be in the folder: assets/raw/" + AtlasEnum.BUILDINGS
+                            + " \ncheck your spelling and pack all the assets");
                 }
+                GCStage.get().addActor(new Building(rect.getX(), rect.getY(), texture));
+
+            }
+        }
+
+    }
+
+    public void loadComponents(MapLayer componentsLayer) {
+
+        for (MapObject obj : componentsLayer.getObjects()) {
+            if (obj instanceof RectangleMapObject rectObj) {
+                Rectangle rect = rectObj.getRectangle();
+
+                TextureEnum texture = TextureEnum.valueOf(obj.getName());
+
+                TextureRegion region = RM.get().getAtlas(AtlasEnum.COMPONENTS).findRegion(texture.path);
+                if (region == null) {
+                    throw new RuntimeException("\nERROR\n\nResourceEnum: " + texture +
+                            " not found in region, \nthe .png file should be in the folder: assets/raw/" + AtlasEnum.COMPONENTS
+                            + " \ncheck your spelling and pack all the assets");
+                }
+                GCStage.get().addActor(new Component(rect.getX(), rect.getY(), texture));
             }
         }
     }
@@ -107,7 +132,7 @@ public class TileSetManager implements Telegraph {
                 String name = obj.getName();
                 String dst = name.split("-")[1] + "-" + name.split("-")[0];
                 String dir = obj.getProperties().get("dir").toString();
-                int size = obj.getProperties().get("size") == null ? 1 : ((int)obj.getProperties().get("size"));
+                int size = obj.getProperties().get("size") == null ? 1 : ((int) obj.getProperties().get("size"));
                 float x = pointObj.getPoint().x - (16 * size), y = pointObj.getPoint().y;
                 String texture = obj.getProperties().get("texture").toString();
                 GCStage.get().addActor(new TextureDoor(name, dst, dir, x, y, size, texture));
@@ -127,6 +152,18 @@ public class TileSetManager implements Telegraph {
             tileReplace.add(new TileReplacementManager(map,
                     TileReplacementEnum.valueOf(prop.get("category").toString()), tile));
         }
+    }
+
+    public void loadMarkers(MapLayer markersLayer) {
+        System.out.println("loading markers");
+        for (MapObject marker : markersLayer.getObjects()) {
+            if (marker instanceof PointMapObject pointMarker) {
+                Vector2 coords = pointMarker.getPoint();
+                markersMap.put(marker.getName(), coords);
+            }
+        }
+        for(String key : markersMap.keySet())
+        System.out.println(markersMap.get(key));
     }
 
     @Override
