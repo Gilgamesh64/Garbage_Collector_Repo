@@ -36,9 +36,7 @@ public class Scope extends GameActor{
                 return;
             hitplayer = true;
         });
-        hitbox.setOnLeave(collider -> {
-            hitplayer = false;
-        });
+        hitbox.setOnLeave(collider -> hitplayer = false);
         hitbox.register();
 
         if(Data.debug) debug();

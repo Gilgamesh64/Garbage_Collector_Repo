@@ -122,14 +122,6 @@ public enum TextureEnum {
         this.frameCount = frameCount;
     }
 
-    /**
-     * Animation included in a textureatlas with default rate and delay
-     * Lable is trivial, should always be the same name as the enum
-     * 
-     * @param animationRate
-     * @param delay
-     * @param frameCount
-     */
     TextureEnum(int frameCount) {
         this.path = name().toLowerCase();
         this.frameCount = frameCount;

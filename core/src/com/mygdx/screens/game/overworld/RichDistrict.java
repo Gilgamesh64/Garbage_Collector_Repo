@@ -12,15 +12,13 @@ import com.mygdx.screens.generic.PlayableScreen;
 
 public class RichDistrict extends PlayableScreen {
 
-        private NPC particularNPC2 = NPCBuilder.create(AnimationEnum.BLACKMARKETEER, Data.TILE * 55, Data.TILE * 25)
-                        .onInteraction(npc -> {
-                                npc.runPath(
-                                        PathFinder.find(
-                                                new Vector2(Data.TILE * 55, Data.TILE * 25),
-                                                PathFinder.getMarker("hall")
-                                        )
-                                );
-                        })
+        private final NPC particularNPC2 = NPCBuilder.create(AnimationEnum.BLACKMARKETEER, Data.TILE * 55, Data.TILE * 25)
+                        .onInteraction(npc -> npc.runPath(
+                                PathFinder.find(
+                                        new Vector2(Data.TILE * 55, Data.TILE * 25),
+                                        PathFinder.getMarker("hall")
+                                )
+                        ))
                         .build();
 
         public RichDistrict() {

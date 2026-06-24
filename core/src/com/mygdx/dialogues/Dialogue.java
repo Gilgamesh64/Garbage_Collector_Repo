@@ -29,11 +29,6 @@ public class Dialogue extends Actor {
     private final TypewriterEffect typer;
     private boolean running = true;
 
-    /**
-     * Creates a dialogue with the given Story and assigns the story to the Actor
-     * @param gs
-     * @param actor
-     */
     public Dialogue(GameStory gs, GameActor actor) {
         this.story = gs.getStory();
         gs.setActor(actor);

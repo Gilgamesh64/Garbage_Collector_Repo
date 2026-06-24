@@ -28,8 +28,7 @@ public class Couple {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (!(obj instanceof Couple)) return false;
-        Couple c = (Couple) obj;
+        if (!(obj instanceof Couple c)) return false;
         return h.equals(c.h) && r.equals(c.r);
     }
 

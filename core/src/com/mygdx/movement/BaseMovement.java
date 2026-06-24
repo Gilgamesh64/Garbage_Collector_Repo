@@ -57,11 +57,6 @@ public class BaseMovement {
         updateCoords();
     }
 
-    /**
-     * Move.
-     * 
-     * @return The modified position.
-     */
     public void move(float delta) {
         velocity.setAngleDeg(angle.angleDeg());
         Vector2 movement = velocity.cpy().scl(delta);

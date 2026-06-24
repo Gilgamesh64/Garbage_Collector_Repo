@@ -24,7 +24,7 @@ public class TextureDoor extends Door {
         TextureEnum closingEnum = TextureEnum.valueOf(closing);
 
         var texture = RM.get().getAtlas(AtlasEnum.COMPONENTS).findRegion(opening.toLowerCase());
-        float width = texture.getRegionWidth() / openingEnum.frameCount * size;
+        float width = (float) texture.getRegionWidth() / openingEnum.frameCount * size;
         float height = texture.getRegionHeight();
         animationManager = new AnimationManager(AtlasEnum.COMPONENTS, 0.1f, size, 1,  openingEnum, closingEnum).playOnce(true);
         animationManager.shouldNotDoFirstPlay();

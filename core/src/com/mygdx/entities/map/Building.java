@@ -31,12 +31,8 @@ public class Building extends GameActor {
                         getY() + 16 + animationManager.getHeight() * 0.5f),
                 animationManager.getWidth(), animationManager.getHeight() - 32, true);
         hitbox.setTags(Tags.BUILDING);
-        hitbox.setOnHit((collider) -> {
-            fade = 0.2f;
-        });
-        hitbox.setOnLeave((collider) -> {
-            fade = 1;
-        });
+        hitbox.setOnHit((collider) -> fade = 0.2f);
+        hitbox.setOnLeave((collider) -> fade = 1);
         hitbox.register();
         if(Data.debug) debug();
     }
@@ -56,12 +52,8 @@ public class Building extends GameActor {
                         getY() + 16 + animationManager.getHeight() * 0.5f),
                 animationManager.getWidth(), animationManager.getHeight() - 32, true);
         hitbox.setTags(Tags.BUILDING);
-        hitbox.setOnHit((collider) -> {
-            fade = 0.2f;
-        });
-        hitbox.setOnLeave((collider) -> {
-            fade = 1;
-        });
+        hitbox.setOnHit((collider) -> fade = 0.2f);
+        hitbox.setOnLeave((collider) -> fade = 1);
         hitbox.register();
         if(Data.debug) debug();
     }

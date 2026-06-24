@@ -1,6 +1,7 @@
 package com.mygdx.hitboxes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.function.Consumer;
 
 import com.badlogic.gdx.math.Intersector;
@@ -56,7 +57,6 @@ public class Hitbox extends Polygon {
      * @param anchor  the hitbox's anchor coordinates.
      * @param width   as large as the sea!
      * @param height  as tall as the sky!
-     * @param degrees specifies the hitbox's rotation.
      */
     public Hitbox(Vector2 anchor, float width, float height, boolean active) {
         this(anchor, width, height, 0, active);
@@ -155,9 +155,7 @@ public class Hitbox extends Polygon {
 
     public void setTags(Tags... tags) {
         this.tags.clear();
-        for (Tags tag : tags) {
-            this.tags.add(tag);
-        }
+        this.tags.addAll(Arrays.asList(tags));
     }
 
     public LockedInfo getExtraInfo() {

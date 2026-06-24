@@ -59,7 +59,6 @@ public class NPC extends ScriptableActor {
 
             if (leftPressed && npcBuilder.story != null && !Data.dialogueActive) {
                 tell(npcBuilder.story);
-                return;
             }
         });
         hitbox.register();

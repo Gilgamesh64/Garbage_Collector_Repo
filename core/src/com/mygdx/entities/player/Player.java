@@ -45,9 +45,7 @@ public class Player extends ScriptableActor {
 
         hitbox = new Hitbox(center, getWidth(), getHeight(), 0, true);
         hitbox.setTags(Tags.PLAYER);
-        hitbox.setOnHit((collider) -> {
-            System.out.println("Colpito!");
-        });
+        hitbox.setOnHit((collider) -> System.out.println("Colpito!"));
         hitbox.register();
 
         setPosition(coordinates.x, coordinates.y);

@@ -1,6 +1,7 @@
 package com.mygdx.hitboxes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.function.Consumer;
 
 import com.badlogic.gdx.math.Polygon;
@@ -125,9 +126,7 @@ public class Collider extends Polygon {
 
     public void setTags(Tags... tags) {
         this.tags.clear();
-        for (Tags tag : tags) {
-            this.tags.add(tag);
-        }
+        this.tags.addAll(Arrays.asList(tags));
     }
 
     public boolean containsSearchTag(Tags tag) {
@@ -140,9 +139,7 @@ public class Collider extends Polygon {
 
     public void setSearchTags(Tags... searchTags) {
         this.searchTags.clear();
-        for (Tags tag : searchTags) {
-            this.searchTags.add(tag);
-        }
+        this.searchTags.addAll(Arrays.asList(searchTags));
     }
 
     public LockedInfo getExtraInfo() {

@@ -42,9 +42,7 @@ public class BaseMelee extends Actor {
         collider = new Collider(origin, getWidth(), getHeight(), angle);
         collider.setTags(Tags.PROJECTILE);
         collider.setSearchTags(Tags.ENEMY);
-        collider.setOnHit(hitbox -> {
-            delete();
-        });
+        collider.setOnHit(hitbox -> delete());
         collider.register();
     }
 

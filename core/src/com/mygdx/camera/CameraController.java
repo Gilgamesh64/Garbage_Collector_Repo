@@ -47,10 +47,10 @@ public class CameraController {
             }
 
             if (Gdx.input.isKeyPressed(Keys.NUMPAD_8)) {
-                camera.zoom -= 0.005;
+                camera.zoom -= 0.005F;
             }
             if (Gdx.input.isKeyPressed(Keys.NUMPAD_2)) {
-                camera.zoom += 0.005;
+                camera.zoom += 0.005F;
             }
             return;
         }

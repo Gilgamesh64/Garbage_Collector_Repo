@@ -16,9 +16,7 @@ public class WaitAction implements ScriptAction {
         actor.addAction(
                 Actions.sequence(
                         Actions.delay(time),
-                        Actions.run(() -> {
-                            actor.proceed();
-                        })));
+                        Actions.run(actor::proceed)));
 
     }
 }

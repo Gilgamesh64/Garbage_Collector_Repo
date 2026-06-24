@@ -26,22 +26,17 @@ public class ObjectInfo {
             switch (i) {
                 case 1 -> {
                     boolInfo = new HashMap<>();
-                    break;
                 }
                 case 2 -> {
                     integerInfo = new HashMap<>();
-                    break;
                 }
                 case 3 -> {
                     floatInfo = new HashMap<>();
-                    break;
                 }
                 case 4 -> {
                     stringInfo = new HashMap<>();
-                    break;
                 }
                 default -> {
-                    break;
                 }
             }
         }
