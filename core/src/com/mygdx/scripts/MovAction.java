@@ -15,6 +15,7 @@ public class MovAction implements ScriptAction{
 
     @Override
     public void perform(ScriptableActor actor) {
-        actor.move(x, y, relative);
+        if(relative) actor.movRel(x, y);
+        else actor.movAbs(x, y);
     }
 }

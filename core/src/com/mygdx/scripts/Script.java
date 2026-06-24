@@ -49,4 +49,8 @@ public class Script {
         actions.remove(0);
         action.perform(a);
     }
+
+    public Class<? extends ScriptAction> getCurrentScriptClass(){
+        return actions.get(0).getClass();
+    }
 }

@@ -14,6 +14,6 @@ public class AniAction implements ScriptAction{
 
     @Override
     public void perform(ScriptableActor actor) {
-        actor.changeAnimation(texture, 0.3f);
+        actor.changeAnimation(texture);
     }
 }

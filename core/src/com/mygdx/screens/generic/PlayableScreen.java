@@ -1,5 +1,7 @@
 package com.mygdx.screens.generic;
 
+import java.util.HashMap;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -31,7 +33,7 @@ public abstract class PlayableScreen extends GenericScreen {
 
     protected Hud hud;
 
-    protected TileSetManager tileSetManager;
+    public TileSetManager tileSetManager;
 
     protected HitboxHandler hitboxHandler;
 
@@ -132,6 +134,10 @@ public abstract class PlayableScreen extends GenericScreen {
 
     public String getName(){
         return this.name.name();
+    }
+
+    public HashMap<String, Vector2> getMarkersMap(){
+        return tileSetManager.markersMap;
     }
 
     @Override

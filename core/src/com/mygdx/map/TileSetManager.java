@@ -16,7 +16,6 @@ import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.Data;
 import com.mygdx.GCStage;
 import com.mygdx.entities.map.Building;
 import com.mygdx.entities.map.Component;
@@ -31,39 +30,37 @@ public class TileSetManager implements Telegraph {
     private final TiledMapRenderer tiledMapRenderer;
     private final TiledMap map;
 
-    private ArrayList<TileReplacementManager> tileReplace = new ArrayList<>();
+    private final ArrayList<TileReplacementManager> tileReplace = new ArrayList<>();
 
-    private HashMap<String, Vector2> markersMap = new HashMap<>();
+    public final HashMap<String, Vector2> markersMap = new HashMap<>();
 
     public TileSetManager(MapEnum e) {
         map = RM.get().getMap(e);
         tiledMapRenderer = new OrthogonalTiledMapRenderer(map);
 
         MapLayer doorLayer = map.getLayers().get("doors");
-        if (doorLayer == null && Data.debug)
+        if (doorLayer == null)
             System.out.println("Are you aware there is no door layer right?");
 
         else loadDoors(doorLayer);
 
         MapLayer buildingsLayer = map.getLayers().get("buildings");
-        if (buildingsLayer == null && Data.debug)
+        if (buildingsLayer == null)
             System.out.println("Are you aware there is no buildings layer right?");
         
         else loadBuildings(buildingsLayer);
 
         MapLayer componentsLayer = map.getLayers().get("components");
-        if (componentsLayer == null && Data.debug)
+        if (componentsLayer == null)
             System.out.println("Are you aware there is no components layer right?");
         
         else loadComponents(componentsLayer);
 
         MapLayer markersLayer = map.getLayers().get("markers");
-        if (markersLayer == null && Data.debug)
+        if (markersLayer == null)
             System.out.println("Are you aware there is no markers layer right?");
         
         else loadMarkers(markersLayer);
-
-        System.out.println("loaded markers");
 
         loadReplacers();
     }
@@ -77,7 +74,7 @@ public class TileSetManager implements Telegraph {
         return map;
     }
 
-    public void loadBuildings(MapLayer buildingsLayer) {
+    private void loadBuildings(MapLayer buildingsLayer) {
 
         for (MapObject obj : buildingsLayer.getObjects()) {
             if (obj instanceof RectangleMapObject rectObj) {
@@ -98,7 +95,7 @@ public class TileSetManager implements Telegraph {
 
     }
 
-    public void loadComponents(MapLayer componentsLayer) {
+    private void loadComponents(MapLayer componentsLayer) {
 
         for (MapObject obj : componentsLayer.getObjects()) {
             if (obj instanceof RectangleMapObject rectObj) {
@@ -140,7 +137,7 @@ public class TileSetManager implements Telegraph {
         }
     }
 
-    public void loadReplacers() {
+    private void loadReplacers() {
 
         for (TiledMapTile tile : map.getTileSets().getTileSet(0)) {
 
@@ -154,17 +151,16 @@ public class TileSetManager implements Telegraph {
         }
     }
 
-    public void loadMarkers(MapLayer markersLayer) {
-        System.out.println("loading markers");
+    private void loadMarkers(MapLayer markersLayer) {
         for (MapObject marker : markersLayer.getObjects()) {
             if (marker instanceof PointMapObject pointMarker) {
                 Vector2 coords = pointMarker.getPoint();
                 markersMap.put(marker.getName(), coords);
             }
         }
-        for(String key : markersMap.keySet())
-        System.out.println(markersMap.get(key));
     }
+
+
 
     @Override
     public boolean handleMessage(Telegram msg) {
