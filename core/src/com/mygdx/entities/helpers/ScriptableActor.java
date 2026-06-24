@@ -8,6 +8,7 @@ import com.mygdx.GCStage;
 import com.mygdx.dialogues.Dialogue;
 import com.mygdx.hud.Hud;
 import com.mygdx.messages.MSG;
+import com.mygdx.path.Path;
 import com.mygdx.resources.RM;
 import com.mygdx.resources.enums.DialogueEnum;
 import com.mygdx.resources.enums.ScriptEnum;
@@ -20,6 +21,8 @@ public class ScriptableActor extends GameActor {
     private Table dialTable;
     private Label dial = new Label("", RM.get().skin().get("small_dial", Label.LabelStyle.class));
     public MSG listeningMSG;
+    protected Path path;
+
 
     public ScriptableActor() {
         super();
@@ -69,6 +72,15 @@ public class ScriptableActor extends GameActor {
         dial.setText(text);
         GCStage.get().addActor(dialTable);
         addAction(Actions.sequence(Actions.delay(5), Actions.run(() -> dialTable.remove())));
+    }
+
+    public void runPath(Path path){
+        this.path = path;
+        path.advance(this);
+    }
+
+    public Path getPath(){
+        return path;
     }
 
     @Override

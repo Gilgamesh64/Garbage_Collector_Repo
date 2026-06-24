@@ -15,7 +15,6 @@ public class GameActor extends Actor implements Telegraph {
 
     public Vector2 center = new Vector2();
 
-
     @Override
     protected void positionChanged() {
         super.positionChanged();
@@ -52,8 +51,7 @@ public class GameActor extends Actor implements Telegraph {
     }
 
     public void movAbs(String destination){
-        System.out.println(ScreensManager.getPlayableScreen(ScreensManager.getLastPlayableActiveScreen()).tileSetManager.markersMap.get(destination));
-        Vector2 coords = ScreensManager.getPlayableScreen(ScreensManager.getLastPlayableActiveScreen()).tileSetManager.markersMap.get(destination);
+        Vector2 coords = ScreensManager.getCurrentPlayableScreen().tileSetManager.markersMap.get(destination);
         
         if(coords == null) return;
         movAbs(coords);
@@ -70,6 +68,7 @@ public class GameActor extends Actor implements Telegraph {
     public boolean isAutoWalking() {
         return autoMovementManager.isAnimationInProgress();
     }
+
 
     @Override
     public boolean handleMessage(Telegram msg) {

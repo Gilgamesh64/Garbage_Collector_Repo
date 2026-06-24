@@ -7,9 +7,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.mygdx.DelayManager;
 import com.mygdx.gunControls.guns.BaseGun;
 import com.mygdx.gunControls.guns.DummyGun;
-import com.mygdx.delay.DelayManager;
 
 public class GunController extends Actor {
     private static GunController instance;

@@ -18,7 +18,7 @@ import com.mygdx.screens.menus.SettingsScreen;
 public class ScreensManager {
 
     private static final HashMap<Screens, GenericScreen> map = new HashMap<>();
-    private static Screens lastPlayableActiveScreen;
+    private static Screens lastPlayableActiveScreenEnum;
 
     public static GenericScreen getScreen(Screens name) {
         if (map.get(name) == null) {
@@ -50,7 +50,7 @@ public class ScreensManager {
             }
         }
         if (map.get(name) instanceof PlayableScreen)
-            lastPlayableActiveScreen = name;
+            lastPlayableActiveScreenEnum = name;
         return map.get(name);
     }
 
@@ -62,8 +62,12 @@ public class ScreensManager {
         return map.get(screenName) == null;
     }
 
-    public static Screens getLastPlayableActiveScreen() {
-        return lastPlayableActiveScreen;
+    public static PlayableScreen getCurrentPlayableScreen(){
+        return getPlayableScreen(getLastPlayableActiveScreenEnum());
+    }
+
+    public static Screens getLastPlayableActiveScreenEnum() {
+        return lastPlayableActiveScreenEnum;
     }
 
     public static void setScreen(Screens s){

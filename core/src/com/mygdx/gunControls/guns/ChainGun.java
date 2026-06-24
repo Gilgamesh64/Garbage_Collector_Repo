@@ -1,11 +1,11 @@
 package com.mygdx.gunControls.guns;
 
 import com.mygdx.hud.Hud;
+import com.mygdx.DelayManager;
 import com.mygdx.GCStage;
 import com.mygdx.camera.CameraController;
 import com.mygdx.gunControls.GunController;
 import com.mygdx.gunControls.projectiles.Projectile;
-import com.mygdx.delay.DelayManager;
 import com.mygdx.resources.RM;
 import com.mygdx.resources.enums.AtlasEnum;
 import com.mygdx.resources.enums.TextureEnum;

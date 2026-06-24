@@ -19,8 +19,8 @@ public class Savings implements com.badlogic.gdx.utils.Json.Serializable {
     private EnumMap<Quests, String> quests = new EnumMap<>(Quests.class);
 
     public void updateData() {
-        lastRoom = ScreensManager.getLastPlayableActiveScreen();
-        lastRoomCoordinates = ScreensManager.getPlayableScreen(ScreensManager.getLastPlayableActiveScreen())
+        lastRoom = ScreensManager.getLastPlayableActiveScreenEnum();
+        lastRoomCoordinates = ScreensManager.getPlayableScreen(ScreensManager.getLastPlayableActiveScreenEnum())
                 .getPlayerCoordinates();
         fightging = GCStage.get().getPlayer().isFighting();
         flags = new boolean[] { true, true, false };
