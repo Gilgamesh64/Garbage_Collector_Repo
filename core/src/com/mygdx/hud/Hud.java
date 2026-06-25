@@ -22,30 +22,14 @@ import com.mygdx.resources.RM;
 
 public class Hud implements Disposable {
     private static Hud instance;
-
-    public static Hud get() {
-        return instance;
-    }
-
-    public static void set(Hud h) {
-        instance = h;
-    }
-
-    public static Stage stage() {
-        return get().stage;
-    }
-
     private final Stage stage;
-
     private Table table;
     private Label fps;
     private Label moneyPopup;
     private Label debugData;
     private Image healthBar;
-
     private Inventory inventory;
     private AbilityChargeWidget abilityBar;
-
     public Hud(InputMultiplexer mux) {
         FitViewport viewport = new FitViewport(Data.VIEWPORT_X, Data.VIEWPORT_Y, new OrthographicCamera());
         stage = new Stage(viewport);
@@ -77,6 +61,18 @@ public class Hud implements Disposable {
         table.add(debugData).top().right();
     }
 
+    public static Hud get() {
+        return instance;
+    }
+
+    public static void set(Hud h) {
+        instance = h;
+    }
+
+    public static Stage stage() {
+        return get().stage;
+    }
+
     public void draw() {
         stage.draw();
     }
@@ -84,7 +80,7 @@ public class Hud implements Disposable {
     public void update() {
         stage.act(Gdx.graphics.getDeltaTime());
         inventory.update();
-        
+
         fps.setText("Current FPS: " + Gdx.graphics.getFramesPerSecond());
     }
 
@@ -142,7 +138,7 @@ public class Hud implements Disposable {
 
     /**
      * Show the money popup label with the given amount
-     * 
+     *
      * @param money
      * @param gained
      */

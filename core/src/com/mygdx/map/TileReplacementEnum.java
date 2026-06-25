@@ -11,7 +11,7 @@ public enum TileReplacementEnum {
 
     private MSG msg;
 
-    TileReplacementEnum(MSG msg){
+    TileReplacementEnum(MSG msg) {
         this.msg = msg;
     }
 

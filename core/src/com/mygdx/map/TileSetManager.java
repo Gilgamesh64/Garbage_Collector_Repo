@@ -1,7 +1,5 @@
 package com.mygdx.map;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import com.badlogic.gdx.ai.msg.Telegram;
 import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -26,13 +24,14 @@ import com.mygdx.resources.enums.AtlasEnum;
 import com.mygdx.resources.enums.MapEnum;
 import com.mygdx.resources.enums.TextureEnum;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class TileSetManager implements Telegraph {
+    public final HashMap<String, Vector2> markersMap = new HashMap<>();
     private final TiledMapRenderer tiledMapRenderer;
     private final TiledMap map;
-
     private final ArrayList<TileReplacementManager> tileReplace = new ArrayList<>();
-
-    public final HashMap<String, Vector2> markersMap = new HashMap<>();
 
     public TileSetManager(MapEnum e) {
         map = RM.get().getMap(e);
@@ -47,19 +46,19 @@ public class TileSetManager implements Telegraph {
         MapLayer buildingsLayer = map.getLayers().get("buildings");
         if (buildingsLayer == null)
             System.out.println("Are you aware there is no buildings layer right?");
-        
+
         else loadBuildings(buildingsLayer);
 
         MapLayer componentsLayer = map.getLayers().get("components");
         if (componentsLayer == null)
             System.out.println("Are you aware there is no components layer right?");
-        
+
         else loadComponents(componentsLayer);
 
         MapLayer markersLayer = map.getLayers().get("markers");
         if (markersLayer == null)
             System.out.println("Are you aware there is no markers layer right?");
-        
+
         else loadMarkers(markersLayer);
 
         loadReplacers();
@@ -159,7 +158,6 @@ public class TileSetManager implements Telegraph {
             }
         }
     }
-
 
 
     @Override

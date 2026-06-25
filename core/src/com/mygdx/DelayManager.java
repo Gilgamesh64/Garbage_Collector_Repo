@@ -1,10 +1,9 @@
 package com.mygdx;
 
-import java.util.HashMap;
-
-import java.util.function.Consumer;
-
 import com.badlogic.gdx.Gdx;
+
+import java.util.HashMap;
+import java.util.function.Consumer;
 
 /**
  * Class used to subscribe objects to a delay and update delays
@@ -20,7 +19,7 @@ public class DelayManager {
 
     /**
      * registers an object to the delayManager
-     * 
+     *
      * @param o    the object you wish to register
      * @param time the amount of delay you need for the object
      */
@@ -31,7 +30,7 @@ public class DelayManager {
 
     /**
      * registers an object to the delayManager
-     * 
+     *
      * @param o      the object you wish to register
      * @param time   the amount of delay you need for the object
      * @param action action invoked when delay ends
@@ -92,7 +91,7 @@ public class DelayManager {
         return currentDelays.get(o) <= 0;
     }
 
-    public static void changeDelay(Object o, float newDelay){
+    public static void changeDelay(Object o, float newDelay) {
         originalDelays.put(o, newDelay);
         currentDelays.put(o, newDelay);
     }

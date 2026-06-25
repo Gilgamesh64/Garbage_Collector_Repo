@@ -55,7 +55,7 @@ public class PauseScreen extends GuiScreen {
                 return true;
             }
         });
-        
+
     }
 
     @Override
@@ -63,5 +63,5 @@ public class PauseScreen extends GuiScreen {
         super.render(delta);
     }
 
-    
+
 }

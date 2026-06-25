@@ -7,6 +7,13 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.mygdx.AnimationManager;
+import com.mygdx.Data;
+import com.mygdx.GCStage;
+import com.mygdx.camera.CameraController;
+import com.mygdx.entities.AbilityChargeMeter;
+import com.mygdx.entities.MovementAbilityHelper;
+import com.mygdx.entities.helpers.ScriptableActor;
 import com.mygdx.gunControls.GunController;
 import com.mygdx.hitboxes.Collider;
 import com.mygdx.hitboxes.Hitbox;
@@ -15,13 +22,6 @@ import com.mygdx.messages.MSG;
 import com.mygdx.resources.enums.AnimationEnum;
 import com.mygdx.resources.enums.AtlasEnum;
 import com.mygdx.resources.enums.TextureEnum;
-import com.mygdx.AnimationManager;
-import com.mygdx.Data;
-import com.mygdx.GCStage;
-import com.mygdx.camera.CameraController;
-import com.mygdx.entities.AbilityChargeMeter;
-import com.mygdx.entities.MovementAbilityHelper;
-import com.mygdx.entities.helpers.ScriptableActor;
 
 public class Player extends ScriptableActor {
 

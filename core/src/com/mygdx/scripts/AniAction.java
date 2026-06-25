@@ -3,7 +3,7 @@ package com.mygdx.scripts;
 import com.mygdx.entities.helpers.ScriptableActor;
 import com.mygdx.resources.enums.TextureEnum;
 
-public class AniAction implements ScriptAction{
+public class AniAction implements ScriptAction {
     TextureEnum texture;
 
 

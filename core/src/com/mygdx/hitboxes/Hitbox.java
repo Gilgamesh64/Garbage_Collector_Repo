@@ -1,9 +1,5 @@
 package com.mygdx.hitboxes;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.function.Consumer;
-
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
@@ -11,17 +7,21 @@ import com.mygdx.messages.LockedInfo;
 import com.mygdx.messages.ObjectInfo;
 import com.mygdx.movement.BaseMovement;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.function.Consumer;
+
 public class Hitbox extends Polygon {
+    public final boolean isNull;
     private ArrayList<Tags> tags = new ArrayList<>();
     private Consumer<Collider> onHit, onLeave, onFrame;
     private BaseMovement movement;
     private LockedInfo extraInfo;
     private boolean active, registered = false;
-    public final boolean isNull;
 
     /**
      * Creates a Hitbox with specified position, size, rotation, and form.
-     * 
+     *
      * @param anchor   the hitbox's anchor coordinates.
      * @param degrees  specifies the hitbox's rotation.
      * @param vertices an array whose elements in pairs represent the x and y of the
@@ -41,22 +41,22 @@ public class Hitbox extends Polygon {
 
     /**
      * Creates a box Hitbox with specified position, size, and rotation.
-     * 
+     *
      * @param anchor  the hitbox's anchor coordinates.
      * @param width   as large as the sea!
      * @param height  as tall as the sky!
      * @param degrees specifies the hitbox's rotation.
      */
     public Hitbox(Vector2 anchor, float width, float height, int degrees, boolean active) {
-        this(anchor, degrees, new float[] { 0, 0, width, 0, width, height, 0, height }, active);
+        this(anchor, degrees, new float[] {0, 0, width, 0, width, height, 0, height}, active);
     }
 
     /**
      * Creates a box Hitbox with specified position and size.
-     * 
-     * @param anchor  the hitbox's anchor coordinates.
-     * @param width   as large as the sea!
-     * @param height  as tall as the sky!
+     *
+     * @param anchor the hitbox's anchor coordinates.
+     * @param width  as large as the sea!
+     * @param height as tall as the sky!
      */
     public Hitbox(Vector2 anchor, float width, float height, boolean active) {
         this(anchor, width, height, 0, active);
@@ -112,7 +112,7 @@ public class Hitbox extends Polygon {
             HitboxHandler.get().storeContact(r, this);
             HitboxHandler.get().setContact(r, this, true);
         }
-        
+
         onFrame(r);
         r.onFrame(this);
         return collision;
@@ -183,7 +183,7 @@ public class Hitbox extends Polygon {
 
     /***
      * Register method to add the HitBox to the Event handler with a check.
-     * 
+     *
      * @return {@code true} if the HitBox has been added.
      */
     public boolean register() {
@@ -198,7 +198,7 @@ public class Hitbox extends Polygon {
 
     /***
      * Register method to remove the HitBox to the Event handler with a check.
-     * 
+     *
      * @return {@code true} if the HitBox has been removed.
      */
     public boolean unregister() {

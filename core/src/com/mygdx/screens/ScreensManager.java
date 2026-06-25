@@ -1,19 +1,19 @@
 package com.mygdx.screens;
 
-import java.util.HashMap;
-
 import com.mygdx.game.GarbageCollection;
 import com.mygdx.resources.RM;
 import com.mygdx.screens.game.arenas.ReflectionArena;
-import com.mygdx.screens.game.overworld.Slums;
 import com.mygdx.screens.game.overworld.Inside;
 import com.mygdx.screens.game.overworld.Park;
 import com.mygdx.screens.game.overworld.RichDistrict;
+import com.mygdx.screens.game.overworld.Slums;
 import com.mygdx.screens.generic.GenericScreen;
 import com.mygdx.screens.generic.PlayableScreen;
 import com.mygdx.screens.menus.MenuScreen;
 import com.mygdx.screens.menus.PauseScreen;
 import com.mygdx.screens.menus.SettingsScreen;
+
+import java.util.HashMap;
 
 public class ScreensManager {
 
@@ -62,7 +62,7 @@ public class ScreensManager {
         return map.get(screenName) == null;
     }
 
-    public static PlayableScreen getCurrentPlayableScreen(){
+    public static PlayableScreen getCurrentPlayableScreen() {
         return getPlayableScreen(getLastPlayableActiveScreenEnum());
     }
 
@@ -70,15 +70,15 @@ public class ScreensManager {
         return lastPlayableActiveScreenEnum;
     }
 
-    public static void setScreen(Screens s){
+    public static void setScreen(Screens s) {
         RM.get().stopAllAudio();
         GarbageCollection.getInstance().setScreen(ScreensManager.getScreen(s));
     }
 
-    public static void setScreen(Screens s, String doorName){
+    public static void setScreen(Screens s, String doorName) {
         RM.get().stopAllAudio();
         GarbageCollection.getInstance().setScreen(ScreensManager.getScreen(s));
-        if(GarbageCollection.getInstance().getScreen() instanceof PlayableScreen ps){
+        if (GarbageCollection.getInstance().getScreen() instanceof PlayableScreen ps) {
             ps.exitFrom(doorName);
         }
     }

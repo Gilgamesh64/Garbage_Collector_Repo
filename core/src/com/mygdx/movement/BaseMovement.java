@@ -100,7 +100,7 @@ public class BaseMovement {
 
     /**
      * Anchors this movement to an anchor's world position.
-     * 
+     *
      * @param anchor The anchor's world position.
      */
     public void anchor(Vector2 anchor) {

@@ -1,7 +1,5 @@
 package com.mygdx;
 
-import java.util.stream.Stream;
-
 import com.badlogic.gdx.ai.msg.MessageDispatcher;
 import com.badlogic.gdx.ai.msg.Telegraph;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -11,12 +9,17 @@ import com.mygdx.entities.map.doors.Door;
 import com.mygdx.entities.player.Player;
 import com.mygdx.messages.MSG;
 
-public class GCStage extends Stage {
-    private MessageDispatcher stageMsg;
+import java.util.stream.Stream;
 
+public class GCStage extends Stage {
+    private static GCStage instance;
+    private MessageDispatcher stageMsg;
     private Player player;
 
-    private static GCStage instance;
+    public GCStage(Viewport v) {
+        super(v);
+        stageMsg = new MessageDispatcher();
+    }
 
     public static GCStage get() {
         return instance;
@@ -24,11 +27,6 @@ public class GCStage extends Stage {
 
     public static void set(GCStage stage) {
         instance = stage;
-    }
-
-    public GCStage(Viewport v) {
-        super(v);
-        stageMsg = new MessageDispatcher();
     }
 
     @Override

@@ -5,18 +5,18 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.mygdx.messages.ObjectInfo;
 import com.mygdx.hitboxes.Collider;
 import com.mygdx.hitboxes.Tags;
+import com.mygdx.messages.ObjectInfo;
 import com.mygdx.movement.BaseMovement;
 
 public class BaseMelee extends Actor {
     protected Sprite s;
     protected BaseMovement movement;
     protected float angle, speed, end;
-    private boolean flipped;
     protected Collider collider = new Collider();
     protected ObjectInfo info;
+    private boolean flipped;
 
     public BaseMelee(Sprite s, Vector2 origin, float angle, float arc, float speed, boolean flipped) {
         this.s = s;
@@ -97,14 +97,14 @@ public class BaseMelee extends Actor {
     /**
      * Creates the additional info object instance with the specified maps to
      * initialize, then, attaches it to the collider.
-     * 
+     *
      * <pre>
-     *1: Boolean Map.
-     *2: Integer Map.
-     *3: Float Map.
-     *4: String Map.
+     * 1: Boolean Map.
+     * 2: Integer Map.
+     * 3: Float Map.
+     * 4: String Map.
      * </pre>
-     * 
+     *
      * @param selector array of numbers.
      */
     protected void attachInfo(int... selector) {

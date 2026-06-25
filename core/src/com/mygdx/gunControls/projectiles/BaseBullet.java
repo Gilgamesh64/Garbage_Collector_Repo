@@ -5,11 +5,11 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.mygdx.messages.ObjectInfo;
 import com.mygdx.GCStage;
 import com.mygdx.effects.Effect;
 import com.mygdx.hitboxes.Collider;
 import com.mygdx.hitboxes.Tags;
+import com.mygdx.messages.ObjectInfo;
 import com.mygdx.movement.BaseMovement;
 import com.mygdx.resources.enums.TextureEnum;
 
@@ -94,7 +94,7 @@ public class BaseBullet extends Actor {
     public void setOffset(Vector2 offset, float angle) {
         movement.offset(offset, angle);
         s.setOrigin(movement.origin.x, movement.origin.y);
-        
+
         Vector2 worldCoords = movement.getWorldCoords();
         setPosition(worldCoords.x, worldCoords.y);
         //collider.setOffset(offset, angle);
@@ -103,14 +103,14 @@ public class BaseBullet extends Actor {
     /**
      * Creates the additional info object instance with the specified maps to
      * initialize, then, attaches it to the collider.
-     * 
+     *
      * <pre>
-     *1: Boolean Map.
-     *2: Integer Map.
-     *3: Float Map.
-     *4: String Map.
+     * 1: Boolean Map.
+     * 2: Integer Map.
+     * 3: Float Map.
+     * 4: String Map.
      * </pre>
-     * 
+     *
      * @param selector array of numbers.
      */
     protected void attachInfo(int... selector) {

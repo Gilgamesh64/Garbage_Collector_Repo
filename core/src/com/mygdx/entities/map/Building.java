@@ -14,10 +14,9 @@ import com.mygdx.resources.enums.TextureEnum;
 
 public class Building extends GameActor {
 
+    private final AnimationManager animationManager;
     private Hitbox hitbox = new Hitbox();
     private float fade = 1;
-
-    private final AnimationManager animationManager;
 
     public Building(Vector2 coords, TextureEnum... textures) {
         super();
@@ -34,9 +33,10 @@ public class Building extends GameActor {
         hitbox.setOnHit((collider) -> fade = 0.2f);
         hitbox.setOnLeave((collider) -> fade = 1);
         hitbox.register();
-        if(Data.debug) debug();
+        if (Data.debug) debug();
     }
-    public Building(float x, float y, TextureEnum... textures){
+
+    public Building(float x, float y, TextureEnum... textures) {
         this(new Vector2(x, y), textures);
     }
 
@@ -55,10 +55,10 @@ public class Building extends GameActor {
         hitbox.setOnHit((collider) -> fade = 0.2f);
         hitbox.setOnLeave((collider) -> fade = 1);
         hitbox.register();
-        if(Data.debug) debug();
+        if (Data.debug) debug();
     }
 
-    public Building(float x, float y, TextureEnum textures){
+    public Building(float x, float y, TextureEnum textures) {
         this(new Vector2(x, y), textures);
     }
 

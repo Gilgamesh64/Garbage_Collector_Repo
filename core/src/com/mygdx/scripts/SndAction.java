@@ -3,10 +3,10 @@ package com.mygdx.scripts;
 import com.mygdx.entities.helpers.ScriptableActor;
 import com.mygdx.messages.MSG;
 
-public class SndAction implements ScriptAction{
+public class SndAction implements ScriptAction {
     private MSG msg;
 
-    public SndAction(MSG m){
+    public SndAction(MSG m) {
         msg = m;
     }
 
@@ -15,6 +15,6 @@ public class SndAction implements ScriptAction{
     public void perform(ScriptableActor actor) {
         System.out.println("Sending: " + msg);
         actor.proceed();
-        
+
     }
 }

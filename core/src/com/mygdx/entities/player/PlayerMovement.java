@@ -25,7 +25,7 @@ public class PlayerMovement {
      * moves the player and returns the correct direction of the body
      */
     public String move() {
-        if(Data.dialogueActive) return lastDirection;
+        if (Data.dialogueActive) return lastDirection;
         return player.isFighting() ? moveWhileFighting() : moveWhileNotFighting();
     }
 
@@ -67,7 +67,7 @@ public class PlayerMovement {
                 finalPosition.y -= 40;
             finalPosition.y -= 100;
         }
-        
+
         if (TileMapCollisionsManager.getCurrentTileProprieties() == null)
             return "";
 

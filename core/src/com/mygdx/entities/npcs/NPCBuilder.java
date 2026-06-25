@@ -16,13 +16,13 @@ public class NPCBuilder {
     protected NpcInteraction interaction;
     protected NpcUpdate update;
 
-    public static NPCBuilder create(AnimationEnum anim, int x, int y) {
-        return new NPCBuilder(anim, new Vector2(x, y));
-    }
-
     private NPCBuilder(AnimationEnum anim, Vector2 coords) {
         this.anim = anim;
         this.coordinates = coords;
+    }
+
+    public static NPCBuilder create(AnimationEnum anim, int x, int y) {
+        return new NPCBuilder(anim, new Vector2(x, y));
     }
 
     public NPCBuilder size(float x, float y) {
@@ -45,7 +45,7 @@ public class NPCBuilder {
         return this;
     }
 
-    public NPCBuilder onConstruction(NpcConstruction construction){
+    public NPCBuilder onConstruction(NpcConstruction construction) {
         this.construction = construction;
         return this;
     }

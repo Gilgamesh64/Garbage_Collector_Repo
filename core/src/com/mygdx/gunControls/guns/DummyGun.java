@@ -8,12 +8,11 @@ public class DummyGun extends BaseGun {
         super();
     }
 
-    
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
     }
-    
+
     @Override
     public void act(float delta) {
     }

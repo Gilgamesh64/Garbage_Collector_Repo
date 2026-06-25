@@ -1,7 +1,5 @@
 package com.mygdx.hud;
 
-import java.util.Map;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -16,11 +14,12 @@ import com.mygdx.Money;
 import com.mygdx.resources.RM;
 import com.ray3k.stripe.PopTable;
 
+import java.util.Map;
+
 public class Inventory {
 
-    private Stage stage;
     public PopTable table;
-
+    private Stage stage;
     private Label moneyLabel;
 
     public Inventory(Stage stage) {
@@ -69,7 +68,7 @@ public class Inventory {
         moneyLabel.setText(Money.get());
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings ("unused")
     private void printTableData(Table printableTable) {
         Map<String, Float> data = Map.ofEntries(
                 Map.entry("width", printableTable.getWidth()),

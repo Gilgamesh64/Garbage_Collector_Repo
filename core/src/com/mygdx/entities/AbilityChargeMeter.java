@@ -14,7 +14,7 @@ public class AbilityChargeMeter {
     }
 
     public static int getAvailableCharges() {
-        return (int)(charge / CHARGE_PER_USE);
+        return (int) (charge / CHARGE_PER_USE);
     }
 
     public static boolean canUseAbility() {

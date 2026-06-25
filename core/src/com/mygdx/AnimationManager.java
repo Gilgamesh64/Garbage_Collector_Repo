@@ -1,16 +1,17 @@
 package com.mygdx;
 
-import java.util.EnumMap;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.entities.helpers.GameActor;
 import com.mygdx.resources.RM;
 import com.mygdx.resources.enums.AnimationEnum;
 import com.mygdx.resources.enums.AtlasEnum;
 import com.mygdx.resources.enums.TextureEnum;
+
+import java.util.EnumMap;
 
 public class AnimationManager {
     private EnumMap<TextureEnum, Animation<TextureRegion>> animationMap = new EnumMap<>(TextureEnum.class);
@@ -90,7 +91,9 @@ public class AnimationManager {
         return this;
     }
 
-    /** updates currentFrame state */
+    /**
+     * updates currentFrame state
+     */
     public void updateAnimation(float delta) {
         pauser.act(delta);
 
@@ -144,13 +147,15 @@ public class AnimationManager {
 
     /**
      * @return true if the animation has completed (only relevant if playOnce =
-     *         true)
+     * true)
      */
     public boolean isFinishedOnce() {
         return finishedOnce;
     }
 
-    /** @return current frame in the animation */
+    /**
+     * @return current frame in the animation
+     */
     public TextureRegion getCurrentFrame() {
         return currentFrame;
     }

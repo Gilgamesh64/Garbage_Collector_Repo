@@ -13,7 +13,7 @@ public enum DialogueEnum {
 
     public String path;
 
-    DialogueEnum(String path){
+    DialogueEnum(String path) {
         this.path = path;
     }
 }

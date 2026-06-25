@@ -17,10 +17,9 @@ import com.mygdx.scripts.Script;
 
 public class NPC extends ScriptableActor {
 
-    protected int lf = 2;
-
-    protected Hitbox hitbox = new Hitbox();
     public Script script;
+    protected int lf = 2;
+    protected Hitbox hitbox = new Hitbox();
     protected String name;
     private Dialogue currentDialogue = null;
 
@@ -52,9 +51,9 @@ public class NPC extends ScriptableActor {
 
             boolean leftPressed = Gdx.input.isButtonJustPressed(Input.Buttons.LEFT);
 
-            if(leftPressed && !Data.dialogueActive){
-                if(npcBuilder.story != null) tell(npcBuilder.story);
-                if(npcBuilder.interaction != null) npcBuilder.interaction.interact(this);
+            if (leftPressed && !Data.dialogueActive) {
+                if (npcBuilder.story != null) tell(npcBuilder.story);
+                if (npcBuilder.interaction != null) npcBuilder.interaction.interact(this);
             }
 
             if (leftPressed && npcBuilder.story != null && !Data.dialogueActive) {
@@ -70,7 +69,7 @@ public class NPC extends ScriptableActor {
         if (Data.debug)
             debug();
 
-        if(npcBuilder.construction != null)
+        if (npcBuilder.construction != null)
             npcBuilder.construction.onConstruction(this);
     }
 

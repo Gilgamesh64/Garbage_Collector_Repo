@@ -25,7 +25,7 @@ public abstract class GenericScreen extends ScreenAdapter {
         camera = new OrthographicCamera();
         stage = new GCStage(new FitViewport(Data.VIEWPORT_X, Data.VIEWPORT_Y, camera));
         GCStage.set(stage);
-        
+
         mux = new InputMultiplexer();
         mux.addProcessor(stage);
     }

@@ -1,6 +1,8 @@
 package com.mygdx.gunControls;
 
-import com.mygdx.gunControls.guns.*;
+import com.mygdx.gunControls.guns.BaseGun;
+import com.mygdx.gunControls.guns.ChainGun;
+import com.mygdx.gunControls.guns.Usblade;
 import com.mygdx.savings.SavingsManager;
 
 public enum GunsEnum {

@@ -5,7 +5,7 @@ import com.mygdx.Data;
 import com.mygdx.screens.ScreensManager;
 
 public class PathFinder {
-    public static Path find(Vector2 start, Vector2 end){
+    public static Path find(Vector2 start, Vector2 end) {
         return Path.of(
                 new Vector2(Data.TILE * 50, Data.TILE * 25),
                 new Vector2(Data.TILE * 40, Data.TILE * 40),
@@ -14,7 +14,7 @@ public class PathFinder {
         );
     }
 
-    public static Vector2 getMarker(String name){
+    public static Vector2 getMarker(String name) {
         return ScreensManager.getCurrentPlayableScreen().tileSetManager.markersMap.get(name);
     }
 }

@@ -9,12 +9,12 @@ import com.mygdx.Data;
 import com.mygdx.GCStage;
 
 public class CameraController {
+    private static final float lerpFactor = 5;
     private static CameraShaker cameraShaker;
     private static Vector2 mouseDirection;
     private static float mouseAngle;
     private static Vector2 xDirection;
     private static float xAngle;
-    private static final float lerpFactor = 5;
 
     public static void initCamera() {
         OrthographicCamera gameCamera = (OrthographicCamera) GCStage.get().getCamera();

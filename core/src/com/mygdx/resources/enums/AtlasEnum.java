@@ -12,11 +12,11 @@ public enum AtlasEnum {
 
     public String path;
 
-    AtlasEnum(){
+    AtlasEnum() {
         this.path = "assets/packed/" + name().toLowerCase() + ".atlas";
     }
 
-    AtlasEnum(String path){
+    AtlasEnum(String path) {
         this.path = path;
     }
 }

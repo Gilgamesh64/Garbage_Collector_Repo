@@ -24,7 +24,7 @@ public class Couple {
     public boolean contains(Collider collider) {
         return r.equals(collider);
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;

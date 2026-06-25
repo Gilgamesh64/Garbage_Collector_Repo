@@ -1,6 +1,5 @@
 package com.mygdx.savings;
 
-import java.util.EnumMap;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
@@ -10,11 +9,13 @@ import com.mygdx.quest.Quests;
 import com.mygdx.screens.Screens;
 import com.mygdx.screens.ScreensManager;
 
+import java.util.EnumMap;
+
 public class Savings implements com.badlogic.gdx.utils.Json.Serializable {
     private Screens lastRoom;
     private boolean fightging;
     private Vector2 lastRoomCoordinates = new Vector2();
-    private boolean[] flags, selectedGuns = new boolean[] { true, true };
+    private boolean[] flags, selectedGuns = new boolean[] {true, true};
     private int money;
     private EnumMap<Quests, String> quests = new EnumMap<>(Quests.class);
 
@@ -23,8 +24,8 @@ public class Savings implements com.badlogic.gdx.utils.Json.Serializable {
         lastRoomCoordinates = ScreensManager.getPlayableScreen(ScreensManager.getLastPlayableActiveScreenEnum())
                 .getPlayerCoordinates();
         fightging = GCStage.get().getPlayer().isFighting();
-        flags = new boolean[] { true, true, false };
-        selectedGuns = new boolean[] { true, true };
+        flags = new boolean[] {true, true, false};
+        selectedGuns = new boolean[] {true, true};
         money = Money.get();
         for (var q : Quests.values()) {
             quests.put(q, q.get());

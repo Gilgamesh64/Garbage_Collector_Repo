@@ -17,11 +17,11 @@ import com.mygdx.scripts.Script;
 import com.mygdx.scripts.ScriptAction;
 
 public class ScriptableActor extends GameActor {
+    public MSG listeningMSG;
     protected Script script;
+    protected Path path;
     private Table dialTable;
     private Label dial = new Label("", RM.get().skin().get("small_dial", Label.LabelStyle.class));
-    public MSG listeningMSG;
-    protected Path path;
 
 
     public ScriptableActor() {
@@ -44,7 +44,7 @@ public class ScriptableActor extends GameActor {
         return script != null;
     }
 
-    public boolean isRunningScriptAction(){
+    public boolean isRunningScriptAction() {
         return script.getCurrentScriptClass() == ScriptAction.class;
     }
 
@@ -74,12 +74,12 @@ public class ScriptableActor extends GameActor {
         addAction(Actions.sequence(Actions.delay(5), Actions.run(() -> dialTable.remove())));
     }
 
-    public void runPath(Path path){
+    public void runPath(Path path) {
         this.path = path;
         path.advance(this);
     }
 
-    public Path getPath(){
+    public Path getPath() {
         return path;
     }
 

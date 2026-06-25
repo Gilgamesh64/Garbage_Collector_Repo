@@ -1,14 +1,15 @@
 package com.mygdx.savings;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonWriter.OutputType;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.JsonWriter.OutputType;
 
 public class SavingsManager {
     private static Json json;
@@ -45,7 +46,7 @@ public class SavingsManager {
         }
     }
 
-    public static Savings getSavings(){
+    public static Savings getSavings() {
         return s;
     }
 

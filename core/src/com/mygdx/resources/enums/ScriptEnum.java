@@ -6,8 +6,8 @@ public enum ScriptEnum {
 
     public String path;
 
-    ScriptEnum(String path){
+    ScriptEnum(String path) {
         this.path = "assets/scripts/" + path + ".gcs";
     }
-    
+
 }

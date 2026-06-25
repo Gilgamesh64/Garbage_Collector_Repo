@@ -12,27 +12,27 @@ import com.mygdx.screens.generic.PlayableScreen;
 
 public class RichDistrict extends PlayableScreen {
 
-        private final NPC particularNPC2 = NPCBuilder.create(AnimationEnum.BLACKMARKETEER, Data.TILE * 55, Data.TILE * 25)
-                        .onInteraction(npc -> npc.runPath(
-                                PathFinder.find(
-                                        new Vector2(Data.TILE * 55, Data.TILE * 25),
-                                        PathFinder.getMarker("hall")
-                                )
-                        ))
-                        .build();
+    private final NPC particularNPC2 = NPCBuilder.create(AnimationEnum.BLACKMARKETEER, Data.TILE * 55, Data.TILE * 25)
+            .onInteraction(npc -> npc.runPath(
+                    PathFinder.find(
+                            new Vector2(Data.TILE * 55, Data.TILE * 25),
+                            PathFinder.getMarker("hall")
+                    )
+            ))
+            .build();
 
-        public RichDistrict() {
-                super(MapEnum.RICH_DISTRICT);
-                GCStage.get().addAll(particularNPC2);
-        }
+    public RichDistrict() {
+        super(MapEnum.RICH_DISTRICT);
+        GCStage.get().addAll(particularNPC2);
+    }
 
-        @Override
-        public void show() {
-                super.show();
-        }
+    @Override
+    public void show() {
+        super.show();
+    }
 
-        @Override
-        public void render(float delta) {
-                super.render(delta);
-        }
+    @Override
+    public void render(float delta) {
+        super.render(delta);
+    }
 }

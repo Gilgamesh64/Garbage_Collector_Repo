@@ -13,6 +13,7 @@ public class GameStory {
 
     /**
      * Initializes the story, binding the external functions
+     *
      * @param inkJsonText
      */
     public GameStory(String inkJsonText) {
@@ -21,15 +22,15 @@ public class GameStory {
             story.bindExternalFunction("DO", (Object[] args) -> {
                 if (currentActor == null)
                     return null;
-                if(currentActor instanceof ScriptableActor s){
+                if (currentActor instanceof ScriptableActor s) {
                     String name = String.valueOf(args[0]);
                     s.doScript(ScriptEnum.valueOf(name));
                 }
-                
+
                 return null;
             });
             story.bindExternalFunction("GAIN", (Object[] args) -> {
-                Money.gain(((int)args[0]));
+                Money.gain(((int) args[0]));
                 return null;
             });
             story.bindExternalFunction("SAVE", (Object[] args) -> {
@@ -43,6 +44,7 @@ public class GameStory {
 
     /**
      * assigns the story
+     *
      * @param actor
      */
     public void setActor(GameActor actor) {

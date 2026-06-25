@@ -23,7 +23,7 @@ public class TileMapCollisionsManager {
                 (int) (incomingY) / 32);
         if (cellLeft == null)
             return false;
-        
+
         TiledMapTile tileLeft = cellLeft.getTile();
         if (tileLeft.getProperties().get("blocked") != null) return false;
 
@@ -40,8 +40,8 @@ public class TileMapCollisionsManager {
 
     public static MapProperties getCurrentTileProprieties() {
         TiledMapTile tile = layer.getCell(
-                (int) (GCStage.get().getPlayer().getX() + GCStage.get().getPlayer().getWidth() / 2) / 32,
-                (int) (GCStage.get().getPlayer().getY()) / 32)
+                        (int) (GCStage.get().getPlayer().getX() + GCStage.get().getPlayer().getWidth() / 2) / 32,
+                        (int) (GCStage.get().getPlayer().getY()) / 32)
                 .getTile();
         return tile.getProperties();
     }

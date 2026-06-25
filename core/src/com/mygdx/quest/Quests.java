@@ -6,10 +6,11 @@ public enum Quests {
 
     private String state = "";
 
-    public void set(String state){
+    public void set(String state) {
         this.state = state;
     }
-    public String get(){
+
+    public String get() {
         return state;
     }
 }

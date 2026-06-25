@@ -1,25 +1,10 @@
 package com.mygdx.entities.npcs.states;
 
 public class StateController {
-    public enum MovementState {
-        FOLLOW_PLAYER,
-        FLEE,
-        CIRLE_AROUND,
-        WANDER,
-        STILL
-    }
-
-    public enum CombatState{
-        SHOOTING,
-        STILL
-    }
-
     private MovementState movementState;
     private MovementState prevMovementState;
-
     private CombatState combatState;
     private CombatState prevCombatState;
-
 
     public MovementState getMovState() {
         return movementState;
@@ -32,6 +17,12 @@ public class StateController {
     public CombatState getCombatState() {
         return combatState;
     }
+
+    public void setCombatState(CombatState combatState) {
+        this.prevCombatState = this.combatState;
+        this.combatState = combatState;
+    }
+
     public CombatState getPrevCombatState() {
         return prevCombatState;
     }
@@ -41,8 +32,16 @@ public class StateController {
         this.movementState = movState;
     }
 
-    public void setCombatState(CombatState combatState) {
-        this.prevCombatState = this.combatState;
-        this.combatState = combatState;
+    public enum MovementState {
+        FOLLOW_PLAYER,
+        FLEE,
+        CIRLE_AROUND,
+        WANDER,
+        STILL
+    }
+
+    public enum CombatState {
+        SHOOTING,
+        STILL
     }
 }

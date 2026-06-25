@@ -23,7 +23,7 @@ public class SettingsScreen extends GuiScreen {
         stage.getActors().insert(0, bg);
 
         table.columnDefaults(1).width(150);
-        
+
 
         var langLabel = new Label("Language", RM.get().skin().get("default", Label.LabelStyle.class));
         table.add(langLabel).right().pad(20);
@@ -31,10 +31,10 @@ public class SettingsScreen extends GuiScreen {
         var lang = new SelectBox<String>(RM.get().skin());
         lang.setItems("ITA", "ENG");
         table.add(lang).left().pad(20);
-        
+
         table.row();
 
-        var fullScreenLabel = new Label("Fullscreen",  RM.get().skin().get("default", Label.LabelStyle.class));
+        var fullScreenLabel = new Label("Fullscreen", RM.get().skin().get("default", Label.LabelStyle.class));
         table.add(fullScreenLabel).right().pad(20);
 
         var fullScreenButton = new TextButton(Gdx.graphics.isFullscreen() ? "ON" : "OFF", RM.get().skin());
@@ -56,15 +56,15 @@ public class SettingsScreen extends GuiScreen {
         table.row();
 
         var back = new TextButton("BACK", RM.get().skin());
-                
+
         table.add(back).center().bottom().pad(20).colspan(2);
-        
+
         back.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 LangEnum.setCurrent(LangEnum.valueOf(lang.getSelected()));
                 ScreensManager.setScreen(Screens.MENU_SCREEN);
-                
+
                 return true;
             }
         });

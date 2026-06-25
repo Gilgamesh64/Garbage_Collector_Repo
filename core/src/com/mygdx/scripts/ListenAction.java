@@ -4,13 +4,14 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.entities.helpers.ScriptableActor;
 import com.mygdx.messages.MSG;
 
-public class ListenAction implements ScriptAction{
+public class ListenAction implements ScriptAction {
     private MSG msg;
     private int maxWaitingSeconds = 30;
-    
+
     public ListenAction(MSG m) {
         msg = m;
     }
+
     public ListenAction(MSG m, int maxTime) {
         msg = m;
         maxWaitingSeconds = maxTime;
@@ -21,12 +22,12 @@ public class ListenAction implements ScriptAction{
         System.out.println("Listening to:" + msg);
         actor.listen(msg);
         actor.addAction(
-            Actions.sequence(
-                Actions.delay(maxWaitingSeconds),
-                Actions.run(() -> {
-                    if(actor.listeningMSG == msg) actor.resetListen();
-                })
-            )
+                Actions.sequence(
+                        Actions.delay(maxWaitingSeconds),
+                        Actions.run(() -> {
+                            if (actor.listeningMSG == msg) actor.resetListen();
+                        })
+                )
         );
     }
 }

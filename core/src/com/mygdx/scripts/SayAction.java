@@ -2,11 +2,11 @@ package com.mygdx.scripts;
 
 import com.mygdx.entities.helpers.ScriptableActor;
 
-public class SayAction implements ScriptAction{
+public class SayAction implements ScriptAction {
 
     private String text;
 
-    public SayAction(String text){
+    public SayAction(String text) {
         this.text = text;
     }
 
@@ -15,5 +15,5 @@ public class SayAction implements ScriptAction{
         actor.say(text);
         actor.proceed();
     }
-    
+
 }

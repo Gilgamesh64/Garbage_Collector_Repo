@@ -11,7 +11,7 @@ import com.mygdx.screens.ScreensManager;
 
 public class InvisibleDoor extends Door {
 
-    public InvisibleDoor(String name, String dst, String dir, float x, float y, float width,float height) {
+    public InvisibleDoor(String name, String dst, String dir, float x, float y, float width, float height) {
         super(name, dst, dir, x, y);
 
         setSize(width, height);
@@ -28,7 +28,7 @@ public class InvisibleDoor extends Door {
             default -> center.cpy();
         };
         outsideCoords.sub(16, 8);
-        
+
         hitbox = new Hitbox(new Vector2(x + width / 2, y + height / 2), width, height, true);
         hitbox.setTags(Tags.DOOR);
         hitbox.setOnHit((collider) -> {

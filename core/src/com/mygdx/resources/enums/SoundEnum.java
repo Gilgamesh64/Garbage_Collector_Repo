@@ -8,17 +8,17 @@ public enum SoundEnum {
     REFLECTION_5;
 
     /*IMPORTANT!!
-    * AUTO SETS PATH "assets/audio"
-    * PUT AUDIOS there, if necessary specify subfolders
-    */
+     * AUTO SETS PATH "assets/audio"
+     * PUT AUDIOS there, if necessary specify subfolders
+     */
 
     public String path;
 
-    SoundEnum(String path){
+    SoundEnum(String path) {
         this.path = "assets/audio/" + path;
     }
 
-    SoundEnum(){
+    SoundEnum() {
         this.path = "assets/audio/" + name().toLowerCase() + ".mp3";
     }
 }

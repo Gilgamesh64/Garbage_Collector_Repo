@@ -11,14 +11,14 @@ public class ObjectInfo {
     /**
      * Creates an additional info object instance with the specified maps to
      * initialize.
-     * 
+     *
      * <pre>
-     *1: Boolean Map.
-     *2: Integer Map.
-     *3: Float Map.
-     *4: String Map.
+     * 1: Boolean Map.
+     * 2: Integer Map.
+     * 3: Float Map.
+     * 4: String Map.
      * </pre>
-     * 
+     *
      * @param selector array of numbers.
      */
     public ObjectInfo(int... selector) {

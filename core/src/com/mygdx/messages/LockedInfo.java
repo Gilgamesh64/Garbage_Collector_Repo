@@ -10,7 +10,7 @@ public class LockedInfo {
 
     /**
      * Create locked info based on an ObjectInfo instance.
-     * 
+     *
      * @param info an ObjectInfo object to get the Maps from.
      */
     public LockedInfo(ObjectInfo info) {

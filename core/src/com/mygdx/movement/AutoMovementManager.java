@@ -21,11 +21,11 @@ public class AutoMovementManager {
 
     public boolean update() {
 
-        if (destination == null){
+        if (destination == null) {
             finished = true;
             return false;
         }
-            
+
 
         Vector2 direction = new Vector2(destination).sub(actor.getCoords()).nor();
         Vector2 movement = new Vector2(direction).scl(100 * Gdx.graphics.getDeltaTime());
@@ -51,14 +51,14 @@ public class AutoMovementManager {
         return animationInProgress;
     }
 
-    public void goTo(Vector2 coordinates, Runnable onEnd){
+    public void goTo(Vector2 coordinates, Runnable onEnd) {
         this.onEnd = onEnd;
         goTo(coordinates);
     }
 
     public void goTo(Vector2 coordinates) {
         finished = false;
-            
+
         animationInProgress = true;
         destination = coordinates.cpy();
 
@@ -83,27 +83,25 @@ public class AutoMovementManager {
         return orientation;
     }
 
-    public void reset(){
+    public void reset() {
         animationInProgress = false;
         destination = null;
         orientation = "IDLE_" + orientation.split("_")[1];
 
-        if(actor instanceof ScriptableActor sc){
+        if (actor instanceof ScriptableActor sc) {
             boolean hasActivePath = sc.getPath().running();
-            if(hasActivePath){
+            if (hasActivePath) {
                 sc.getPath().advance(sc);
-            }
-
-            else if(sc.hasScript() && sc.isRunningScriptAction()) //if advancing path scripts are frozen
+            } else if (sc.hasScript() && sc.isRunningScriptAction()) //if advancing path scripts are frozen
                 sc.proceed();
         }
-        if(onEnd != null){
+        if (onEnd != null) {
             onEnd.run();
             onEnd = null;
         }
     }
 
-    public boolean hasFinished(){
+    public boolean hasFinished() {
         return finished;
     }
 }

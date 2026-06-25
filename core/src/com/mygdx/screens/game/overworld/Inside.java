@@ -13,21 +13,20 @@ public class Inside extends PlayableScreen {
     private int spawnX = Data.TILE * 9 + 24, spawnY = Data.TILE;
 
     private NPCBuilder poorPeopleBuilder = NPCBuilder.create(AnimationEnum.JERKINS, spawnX, spawnY)
-                .autoStartedScript(ScriptEnum.CANTEEN);
-
-    private int getSpawnRate(){
-        return (int)(Math.random() * 10) + 5;
-    }
-
+            .autoStartedScript(ScriptEnum.CANTEEN);
     private Action spawnNPC = Actions.forever(Actions.sequence(
-        Actions.run(this::getSpawnRate),
-        Actions.delay(getSpawnRate()),
-        Actions.run(() -> stage.addActor(poorPeopleBuilder.build()))
+            Actions.run(this::getSpawnRate),
+            Actions.delay(getSpawnRate()),
+            Actions.run(() -> stage.addActor(poorPeopleBuilder.build()))
     ));
 
     public Inside() {
         super(MapEnum.INSIDE);
         stage.addAction(spawnNPC);
+    }
+
+    private int getSpawnRate() {
+        return (int) (Math.random() * 10) + 5;
     }
 
     @Override

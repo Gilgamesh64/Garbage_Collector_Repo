@@ -77,7 +77,7 @@ public class BaseGun extends Actor {
 
     public void onCurrent() {
     }
-    
+
     public void onSwitched() {
     }
 

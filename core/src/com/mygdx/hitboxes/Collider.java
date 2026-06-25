@@ -1,26 +1,26 @@
 package com.mygdx.hitboxes;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.function.Consumer;
-
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.messages.LockedInfo;
 import com.mygdx.messages.ObjectInfo;
 import com.mygdx.movement.BaseMovement;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.function.Consumer;
+
 public class Collider extends Polygon {
+    public final boolean isNull;
     private ArrayList<Tags> tags, searchTags;
     private Consumer<Hitbox> onHit, onLeave, onFrame;
     private BaseMovement movement;
     private LockedInfo extraInfo;
     private boolean registered = false;
-    public final boolean isNull;
 
     /**
      * Creates a Collider with specified position, size, rotation, and form.
-     * 
+     *
      * @param anchor   the colliders' anchor coordinates.
      * @param degrees  specifies the colliders' rotation.
      * @param vertices an array whose elements in pairs represent the x and y of
@@ -40,19 +40,19 @@ public class Collider extends Polygon {
 
     /**
      * Creates a box Collider with specified position, size, and rotation.
-     * 
+     *
      * @param anchor  the colliders' anchor coordinates.
      * @param width   as large as the sea!
      * @param height  as tall as the sky!
      * @param degrees specifies the colliders' rotation.
      */
     public Collider(Vector2 anchor, float width, float height, float degrees) {
-        this(anchor, degrees, new float[] { 0, 0, width, 0, width, height, 0, height });
+        this(anchor, degrees, new float[] {0, 0, width, 0, width, height, 0, height});
     }
 
     /**
      * Creates a box Collider with specified position and size.
-     * 
+     *
      * @param anchor the colliders' anchor coordinates.
      * @param width  as large as the sea!
      * @param height as tall as the sky!
@@ -167,7 +167,7 @@ public class Collider extends Polygon {
 
     /***
      * Register method to add the Collider to the Event handler with a check.
-     * 
+     *
      * @return {@code true} if the Collider has been added.
      */
     public boolean register() {
@@ -184,7 +184,7 @@ public class Collider extends Polygon {
 
     /***
      * Register method to remove the Collider to the Event handler with a check.
-     * 
+     *
      * @return {@code true} if the Collider has been removed.
      */
     public boolean unregister() {

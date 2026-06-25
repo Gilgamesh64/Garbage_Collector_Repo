@@ -26,7 +26,7 @@ public class TextureDoor extends Door {
         var texture = RM.get().getAtlas(AtlasEnum.COMPONENTS).findRegion(opening.toLowerCase());
         float width = (float) texture.getRegionWidth() / openingEnum.frameCount * size;
         float height = texture.getRegionHeight();
-        animationManager = new AnimationManager(AtlasEnum.COMPONENTS, 0.1f, size, 1,  openingEnum, closingEnum).playOnce(true);
+        animationManager = new AnimationManager(AtlasEnum.COMPONENTS, 0.1f, size, 1, openingEnum, closingEnum).playOnce(true);
         animationManager.shouldNotDoFirstPlay();
 
         setSize(width, height);
@@ -48,7 +48,7 @@ public class TextureDoor extends Door {
         hitbox = new Hitbox(new Vector2(x + width / 2, y + height / 2), width, height, true);
         hitbox.setTags(Tags.DOOR);
         hitbox.setOnHit((collider) -> {
-            if (Data.exiting){
+            if (Data.exiting) {
                 animationManager.setCurrentAnimation(closingEnum);
                 return;
             }
@@ -56,7 +56,7 @@ public class TextureDoor extends Door {
             GCStage.get().getPlayer().movAbs(insideCoords, () -> {
                 Data.exiting = true;
                 ScreensManager.setScreen(Screens.valueOf(dst.split("-")[0]), dst);
-                
+
             });
         });
         hitbox.register();

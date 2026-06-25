@@ -1,7 +1,5 @@
 package com.mygdx.gunControls;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
@@ -11,23 +9,25 @@ import com.mygdx.DelayManager;
 import com.mygdx.gunControls.guns.BaseGun;
 import com.mygdx.gunControls.guns.DummyGun;
 
+import java.util.ArrayList;
+
 public class GunController extends Actor {
     private static GunController instance;
     private final ArrayList<BaseGun> gunlist;
     private int gunIndex;
     private BaseGun currentGun, dummyGun;
 
-    public static GunController get() {
-        if (instance == null)
-            instance = new GunController();
-        return instance;
-    }
-
     private GunController() {
         gunlist = new ArrayList<>();
         dummyGun = new DummyGun();
         DelayManager.registerObject(this, 10f);
         init();
+    }
+
+    public static GunController get() {
+        if (instance == null)
+            instance = new GunController();
+        return instance;
     }
 
     private void init() {
@@ -48,7 +48,7 @@ public class GunController extends Actor {
 
     /**
      * Adds a chain of guns to the Gunlist.
-     * 
+     *
      * @param gunEnums The GunsEnum instances to add.
      */
     public void loadGuns(GunsEnum... gunEnums) {
@@ -107,12 +107,12 @@ public class GunController extends Actor {
         } else if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT)) {
             currentGun.rightTrigger();
         }
-        if(Gdx.input.isKeyJustPressed(Keys.E)){
+        if (Gdx.input.isKeyJustPressed(Keys.E)) {
             advance(1);
         }
     }
 
-    public void advance(int amount){
+    public void advance(int amount) {
         gunIndex = (gunIndex + amount) % gunlist.size();
     }
 

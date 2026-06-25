@@ -9,13 +9,13 @@ public class TileReplacementManager {
     private TiledMapTile blockerTile = null;
     private TiledMapTile blockableTile = null;
     private boolean isBlocked = false;
-    private TileReplacementEnum category; 
+    private TileReplacementEnum category;
     private TiledMap map;
 
-    public TileReplacementManager(TiledMap map, TileReplacementEnum category, TiledMapTile blocker){
+    public TileReplacementManager(TiledMap map, TileReplacementEnum category, TiledMapTile blocker) {
         this.map = map;
-        this.category = category;   
-        this.blockerTile = blocker; 
+        this.category = category;
+        this.blockerTile = blocker;
     }
 
     public void blockTiles() {
@@ -27,22 +27,23 @@ public class TileReplacementManager {
 
                 if (cell == null)
                     continue;
-                if(cell.getTile() == null)
+                if (cell.getTile() == null)
                     continue;
 
                 MapProperties properties = cell.getTile().getProperties();
 
                 if (properties.get("blockable") == null || properties.get("category") == null) continue;
 
-                if(!properties.get("category").equals(category.toString())) continue;
+                if (!properties.get("category").equals(category.toString())) continue;
 
                 blockableTile = cell.getTile();
                 cell.setTile(blockerTile);
-                    
-                
+
+
             }
         }
     }
+
     public void unBlockTiles() {
 
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get("background");
@@ -52,22 +53,22 @@ public class TileReplacementManager {
 
                 if (cell == null)
                     continue;
-                if(cell.getTile() == null)
+                if (cell.getTile() == null)
                     continue;
 
                 MapProperties properties = cell.getTile().getProperties();
 
                 if (properties.get("blocker") == null || properties.get("category") == null) continue;
 
-                if(!properties.get("category").equals(category.toString())) continue;
-                
+                if (!properties.get("category").equals(category.toString())) continue;
+
                 cell.setTile(blockableTile);
             }
         }
     }
 
-    public void handle(){
-        if(isBlocked)
+    public void handle() {
+        if (isBlocked)
             unBlockTiles();
         else
             blockTiles();

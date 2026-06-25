@@ -110,7 +110,7 @@ public enum TextureEnum {
     /**
      * Animation included in a textureatlas
      * Path is trivial, should always be the same name as the enum
-     * 
+     *
      * @param animationRate
      * @param delay
      * @param frameCount

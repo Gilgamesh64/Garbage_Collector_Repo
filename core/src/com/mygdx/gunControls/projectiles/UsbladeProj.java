@@ -1,7 +1,6 @@
 package com.mygdx.gunControls.projectiles;
 
 import com.badlogic.gdx.math.Vector2;
-
 import com.mygdx.resources.RM;
 import com.mygdx.resources.enums.AtlasEnum;
 import com.mygdx.resources.enums.TextureEnum;

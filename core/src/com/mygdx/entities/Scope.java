@@ -14,14 +14,14 @@ import com.mygdx.resources.RM;
 import com.mygdx.resources.enums.AtlasEnum;
 import com.mygdx.resources.enums.TextureEnum;
 
-public class Scope extends GameActor{
+public class Scope extends GameActor {
+    public boolean hitplayer = false;
     private Sprite sprite;
     private Hitbox hitbox = new Hitbox();
     private boolean isFighting = GCStage.get().getPlayer().isFighting();
-    public boolean hitplayer = false;
 
 
-    public Scope(Vector2 coords){
+    public Scope(Vector2 coords) {
         this.sprite = RM.get().getSpriteFromAtlas(AtlasEnum.OTHERS, TextureEnum.SCOPE);
 
         setSize(sprite.getWidth(), sprite.getHeight());
@@ -39,11 +39,11 @@ public class Scope extends GameActor{
         hitbox.setOnLeave(collider -> hitplayer = false);
         hitbox.register();
 
-        if(Data.debug) debug();
+        if (Data.debug) debug();
         setCoords(coords);
     }
 
-    public Scope(float x, float y){
+    public Scope(float x, float y) {
         this(new Vector2(x, y));
     }
 

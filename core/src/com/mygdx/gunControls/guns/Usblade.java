@@ -18,10 +18,10 @@ public class Usblade extends BaseGun {
     public void leftTrigger() {
         super.leftTrigger();
         UsbladeProj proj = new UsbladeProj(
-            GCStage.get().getPlayer().center,
-            movement.position.x + movement.center.x,
-            CameraController.getMouseAngle() + angleOffset,
-            flipped);
+                GCStage.get().getPlayer().center,
+                movement.position.x + movement.center.x,
+                CameraController.getMouseAngle() + angleOffset,
+                flipped);
         GCStage.get().addActor(proj);
 
         GunController.get().setCooldown(50);

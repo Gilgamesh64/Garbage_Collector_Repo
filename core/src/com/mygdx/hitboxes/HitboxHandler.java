@@ -5,21 +5,18 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class HitboxHandler {
     private static HitboxHandler instance;
-
-    public static HitboxHandler get(){
-        return instance;
-    }
-
-    public static void set(HitboxHandler h){
-        instance = h;
-        instance.clearContacts();
-    }
-
-
     private final CopyOnWriteArrayList<Collider> colliders = new CopyOnWriteArrayList<>();
     private final ConcurrentHashMap<Tags, CopyOnWriteArrayList<Hitbox>> hitboxes = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<Couple, Boolean> contacts = new ConcurrentHashMap<>();
 
+    public static HitboxHandler get() {
+        return instance;
+    }
+
+    public static void set(HitboxHandler h) {
+        instance = h;
+        instance.clearContacts();
+    }
 
     public void registerHitbox(Hitbox h) {
         for (Tags tag : h.getTags()) {
@@ -82,7 +79,7 @@ public class HitboxHandler {
     public void removeContact(Collider r, Hitbox h) {
         if (contacts.remove(new Couple(h, r)) == null)
             return;
-        
+
         r.onLeave(h);
         h.onLeave(r);
     }

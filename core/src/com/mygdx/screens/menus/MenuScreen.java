@@ -59,7 +59,7 @@ public class MenuScreen extends GuiScreen {
                 return true;
             }
         });
-        
+
     }
 
     @Override
